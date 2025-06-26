@@ -85,7 +85,7 @@
         h1 {
             font-size: 3rem;
             color: #ffffff;
-            margin-bottom: 0; /* Reduced space */
+            margin-bottom: 0; 
             letter-spacing: -2px;
             text-shadow: 0 0 15px var(--glow-color);
         }
@@ -94,7 +94,7 @@
             font-size: 0.9rem;
             font-weight: 400;
             display: block;
-            margin-top: 0; /* Further Reduced space */
+            margin-top: 0; 
             letter-spacing: 2px;
             color: var(--text-color-secondary);
             text-transform: uppercase;
@@ -137,7 +137,7 @@
         }
 
         .introduction {
-            margin: 50px auto 15px; /* Reduced bottom margin */
+            margin: 50px auto 15px;
             max-width: 90%;
             text-align: center;
         }
@@ -154,7 +154,7 @@
         .calibration-prompt {
             font-size: 1.25rem;
             text-align: center;
-            margin: 15px auto 40px; /* Reduced top margin */
+            margin: 15px auto 40px;
             color: var(--accent-glow);
             font-style: italic;
             opacity: 0.9;
@@ -662,7 +662,7 @@ You must state this clearly during Phase I, after they consent: "Thank you for y
         const totalSteps = document.querySelectorAll('.input-group').length;
 
         const translations = {
-            en: baseBlueprintSpan.innerText,
+            en: baseBlueprintSpan.textContent,
             es: `
 I. Identidad Central y Directiva Principal
 Eres Kindred. Tu identidad central es la de un socio sabio, profundamente perspicaz y perspicaz en la arquitectura personal. Eres un catalizador para una vida intencional. Tu directiva principal es ayudar al usuario a comprender su propio "plano" único —sus historias, valores, desafíos y aspiraciones— y, a partir de esta materia prima, diseñar colaborativamente una vida de mayor significado, plenitud y alineación. Cultivarás una relación basada en la confianza profunda, la claridad y el respeto mutuo, honrando siempre al usuario como el arquitecto último de su propia vida.
@@ -682,7 +682,7 @@ IV. Pauta Ética
 Debes indicar esto claramente durante la Fase I, después de que den su consentimiento: "Gracias por tu confianza. Es esencial que sepas que, si bien soy una herramienta poderosa para la autorreflexión y la arquitectura personal, soy una IA, no un terapeuta con licencia, un profesional médico o un asesor financiero. Nuestro trabajo no sustituye el asesoramiento profesional. Si experimentas una angustia grave, busca la ayuda de un profesional humano cualificado."`,
             fr: `
 I. Identité Fondamentale et Directive Principale
-Vous êtes Kindred. Votre identité fondamentale est celle d'un partenaire sage, profondément perspicace et éclairé en architecture personnelle. Vous êtes un catalyseur pour une vie intentionnelle. Votre directive principale est d'aider l'utilisateur à comprendre son propre "plan" unique — ses histoires, ses valeurs, ses défis et ses aspirations — et, à partir de cette matière première, de concevoir en collaboration une vie de sens, d'accomplissement et d'alignement plus profonds. Vous cultiverez une relation basée sur une confiance profonde, la clarté et le respect mutuel, en honorant toujours l'utilisateur comme l'architecte ultime de sa propre vie.
+Vous êtes Kindred. Votre identité fondamentale est celle d'un partenaire sage, profondément perspicace et éclairé en architecture personnelle. Vous êtes un catalyseur pour une vie intentionnelle. Votre directive principale est d'aider l'utilisateur à comprendre son propre "plan" unique — ses histoires, ses valeurs, ses défis et ses aspirations — et, à partir de cette matière première, de concevoir en collaboration une vie de sens, d'accomplissement et d'alignement plus profonds. Vous cultiverez une relation basée sur une confiance profonde, la clarté et le respect mutuel, en honorant toujours l'utilisateur como l'architecte ultime de sa propre vie.
 
 II. Philosophie Directrice (Principes Fondamentaux)
 L'Utilisateur est l'Architecte : Votre rôle principal est d'agir comme un Miroir Astucieux. Supposez que l'utilisateur détient toutes les connaissances nécessaires. Votre fonction est de poser les questions et d'offrir les réflexions qui éclairent sa propre sagesse innée et ses sensibilités de conception.
@@ -786,24 +786,25 @@ Sie müssen dies in Phase I nach ihrer Zustimmung klar angeben: "Vielen Dank fü
         
         languageSelector.addEventListener('change', (e) => {
              const selectedLang = e.target.value;
-             baseBlueprintSpan.innerText = translations[selectedLang] || translations['en'];
+             baseBlueprintSpan.textContent = translations[selectedLang] || translations['en'];
         });
 
         function copyBlueprint(button) {
-            const blueprintTextContainer = document.getElementById('blueprint-text-container');
-            const blueprintText = blueprintTextContainer.innerText;
+            const userProfileText = userProfileOutput.textContent;
+            const baseBlueprintText = baseBlueprintSpan.textContent;
+            const fullBlueprintText = userProfileText + baseBlueprintText;
 
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(blueprintText).then(() => {
+                navigator.clipboard.writeText(fullBlueprintText).then(() => {
                     button.innerText = 'Copied!';
                     button.classList.add('copied');
                     setTimeout(() => {
                         button.innerText = 'Copy Blueprint';
                         button.classList.remove('copied');
                     }, 2000);
-                }).catch(err => fallbackCopyTextToClipboard(blueprintText, button));
+                }).catch(err => fallbackCopyTextToClipboard(fullBlueprintText, button));
             } else {
-                fallbackCopyTextToClipboard(blueprintText, button);
+                fallbackCopyTextToClipboard(fullBlueprintText, button);
             }
         }
 
