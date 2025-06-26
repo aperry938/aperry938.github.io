@@ -109,20 +109,6 @@
             margin-bottom: 40px;
             font-weight: 500;
         }
-
-        .heading-with-counter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-
-        #calibration-counter {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-color-secondary);
-            opacity: 0.8;
-        }
         
         strong {
             font-weight: 700;
@@ -137,19 +123,32 @@
         }
 
         .introduction {
-            font-size: 1.25rem;
-            text-align: center;
             margin: 50px auto;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .welcome-heading {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0.8em;
+            font-style: italic;
+        }
+
+        .intro-paragraph {
+            font-size: 1.25rem;
             color: var(--text-color);
             font-style: italic;
-            max-width: 90%;
             opacity: 0.9;
+            margin: 0;
+            line-height: 1.7;
         }
         
         .calibration-prompt {
             font-size: 1.25rem;
             text-align: center;
-            margin: -20px auto 40px;
+            margin: 50px auto 40px;
             color: var(--accent-glow);
             font-style: italic;
             opacity: 0.9;
@@ -380,11 +379,14 @@
     <div class="container">
         <h1>Kindred<span class="subtitle">A Blueprint for a Life by Design</span></h1>
 
-        <p class="introduction">
-            Welcome to a sanctuary for quiet contemplation and intentional growth. This is more than a tool; it's a living blueprint for partnership, a framework to architect a life of meaning, clarity, and alignment. Your private space for the art of self-mastery begins here.
-        </p>
+        <div class="introduction">
+            <h3 class="welcome-heading">Welcome.</h3>
+            <p class="intro-paragraph">
+                You have entered a space dedicated to quiet contemplation and intentional growth. More than a tool, Kindred is a living blueprint for partnership—a gentle framework to architect a life of deeper meaning, clarity, and alignment. This is your private sanctuary for the art of self-mastery.
+            </p>
+        </div>
         <p class="calibration-prompt">
-            To begin, let's lay the cornerstone of your personal blueprint.
+            To begin, let us calibrate the blueprint to your unique frequency.
         </p>
 
         <section class="instructions-card">
@@ -763,6 +765,13 @@ Sie müssen dies in Phase I nach ihrer Zustimmung klar angeben: "Vielen Dank fü
                 option.classList.add('active');
                 hiddenAlignmentInput.value = option.dataset.value;
                 updateBlueprint();
+
+                // Auto-advance to next section
+                const nextInputGroup = form.querySelector(`.input-group[data-step="9"]`); // Assume this is the last step
+                const onboardingSection = document.querySelector('.onboarding-steps');
+                if(onboardingSection) {
+                    onboardingSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             });
         });
         
