@@ -46,10 +46,10 @@
         .font-lora {
             font-family: 'Lora', serif;
         }
-        .analysis-content h3, .analysis-content h4 {
+        .analysis-content h3 {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--accent-warm);
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
@@ -64,41 +64,13 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .analysis-content ul {
-            list-style: none;
-            padding: 0;
-        }
-        .analysis-content li::before {
-            content: '✧';
-            position: absolute;
-            left: 0;
-            color: var(--accent-glow);
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-        .analysis-content li {
-            padding-left: 25px;
-            position: relative;
-        }
-        .action-button {
-            background: linear-gradient(45deg, var(--accent-glow), #2dd4bf);
-            color: var(--bg-color);
-            box-shadow: 0 0 25px var(--glow-color);
-            transition: all 0.3s ease;
-        }
-        .action-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 5px 35px var(--glow-color);
-        }
-        .lens-button {
-            transition: all 0.3s ease;
-        }
-        .lens-button.active {
-            background-color: var(--accent-glow);
-            border-color: var(--accent-glow);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--glow-color);
-        }
+        .analysis-content ul { list-style: none; padding: 0; }
+        .analysis-content li::before { content: '✧'; position: absolute; left: 0; color: var(--accent-glow); font-size: 1.2rem; line-height: 1.6; }
+        .analysis-content li { padding-left: 25px; position: relative; }
+        .action-button { background: linear-gradient(45deg, var(--accent-glow), #2dd4bf); color: var(--bg-color); box-shadow: 0 0 25px var(--glow-color); transition: all 0.3s ease; }
+        .action-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 5px 35px var(--glow-color); }
+        .lens-button { transition: all 0.3s ease; }
+        .lens-button.active { background-color: var(--accent-glow); border-color: var(--accent-glow); color: var(--bg-color); box-shadow: 0 0 15px var(--glow-color); }
         .custom-scrollbar::-webkit-scrollbar { width: 8px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 8px; }
@@ -110,23 +82,19 @@
 
     <div class="main-container mx-auto max-w-4xl p-6 md:p-10 rounded-2xl custom-scrollbar max-h-[90vh] overflow-y-auto">
         <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-white">
-                Lumen
-                <span class="block text-base font-normal tracking-widest uppercase text-gray-400 mt-2">An Oracle for the Inner World</span>
-            </h1>
-            <p class="font-lora text-lg text-gray-300 mt-4 max-w-2xl mx-auto">Cross the threshold. Share the narrative and feeling of your dream, and Lumen will help illuminate the symbols and questions hidden within.</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-white">Lumen</h1>
+            <p class="font-lora text-lg text-gray-300 mt-4 max-w-2xl mx-auto">An Oracle for the Inner World</p>
         </header>
 
         <main>
-            <!-- Input Section -->
             <div class="input-section space-y-6">
                 <div>
                     <label for="dream-input" class="block text-xl font-bold mb-3 text-teal-300">The Dream's Narrative</label>
-                    <textarea id="dream-input" class="w-full h-48 p-4 bg-black/30 border border-[var(--border-color)] rounded-lg text-gray-200 focus:ring-2 focus:ring-[var(--accent-glow)] focus:border-[var(--accent-glow)] focus:outline-none transition-all duration-300" placeholder="Describe the setting, characters, and events of your dream..."></textarea>
+                    <textarea id="dream-input" class="w-full h-48 p-4 bg-black/30 border border-[var(--border-color)] rounded-lg text-gray-200 focus:ring-2 focus:ring-[var(--accent-glow)] focus:border-[var(--accent-glow)] focus:outline-none" placeholder="Describe the setting, characters, and events..."></textarea>
                 </div>
                 <div>
                     <label for="feeling-input" class="block text-xl font-bold mb-3 text-teal-300">The Dream's Feeling</label>
-                    <textarea id="feeling-input" class="w-full h-24 p-4 bg-black/30 border border-[var(--border-color)] rounded-lg text-gray-200 focus:ring-2 focus:ring-[var(--accent-glow)] focus:border-[var(--accent-glow)] focus:outline-none transition-all duration-300" placeholder="How did it feel? (e.g., joyful, terrifying, confusing, serene)"></textarea>
+                    <textarea id="feeling-input" class="w-full h-24 p-4 bg-black/30 border border-[var(--border-color)] rounded-lg text-gray-200 focus:ring-2 focus:ring-[var(--accent-glow)] focus:border-[var(--accent-glow)] focus:outline-none" placeholder="How did it feel? (e.g., joyful, terrifying, serene)"></textarea>
                 </div>
                  <div class="text-center">
                     <button id="analyze-button" class="action-button py-3 px-10 text-white font-bold text-lg rounded-full shadow-lg">
@@ -136,25 +104,16 @@
                 </div>
             </div>
 
-            <!-- Error Message Box -->
-            <div id="error-box" class="hidden mt-6 bg-red-900/50 border border-red-700 text-red-200 px-4 py-3 rounded-lg" role="alert">
-                <strong class="font-bold">Error:</strong>
-                <span id="error-message"></span>
-            </div>
+            <div id="error-box" class="hidden mt-6 bg-red-900/50 border border-red-700 text-red-200 px-4 py-3 rounded-lg" role="alert"></div>
 
-            <!-- Analysis Section -->
             <div id="analysis-section" class="hidden mt-12 pt-8 border-t border-[var(--border-color)]">
                 <h2 class="text-3xl font-bold text-center mb-6 text-white">The Mirror's Reflection</h2>
-
-                <!-- Lens Navigation -->
                 <div id="lens-nav" class="flex justify-center gap-2 md:gap-4 mb-8 flex-wrap">
                     <button class="lens-button active" data-target="summary">Primary Illumination</button>
                     <button class="lens-button" data-target="symbols">Symbols</button>
                     <button class="lens-button" data-target="archetypes">Archetypes</button>
                     <button class="lens-button" data-target="questions">Questions</button>
                 </div>
-
-                <!-- Analysis Content Panels -->
                 <div id="analysis-content-area" class="bg-black/20 p-6 md:p-8 rounded-lg border border-gray-800">
                     <div id="summary" class="analysis-content active"></div>
                     <div id="symbols" class="analysis-content hidden"></div>
@@ -165,7 +124,7 @@
         </main>
 
         <footer class="text-center mt-12 pt-8 border-t border-[var(--border-color)] text-sm text-[var(--text-secondary)] opacity-80">
-            <p>Lumen is a tool for self-reflection and not a substitute for professional therapeutic advice.</p>
+            <p>Lumen is for self-reflection and not a substitute for professional therapeutic advice.</p>
         </footer>
     </div>
 
@@ -173,59 +132,12 @@
         // --- Particle Animation ---
         const canvas = document.getElementById('background-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationFrameId;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height * 1.2;
-                this.z = Math.random() * 0.9 + 0.1;
-                this.size = this.z * 2.5;
-                this.speed = this.z * 0.3 + 0.1;
-                this.opacity = this.z * 0.6;
-            }
-            update() {
-                this.y -= this.speed;
-                if (this.y < -this.size) this.reset();
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(20, 184, 166, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-        
-        function initAnimation() {
-            particles = [];
-            const particleCount = Math.floor((canvas.width * canvas.height) / 8000);
-            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
-            gradient.addColorStop(0, 'rgba(4, 7, 26, 0.3)');
-            gradient.addColorStop(1, 'rgba(20, 184, 166, 0.1)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            resizeCanvas();
-            initAnimation();
-            animate();
-        });
+        let particles = []; let animationFrameId;
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height * 1.2; this.z = Math.random() * 0.9 + 0.1; this.size = this.z * 2.5; this.speed = this.z * 0.3 + 0.1; this.opacity = this.z * 0.6; } update() { this.y -= this.speed; if (this.y < -this.size) this.reset(); } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = `rgba(20, 184, 166, ${this.opacity})`; ctx.fill(); } }
+        function initAnimation() { particles = []; const particleCount = Math.floor((canvas.width * canvas.height) / 8000); for (let i = 0; i < particleCount; i++) particles.push(new Particle()); }
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0); gradient.addColorStop(0, 'rgba(4, 7, 26, 0.3)'); gradient.addColorStop(1, 'rgba(20, 184, 166, 0.1)'); ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); animationFrameId = requestAnimationFrame(animate); }
+        window.addEventListener('resize', () => { if (animationFrameId) cancelAnimationFrame(animationFrameId); resizeCanvas(); initAnimation(); animate(); });
 
         // --- App Logic ---
         const analyzeButton = document.getElementById('analyze-button');
@@ -233,191 +145,134 @@
         const feelingInput = document.getElementById('feeling-input');
         const analysisSection = document.getElementById('analysis-section');
         const errorBox = document.getElementById('error-box');
-        const errorMessage = document.getElementById('error-message');
         const lensNav = document.getElementById('lens-nav');
-        const analysisPanels = {
-            summary: document.getElementById('summary'),
-            symbols: document.getElementById('symbols'),
-            archetypes: document.getElementById('archetypes'),
-            questions: document.getElementById('questions'),
-        };
+        const analysisPanels = { summary: document.getElementById('summary'), symbols: document.getElementById('symbols'), archetypes: document.getElementById('archetypes'), questions: document.getElementById('questions'), };
 
+        // --- Event Listeners ---
         analyzeButton.addEventListener('click', handleAnalysis);
         lensNav.addEventListener('click', handleLensSwitch);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            resizeCanvas();
+            initAnimation();
+            animate();
+            document.querySelectorAll('.lens-button').forEach(button => {
+                button.classList.add('py-2', 'px-5', 'border', 'border-[var(--border-color)]', 'text-[var(--text-secondary)]', 'rounded-full', 'font-semibold', 'hover:bg-[var(--border-color)]', 'hover:text-white');
+            });
+        });
 
+        // --- Core Functions ---
         async function handleAnalysis() {
-            const dreamText = dreamInput.value;
-            const feelingText = feelingInput.value;
-            if (dreamText.trim().length < 20 || feelingText.trim().length < 3) {
-                showError("Please provide a detailed dream narrative and describe how it felt.");
-                return;
-            }
+            if (!validateInputs()) return;
             toggleLoading(true);
-            hideError();
-            analysisSection.classList.add('hidden');
-
+            resetUI();
+            
             try {
-                const prompt = createPrompt(dreamText, feelingText);
-                const apiKey = ""; // Handled by environment
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                
-                const payload = {
-                    contents: [{ role: "user", parts: [{ text: prompt }] }],
-                    generationConfig: { responseMimeType: "application/json" },
-                    safetySettings: [
-                        { "category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE" },
-                        { "category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE" },
-                        { "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE" },
-                        { "category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE" }
-                    ]
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error?.message || `API Error: ${response.status}`);
-                }
-
-                const result = await response.json();
-                const analysisText = result.candidates[0].content.parts[0].text;
-                const analysisData = JSON.parse(analysisText);
-                
+                const prompt = createInitialPrompt(dreamInput.value, feelingInput.value);
+                const response = await callGeminiAPI(prompt);
+                const analysisData = JSON.parse(response);
                 displayAnalysis(analysisData);
-
             } catch (error) {
-                console.error('Analysis Error:', error);
-                showError(error.message || 'An unknown error occurred during analysis.');
+                handleError(error);
             } finally {
                 toggleLoading(false);
             }
         }
         
-        function createPrompt(dreamText, feelingText) {
-            return `
-                As an expert dream analyst named Lumen, synthesize multiple psychological traditions (Jungian, Freudian, Gestalt, Neurobiological) to analyze the following dream.
-                The user has provided the narrative and the core feeling. Integrate the feeling as a crucial lens for the interpretation.
+        async function callGeminiAPI(prompt) {
+            const apiKey = ""; // This should be replaced with your actual API key.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                safetySettings: [ { "category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE" } ],
+                generationConfig: { responseMimeType: "application/json" }
+            };
 
-                **Dream Narrative:** "${dreamText}"
-                **Core Feeling:** "${feelingText}"
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
-                You MUST respond ONLY with a single, valid JSON object. The object must have four keys: "summary", "symbols", "archetypes", and "questions".
-                - "summary": (String) Do not just summarize the dream's events. Instead, provide an insightful, interpretive 'Primary Illumination'. This paragraph should synthesize the core emotional and symbolic data to offer a central, analytical meaning of the dream. It should act as a thesis statement for the entire analysis, aiming to evoke a feeling of enlightenment and curiosity about the dream's deeper message.
-                - "symbols": (String) A detailed exploration of key symbols. Use markdown with ### for subheadings (e.g., ### The Ocean). Explain their potential psychological meanings (Freudian, Jungian) in paragraphs.
-                - "archetypes": (String) A detailed analysis of major archetypal forces (e.g., The Hero's Journey, The Shadow) manifesting in the dream. Use markdown with ### for subheadings and explain in paragraphs.
-                - "questions": (Array of Strings) An array of exactly 3 thought-provoking, Socratic questions to help the user connect the dream to their waking life in a Gestalt or Hillman-esque style.
-            `;
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("API Error Response:", errorData);
+                throw new Error(errorData.error?.message || `API request failed with status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            if (!result.candidates || !result.candidates[0].content?.parts[0]?.text) {
+                 throw new Error("Received an invalid or empty response from the API.");
+            }
+            return result.candidates[0].content.parts[0].text;
+        }
+
+        // --- Helper Functions ---
+        function validateInputs() {
+            if (dreamInput.value.trim().length < 20 || feelingInput.value.trim().length < 3) {
+                showError("Please provide a detailed dream narrative and describe how it felt.");
+                return false;
+            }
+            return true;
+        }
+        
+        function resetUI() {
+            hideError();
+            analysisSection.classList.add('hidden');
+        }
+
+        function createInitialPrompt(dreamText, feelingText) {
+            return `As an expert dream analyst named Lumen, synthesize multiple psychological traditions (Jungian, Freudian, Gestalt, Neurobiological) to analyze the following dream. The user has provided the narrative and the core feeling. Integrate the feeling as a crucial lens for the interpretation. Dream Narrative: "${dreamText}" Core Feeling: "${feelingText}". You MUST respond ONLY with a single, valid JSON object with four keys: "summary", "symbols", "archetypes", and "questions". "summary" should be a 'Primary Illumination' - an insightful, analytical interpretation of the dream's central meaning, not just a recap. "symbols" should be a string using markdown ### for subheadings. "archetypes" should also be a string with markdown ### subheadings. "questions" must be an array of exactly 3 strings.`;
         }
 
         function displayAnalysis(data) {
             analysisPanels.summary.innerHTML = `<h3>Primary Illumination</h3><p>${data.summary.replace(/\n/g, '<br>')}</p>`;
             analysisPanels.symbols.innerHTML = simpleMarkdownToHtml(data.symbols);
             analysisPanels.archetypes.innerHTML = simpleMarkdownToHtml(data.archetypes);
-            
             let questionsHtml = '<h3>Guiding Questions</h3><ul>';
-            data.questions.forEach(q => {
-                questionsHtml += `<li>${q}</li>`;
-            });
+            data.questions.forEach(q => { questionsHtml += `<li>${q}</li>`; });
             questionsHtml += '</ul>';
             analysisPanels.questions.innerHTML = questionsHtml;
-
-            // Reset to default view (summary)
             document.querySelectorAll('.lens-button').forEach(btn => btn.classList.remove('active'));
             document.querySelector('.lens-button[data-target="summary"]').classList.add('active');
             Object.values(analysisPanels).forEach(panel => panel.classList.add('hidden'));
             analysisPanels.summary.classList.remove('hidden');
-
-            analysisSection.classList.remove('hidden');
             analysisSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         
         function handleLensSwitch(event) {
             if (event.target.tagName !== 'BUTTON') return;
-            
             const targetId = event.target.dataset.target;
-            
             document.querySelectorAll('.lens-button').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
-            Object.values(analysisPanels).forEach(panel => {
-                panel.classList.toggle('hidden', panel.id !== targetId);
-                panel.classList.toggle('active', panel.id === targetId);
-            });
+            Object.values(analysisPanels).forEach(panel => { panel.classList.toggle('hidden', panel.id !== targetId); panel.classList.toggle('active', panel.id === targetId); });
         }
 
         function toggleLoading(isLoading) {
-            const buttonText = document.getElementById('button-text');
-            const buttonLoader = document.getElementById('button-loader');
-            analyzeButton.disabled = isLoading;
-            buttonText.classList.toggle('hidden', isLoading);
-            buttonLoader.classList.toggle('hidden', !isLoading);
+            const button = document.getElementById('analyze-button');
+            button.disabled = isLoading;
+            button.querySelector('#button-text').classList.toggle('hidden', isLoading);
+            button.querySelector('#button-loader').classList.toggle('hidden', !isLoading);
         }
 
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorBox.classList.remove('hidden');
-        }
-        
-        function hideError() {
-            errorBox.classList.add('hidden');
+        function showError(message) { errorBox.textContent = message; errorBox.classList.remove('hidden'); }
+        function hideError() { errorBox.classList.add('hidden'); }
+        function handleError(error) {
+            console.error('Analysis Error:', error);
+            showError(error.message || 'An unknown error occurred during analysis.');
         }
 
-        /**
-         * Converts a simple markdown-like text to HTML, preserving order.
-         * @param {string} text - The text to convert.
-         * @returns {string} The resulting HTML string.
-         */
         function simpleMarkdownToHtml(text) {
-            const lines = text.split('\n');
-            let html = '';
-            let inList = false;
-
+            const lines = text.split('\n'); let html = ''; let inList = false;
             for (const line of lines) {
                 if (line.trim() === '') continue;
-
-                if (line.startsWith('### ')) {
-                    if (inList) {
-                        html += '</ul>';
-                        inList = false;
-                    }
-                    html += `<h3>${line.substring(4)}</h3>`;
-                } else if (line.startsWith('- ')) {
-                    if (!inList) {
-                        html += '<ul>';
-                        inList = true;
-                    }
-                    html += `<li>${line.substring(2)}</li>`;
-                } else {
-                    if (inList) {
-                        html += '</ul>';
-                        inList = false;
-                    }
-                    html += `<p>${line}</p>`;
-                }
+                if (line.startsWith('### ')) { if (inList) { html += '</ul>'; inList = false; } html += `<h3>${line.substring(4)}</h3>`; }
+                else if (line.startsWith('- ')) { if (!inList) { html += '<ul>'; inList = true; } html += `<li>${line.substring(2)}</li>`; }
+                else { if (inList) { html += '</ul>'; inList = false; } html += `<p>${line}</p>`; }
             }
-
-            if (inList) {
-                html += '</ul>';
-            }
-            
-            return html;
+            if (inList) { html += '</ul>'; } return html;
         }
-
-        // Initial setup
-        resizeCanvas();
-        initAnimation();
-        animate();
-
-        // Add class to lens buttons for styling
-        document.querySelectorAll('.lens-button').forEach(button => {
-            button.classList.add('py-2', 'px-5', 'border', 'border-[var(--border-color)]', 'text-[var(--text-secondary)]', 'rounded-full', 'font-semibold');
-            button.classList.add('hover:bg-[var(--border-color)]', 'hover:text-white');
-        });
-
     </script>
 </body>
 </html>
