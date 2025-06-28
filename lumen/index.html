@@ -248,7 +248,6 @@
                 const response = await callGeminiAPI(initialHistory, true);
                 const analysisData = JSON.parse(response);
                 
-                // **THE FIX IS HERE**: Store a clean, simple history for the AI's memory.
                 const userMemory = `The user's dream was: "${dreamText}". They felt: "${feelingText}".`;
                 const modelMemory = `I provided an analysis. The primary illumination was: ${analysisData.summary}`;
                 conversationHistory.push({ role: 'user', parts: [{ text: userMemory }] });
@@ -274,11 +273,13 @@
             discourseInput.value = '';
             toggleLoading(true, 'discourse-send-button');
 
-            conversationHistory.push({ role: 'user', parts: [{ text: userText }] });
+            const tempHistory = [...conversationHistory, { role: 'user', parts: [{ text: userText }] }];
 
             try {
-                const response = await callGeminiAPI(conversationHistory, false);
+                const response = await callGeminiAPI(tempHistory, false);
                 addBubble(response, 'ai');
+                // **THE FIX IS HERE**: Update the main history only after a successful call.
+                conversationHistory.push({ role: 'user', parts: [{ text: userText }] });
                 conversationHistory.push({ role: 'model', parts: [{ text: response }] });
             } catch (error) {
                 console.error('Follow-up Error:', error);
@@ -289,7 +290,7 @@
         }
         
         async function callGeminiAPI(history, expectJson = false) {
-            const apiKey = ""; // Handled by environment
+            const apiKey = ""; // This is handled by the environment.
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -314,8 +315,8 @@
             }
 
             const result = await response.json();
-            if (!result.candidates || !result.candidates[0].content.parts[0].text) {
-                 throw new Error("Received an invalid response from the API.");
+            if (!result.candidates || !result.candidates[0].content?.parts[0]?.text) {
+                 throw new Error("Received an invalid or empty response from the API.");
             }
             return result.candidates[0].content.parts[0].text;
         }
