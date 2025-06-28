@@ -87,15 +87,6 @@
         </header>
 
         <main>
-            <section id="api-key-section" class="mb-8 p-4 border border-[var(--border-color)] rounded-lg bg-black/20">
-                <label for="api-key-input" class="block text-lg font-bold mb-2 text-teal-300">Your Gemini API Key</label>
-                <p class="text-sm text-[var(--text-secondary)] mb-3">Get your free key from <a href="https://aistudio.google.com/app/apikey" target="_blank" class="underline hover:text-teal-300">Google AI Studio</a>. Your key is saved only in your browser.</p>
-                <div class="flex items-center gap-4">
-                    <input type="password" id="api-key-input" class="w-full p-3 bg-black/30 border border-[var(--border-color)] rounded-lg text-gray-200 focus:ring-2 focus:ring-[var(--accent-glow)] focus:border-[var(--accent-glow)] focus:outline-none" placeholder="Paste your API key here...">
-                    <button id="save-key-button" class="action-button py-3 px-6 rounded-full text-sm font-bold">Save Key</button>
-                </div>
-            </section>
-            
             <div class="input-section space-y-6">
                 <div>
                     <label for="dream-input" class="block text-xl font-bold mb-3 text-teal-300">The Dream's Narrative</label>
@@ -149,8 +140,6 @@
         window.addEventListener('resize', () => { if (animationFrameId) cancelAnimationFrame(animationFrameId); resizeCanvas(); initAnimation(); animate(); });
 
         // --- App Logic ---
-        const apiKeyInput = document.getElementById('api-key-input');
-        const saveKeyButton = document.getElementById('save-key-button');
         const analyzeButton = document.getElementById('analyze-button');
         const dreamInput = document.getElementById('dream-input');
         const feelingInput = document.getElementById('feeling-input');
@@ -160,19 +149,10 @@
         const analysisPanels = { summary: document.getElementById('summary'), symbols: document.getElementById('symbols'), archetypes: document.getElementById('archetypes'), questions: document.getElementById('questions'), };
 
         // --- Event Listeners ---
-        saveKeyButton.addEventListener('click', () => {
-            localStorage.setItem('gemini-api-key', apiKeyInput.value);
-            alert('API Key saved!');
-        });
-
         analyzeButton.addEventListener('click', handleAnalysis);
         lensNav.addEventListener('click', handleLensSwitch);
         
         document.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('gemini-api-key');
-            if (savedKey) {
-                apiKeyInput.value = savedKey;
-            }
             resizeCanvas();
             initAnimation();
             animate();
@@ -200,11 +180,7 @@
         }
         
         async function callGeminiAPI(prompt) {
-            const apiKey = apiKeyInput.value;
-            if (!apiKey) {
-                throw new Error("API Key is missing. Please enter your key and save it.");
-            }
-            // Using a stable and powerful model endpoint.
+            const apiKey = ""; // This is handled by the environment.
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -234,10 +210,6 @@
 
         // --- Helper Functions ---
         function validateInputs() {
-            if (!apiKeyInput.value) {
-                showError("Please save your Gemini API key before proceeding.");
-                return false;
-            }
             if (dreamInput.value.trim().length < 20 || feelingInput.value.trim().length < 3) {
                 showError("Please provide a detailed dream narrative and describe how it felt.");
                 return false;
@@ -287,13 +259,9 @@
 
         function showError(message) { errorBox.textContent = message; errorBox.classList.remove('hidden'); }
         function hideError() { errorBox.classList.add('hidden'); }
-        function handleError(error, isFollowUp = false) {
-            console.error(isFollowUp ? 'Follow-up Error:' : 'Analysis Error:', error);
-            if (isFollowUp) {
-                addBubble("I'm sorry, I encountered an error. Please try asking in a different way.", 'ai');
-            } else {
-                showError(error.message || 'An unknown error occurred during analysis.');
-            }
+        function handleError(error) {
+            console.error('Analysis Error:', error);
+            showError(error.message || 'An unknown error occurred during analysis.');
         }
 
         function simpleMarkdownToHtml(text) {
