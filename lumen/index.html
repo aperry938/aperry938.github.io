@@ -243,12 +243,13 @@
 
             try {
                 const prompt = createInitialPrompt(dreamText, feelingText);
-                conversationHistory.push({ role: 'user', parts: [{ text: prompt }] });
+                const initialHistory = [{ role: 'user', parts: [{ text: prompt }] }];
                 
-                const response = await callGeminiAPI(conversationHistory);
+                const response = await callGeminiAPI(initialHistory, true);
                 const analysisData = JSON.parse(response);
                 
-                conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+                conversationHistory.push({ role: 'user', parts: [{ text: `Analyze this dream: "${dreamText}" with the feeling: "${feelingText}"` }] });
+                conversationHistory.push({ role: 'model', parts: [{ text: JSON.stringify(analysisData) }] });
 
                 displayAnalysis(analysisData);
                 discourseSection.classList.remove('hidden');
@@ -270,12 +271,13 @@
             discourseInput.value = '';
             toggleLoading(true, 'discourse-send-button');
 
-            conversationHistory.push({ role: 'user', parts: [{ text: userText }] });
+            const currentHistory = [...conversationHistory];
+            currentHistory.push({ role: 'user', parts: [{ text: userText }] });
 
             try {
-                const followUpPrompt = "Continue the conversation based on the user's latest question. Provide a concise, insightful response in plain text, not JSON."
-                const response = await callGeminiAPI(conversationHistory, followUpPrompt);
+                const response = await callGeminiAPI(currentHistory, false);
                 addBubble(response, 'ai');
+                conversationHistory.push({ role: 'user', parts: [{ text: userText }] });
                 conversationHistory.push({ role: 'model', parts: [{ text: response }] });
             } catch (error) {
                 console.error('Follow-up Error:', error);
@@ -285,23 +287,16 @@
             }
         }
         
-        async function callGeminiAPI(history, followUpPromptText = null) {
+        async function callGeminiAPI(history, expectJson = false) {
             const apiKey = ""; // Handled by environment
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
-            // If there's a follow-up prompt, add it to the history for this call only.
-            const contents = [...history];
-            if (followUpPromptText) {
-                contents.push({ role: 'user', parts: [{ text: followUpPromptText }] });
-            }
-
             const payload = {
-                contents: contents,
+                contents: history,
                 safetySettings: [ { "category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE" }, { "category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE" } ]
             };
 
-            // Set responseMimeType only for the initial call which expects JSON
-            if (!followUpPromptText) {
+            if (expectJson) {
                 payload.generationConfig = { responseMimeType: "application/json" };
             }
 
@@ -313,10 +308,14 @@
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error?.message || `API Error: ${response.status}`);
+                console.error("API Error Response:", errorData);
+                throw new Error(errorData.error?.message || `API request failed with status: ${response.status}`);
             }
 
             const result = await response.json();
+            if (!result.candidates || !result.candidates[0].content.parts[0].text) {
+                 throw new Error("Received an invalid response from the API.");
+            }
             return result.candidates[0].content.parts[0].text;
         }
 
