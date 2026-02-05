@@ -1,0 +1,490 @@
+/* Meridian Labs — Shared Styles */
+/* Clean, minimal, Apple HIG-inspired */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-text: #1d1d1f;
+    --color-text-secondary: #6e6e73;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f5f5f7;
+    --color-border: #d2d2d7;
+    --color-accent: #0071e3;
+    --color-esthetics: #EEDDCB;
+    --color-cosmetology: #D9C5E8;
+    --max-width: 980px;
+    --nav-height: 52px;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    height: var(--nav-height);
+}
+
+.nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--color-text);
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.hero p {
+    font-size: 21px;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* App Showcase */
+.apps-section {
+    padding: 60px 0;
+}
+
+.apps-section h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.app-card {
+    background: var(--color-bg-secondary);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+}
+
+.app-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 27px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.app-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.app-card .app-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+}
+
+.app-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.app-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    transition: background 0.2s;
+}
+
+.app-badge:hover {
+    background: var(--color-border);
+}
+
+.badge-esthetics {
+    background: var(--color-esthetics);
+    border-color: var(--color-esthetics);
+}
+
+.badge-cosmetology {
+    background: var(--color-cosmetology);
+    border-color: var(--color-cosmetology);
+}
+
+/* About / Mission */
+.about-section {
+    padding: 60px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.about-section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 auto 16px;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--color-border);
+    padding: 24px 0;
+    margin-top: 40px;
+}
+
+.footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--color-text);
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+/* Content Pages (Privacy, Terms, Support) */
+.page-header {
+    padding: 48px 0 24px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.last-updated {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.content {
+    max-width: 720px;
+    padding-bottom: 60px;
+}
+
+.content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    letter-spacing: -0.01em;
+}
+
+.content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+}
+
+.content p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.content ul,
+.content ol {
+    margin: 0 0 16px 24px;
+    color: var(--color-text-secondary);
+}
+
+.content li {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.content strong {
+    color: var(--color-text);
+}
+
+.content a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Support page specifics */
+.contact-box {
+    background: var(--color-bg-secondary);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-box h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.contact-box a {
+    font-size: 20px;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-box a:hover {
+    text-decoration: underline;
+}
+
+.contact-box .response-time {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.faq-section {
+    margin-bottom: 40px;
+}
+
+.faq-section h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item {
+    margin-bottom: 24px;
+}
+
+.faq-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.faq-item p {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* Guarantee box (terms page) */
+.guarantee-box {
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.06) 0%, rgba(46, 125, 50, 0.12) 100%);
+    border: 1px solid rgba(46, 125, 50, 0.2);
+    padding: 32px;
+    border-radius: 16px;
+    margin: 24px 0;
+}
+
+.guarantee-box h3 {
+    color: #2E7D32;
+    margin-top: 16px;
+}
+
+.guarantee-box h3:first-child {
+    margin-top: 0;
+}
+
+.highlight-box {
+    background: var(--color-bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 48px 24px 40px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .apps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 24px;
+    }
+
+    .app-card {
+        padding: 32px 24px;
+    }
+
+    .app-icon {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+    }
+
+    .apps-section h2,
+    .about-section h2 {
+        font-size: 26px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .content {
+        padding: 0 0 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-inner {
+        padding: 0 16px;
+    }
+
+    .nav-brand {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+}
