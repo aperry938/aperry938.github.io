@@ -22,6 +22,7 @@
     --color-gold-dim: rgba(200, 168, 78, 0.15);
     --color-esthetics: #EEDDCB;
     --color-cosmetology: #D9C5E8;
+    --color-barber: #C8A050;
     --max-width: 980px;
     --nav-height: 56px;
 }
@@ -199,9 +200,9 @@ body {
 
 .apps-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    max-width: 800px;
+    max-width: 980px;
     margin: 0 auto;
 }
 
@@ -269,6 +270,11 @@ body {
 
 .badge-cosmetology {
     background: var(--color-cosmetology);
+    color: #1a1a18;
+}
+
+.badge-barber {
+    background: var(--color-barber);
     color: #1a1a18;
 }
 
