@@ -23,6 +23,14 @@
     --color-esthetics: #EEDDCB;
     --color-cosmetology: #D9C5E8;
     --color-barber: #C8A050;
+    --color-nailtech: #F8BBD0;
+    --color-ptcb: #80DEEA;
+    --color-asvab: #FFCC80;
+    --color-secai: #80CBC4;
+    --color-glowstudy: #C8A050;
+    --color-vitalprep: #00BCD4;
+    --color-aceprep: #E67E22;
+    --color-techprep: #5CB8B2;
     --max-width: 980px;
     --nav-height: 56px;
 }
@@ -276,6 +284,134 @@ body {
 .badge-barber {
     background: var(--color-barber);
     color: #1a1a18;
+}
+
+.badge-nailtech {
+    background: var(--color-nailtech);
+    color: #1a1a18;
+}
+
+.badge-ptcb {
+    background: var(--color-ptcb);
+    color: #1a1a18;
+}
+
+.badge-asvab {
+    background: var(--color-asvab);
+    color: #1a1a18;
+}
+
+.badge-secai {
+    background: var(--color-secai);
+    color: #1a1a18;
+}
+
+/* Brand Section Labels */
+.brand-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.brand-glowstudy {
+    background: rgba(200, 160, 80, 0.15);
+    color: var(--color-glowstudy);
+}
+
+.brand-vitalprep {
+    background: rgba(0, 188, 212, 0.15);
+    color: var(--color-vitalprep);
+}
+
+.brand-aceprep {
+    background: rgba(230, 126, 34, 0.15);
+    color: var(--color-aceprep);
+}
+
+.brand-techprep {
+    background: rgba(92, 184, 178, 0.15);
+    color: var(--color-techprep);
+}
+
+/* Brand Sections */
+.brand-section {
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.brand-section:first-child {
+    border-top: none;
+}
+
+.brand-section h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.brand-section .section-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.5;
+}
+
+/* Grid variants */
+.apps-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.apps-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 660px;
+}
+
+.apps-grid-1 {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+}
+
+/* Stats row */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 48px 0 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 /* About / Mission */
@@ -549,6 +685,12 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 960px) {
+    .apps-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .hero {
         padding: 64px 24px 56px;
@@ -568,10 +710,25 @@ body {
         border-radius: 16px;
     }
 
-    .apps-grid {
+    .apps-grid,
+    .apps-grid-4,
+    .apps-grid-2 {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 24px;
+    }
+
+    .stats-row {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .stat-value {
+        font-size: 28px;
+    }
+
+    .brand-section {
+        padding: 40px 0 24px;
     }
 
     .app-card {
