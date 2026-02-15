@@ -27,6 +27,9 @@
     --color-ptcb: #80DEEA;
     --color-asvab: #FFCC80;
     --color-secai: #80CBC4;
+    --color-securityplus: #90CAF9;
+    --color-snowflake: #B3E5FC;
+    --color-itil5: #A5D6A7;
     --color-glowstudy: #C8A050;
     --color-vitalprep: #00BCD4;
     --color-aceprep: #E67E22;
@@ -378,6 +381,21 @@ body {
 
 .badge-secai {
     background: var(--color-secai);
+    color: #1a1a18;
+}
+
+.badge-securityplus {
+    background: var(--color-securityplus);
+    color: #1a1a18;
+}
+
+.badge-snowflake {
+    background: var(--color-snowflake);
+    color: #1a1a18;
+}
+
+.badge-itil5 {
+    background: var(--color-itil5);
     color: #1a1a18;
 }
 
