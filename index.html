@@ -274,6 +274,59 @@
         </div>
     </section>
 
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <span class="section-label">Try It</span>
+            <h2>See the Difference</h2>
+            <p class="demo-subtitle">Standard apps check right or wrong. Our engine detects <strong>dangerous confidence</strong>.</p>
+            <div class="demo-layout">
+                <div class="demo-explain">
+                    <p class="demo-explain-lead">We penalize "Confident + Wrong" answers <strong>3x harder</strong> than "Unsure + Wrong." This flushes out deep misconceptions before exam day.</p>
+                    <div class="demo-point">
+                        <span class="demo-point-icon" style="background:rgba(255,80,80,0.1);color:#ff5050;">!</span>
+                        <div>
+                            <strong>Misconception Detection</strong>
+                            <span>Identifies false confidence patterns that standard study apps miss entirely.</span>
+                        </div>
+                    </div>
+                    <div class="demo-point">
+                        <span class="demo-point-icon" style="background:var(--color-accent-dim);color:var(--color-accent);">~</span>
+                        <div>
+                            <strong>Dynamic Weighting</strong>
+                            <span>Every score adjusts based on your metacognitive input, not just correctness.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-widget">
+                    <div class="demo-widget-header">
+                        <span class="demo-widget-id">LIVE DEMO</span>
+                        <span class="demo-widget-status">SYSTEM ACTIVE</span>
+                    </div>
+                    <p class="demo-question">What is the primary function of the mitochondria in a cell?</p>
+                    <div class="demo-answers">
+                        <button class="demo-answer" data-answer="A">A. Protein synthesis</button>
+                        <button class="demo-answer" data-answer="B">B. ATP production (cellular energy)</button>
+                        <button class="demo-answer" data-answer="C">C. Genetic information storage</button>
+                        <button class="demo-answer" data-answer="D">D. Cell division regulation</button>
+                    </div>
+                    <div class="demo-confidence" style="display:none">
+                        <p class="demo-conf-prompt">How confident are you?</p>
+                        <div class="demo-conf-buttons">
+                            <button class="demo-conf-btn demo-conf-low" data-confidence="low">Low</button>
+                            <button class="demo-conf-btn demo-conf-med" data-confidence="med">Medium</button>
+                            <button class="demo-conf-btn demo-conf-high" data-confidence="high">High</button>
+                        </div>
+                    </div>
+                    <div class="demo-result" style="display:none">
+                        <div class="demo-result-score"></div>
+                        <div class="demo-result-message"></div>
+                        <button class="demo-reset">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="about-section">
         <div class="container">
             <span class="section-label">About</span>
@@ -348,7 +401,7 @@
     </footer>
     <script>
     (function() {
-        var targets = document.querySelectorAll('.app-card, .engine-card, .vision-item, .stat-item, .founder-card, .iphone-mockup');
+        var targets = document.querySelectorAll('.app-card, .engine-card, .vision-item, .stat-item, .founder-card, .demo-widget, .demo-explain');
         if (!('IntersectionObserver' in window)) { return; }
         targets.forEach(function(el) { el.classList.add('scroll-reveal'); });
         var observer = new IntersectionObserver(function(entries) {
@@ -364,6 +417,58 @@
             });
         }, { threshold: 0.15 });
         targets.forEach(function(el) { observer.observe(el); });
+    })();
+    /* Confidence Calibration Demo */
+    (function() {
+        var widget = document.querySelector('.demo-widget');
+        if (!widget) return;
+        var selectedAnswer = null;
+        var answersDiv = widget.querySelector('.demo-answers');
+        var confidenceDiv = widget.querySelector('.demo-confidence');
+        var resultDiv = widget.querySelector('.demo-result');
+        var buttons = widget.querySelectorAll('.demo-answer');
+        var confButtons = widget.querySelectorAll('.demo-conf-btn');
+        var resetBtn = widget.querySelector('.demo-reset');
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                selectedAnswer = this.getAttribute('data-answer');
+                buttons.forEach(function(b) { b.classList.remove('selected'); });
+                this.classList.add('selected');
+                confidenceDiv.style.display = 'block';
+                resultDiv.style.display = 'none';
+            });
+        });
+        confButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var confidence = this.getAttribute('data-confidence');
+                var isCorrect = selectedAnswer === 'B';
+                var score, message, cls;
+                if (isCorrect && confidence === 'high') {
+                    score = '+100'; message = 'Mastery reinforced. Review interval expanded.'; cls = 'result-good';
+                } else if (isCorrect && confidence === 'med') {
+                    score = '+75'; message = 'Good. Confidence calibrating upward.'; cls = 'result-good';
+                } else if (isCorrect && confidence === 'low') {
+                    score = '+50'; message = 'Correct, but hesitant. Review scheduled soon.'; cls = 'result-caution';
+                } else if (!isCorrect && confidence === 'high') {
+                    score = '\u201350'; message = 'MISCONCEPTION DETECTED. Immediate re-training required.'; cls = 'result-danger';
+                } else if (!isCorrect && confidence === 'med') {
+                    score = '\u201320'; message = 'Incorrect. Difficulty adjusting.'; cls = 'result-warn';
+                } else {
+                    score = '+10'; message = 'Knowledge gap identified. Learning path engaged.'; cls = 'result-learn';
+                }
+                confidenceDiv.style.display = 'none';
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'demo-result ' + cls;
+                widget.querySelector('.demo-result-score').textContent = score + ' pts';
+                widget.querySelector('.demo-result-message').textContent = message;
+            });
+        });
+        resetBtn.addEventListener('click', function() {
+            selectedAnswer = null;
+            buttons.forEach(function(b) { b.classList.remove('selected'); });
+            confidenceDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+        });
     })();
     </script>
 </body>
