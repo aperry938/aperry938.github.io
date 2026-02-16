@@ -42,20 +42,36 @@
             <!-- Neural Enso SVG -->
             <div class="enso-container" aria-hidden="true">
                 <svg viewBox="0 0 200 200" class="enso-svg" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Enso brushstroke circle -->
-                    <path class="brush-stroke" d="M100 30 C140 30, 170 60, 170 100 C170 140, 140 170, 100 170 C60 170, 30 140, 30 100 C30 60, 55 32, 90 30" fill="none" stroke="var(--muted-sage)" stroke-width="4" stroke-linecap="round"/>
-                    <!-- Neural nodes -->
-                    <circle class="neural-node" cx="100" cy="45" r="4" fill="var(--deep-slate)"/>
-                    <circle class="neural-node" cx="155" cy="100" r="4" fill="var(--deep-slate)"/>
-                    <circle class="neural-node" cx="100" cy="155" r="4" fill="var(--deep-slate)"/>
-                    <circle class="neural-node" cx="50" cy="100" r="3.5" fill="var(--deep-slate)"/>
-                    <!-- Connecting lines -->
-                    <line class="neural-line" x1="100" y1="45" x2="155" y2="100" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
-                    <line class="neural-line" x1="155" y1="100" x2="100" y2="155" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
-                    <line class="neural-line" x1="100" y1="155" x2="50" y2="100" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
-                    <line class="neural-line" x1="50" y1="100" x2="100" y2="45" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
-                    <line class="neural-line" x1="100" y1="45" x2="100" y2="155" stroke="var(--deep-slate)" stroke-width="0.5" opacity="0.15"/>
-                    <line class="neural-line" x1="50" y1="100" x2="155" y2="100" stroke="var(--deep-slate)" stroke-width="0.5" opacity="0.15"/>
+                    <!-- Enso brushstroke — thick organic circle, open at top-right -->
+                    <path class="brush-stroke" d="M130 32 C95 28, 58 42, 40 70 C22 98, 24 134, 42 160 C60 186, 92 198, 124 192 C156 186, 178 162, 184 132 C190 102, 178 72, 158 52" fill="none" stroke="var(--muted-sage)" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+                    <!-- Neural network cluster at the gap (top-right) -->
+                    <!-- Connections first (behind nodes) -->
+                    <line class="neural-line" x1="128" y1="34" x2="148" y2="42" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="148" y1="42" x2="158" y2="52" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="128" y1="34" x2="142" y2="28" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="142" y1="28" x2="158" y2="30" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="158" y1="30" x2="166" y2="40" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="166" y1="40" x2="158" y2="52" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="148" y1="42" x2="142" y2="28" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="148" y1="42" x2="166" y2="40" stroke="var(--deep-slate)" stroke-width="1" opacity="0.5"/>
+                    <line class="neural-line" x1="128" y1="34" x2="148" y2="18" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="148" y1="18" x2="158" y2="30" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="148" y1="18" x2="142" y2="28" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="166" y1="40" x2="170" y2="52" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="158" y1="52" x2="170" y2="52" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="128" y1="34" x2="136" y2="46" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="136" y1="46" x2="148" y2="42" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <line class="neural-line" x1="136" y1="46" x2="158" y2="52" stroke="var(--deep-slate)" stroke-width="1" opacity="0.4"/>
+                    <!-- Nodes -->
+                    <circle class="neural-node" cx="128" cy="34" r="3" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="142" cy="28" r="2.5" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="148" cy="18" r="2.5" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="158" cy="30" r="2.5" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="148" cy="42" r="3" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="166" cy="40" r="2.5" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="136" cy="46" r="2" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="158" cy="52" r="3" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="170" cy="52" r="2" fill="var(--deep-slate)"/>
                 </svg>
             </div>
 
