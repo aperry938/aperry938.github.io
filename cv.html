@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony C. Perry — Academic CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --serif: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+    --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --text: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-light: #6b6b6b;
+    --accent: #1a3a5c;
+    --rule: #c8c8c8;
+    --bg: #ffffff;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.7in 0.75in;
+  }
+
+  body {
+    font-family: var(--serif);
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--text);
+    background: var(--bg);
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.7in 0.75in;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media print {
+    body { padding: 0; }
+  }
+
+  /* === HEADER === */
+  header {
+    text-align: center;
+    margin-bottom: 18pt;
+    padding-bottom: 12pt;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  header h1 {
+    font-family: var(--sans);
+    font-size: 22pt;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    margin-bottom: 6pt;
+    text-transform: uppercase;
+  }
+
+  .contact {
+    font-family: var(--sans);
+    font-size: 9pt;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .contact a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact .sep {
+    margin: 0 6pt;
+    color: var(--rule);
+  }
+
+  /* === SECTIONS === */
+  section {
+    margin-bottom: 14pt;
+  }
+
+  section h2 {
+    font-family: var(--sans);
+    font-size: 10.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3pt;
+    margin-bottom: 8pt;
+  }
+
+  /* === RESEARCH INTERESTS === */
+  .research-interests p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    text-align: justify;
+    hyphens: auto;
+    color: var(--text);
+  }
+
+  /* === EDUCATION === */
+  .edu-entry {
+    margin-bottom: 7pt;
+  }
+
+  .edu-entry .degree {
+    font-weight: 600;
+    font-size: 11pt;
+  }
+
+  .edu-entry .institution {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 10.5pt;
+  }
+
+  .edu-entry .details {
+    font-size: 10pt;
+    color: var(--text-secondary);
+    margin-top: 1pt;
+  }
+
+  /* === RESEARCH ENTRIES === */
+  .research-entry {
+    margin-bottom: 12pt;
+    page-break-inside: avoid;
+  }
+
+  .research-entry .title {
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--text);
+  }
+
+  .research-entry .tags {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+    margin-top: 1pt;
+  }
+
+  .research-entry .github {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    margin-top: 1pt;
+  }
+
+  .research-entry .github a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .research-entry ul {
+    margin: 4pt 0 0 16pt;
+    list-style: none;
+  }
+
+  .research-entry ul li {
+    font-size: 10pt;
+    line-height: 1.5;
+    margin-bottom: 2pt;
+    position: relative;
+    padding-left: 10pt;
+    color: var(--text);
+  }
+
+  .research-entry ul li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: var(--text-light);
+  }
+
+  .research-entry .stack {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    color: var(--text-light);
+    margin-top: 2pt;
+    padding-left: 10pt;
+  }
+
+  /* === SKILLS === */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 110pt 1fr;
+    gap: 3pt 12pt;
+    font-size: 10pt;
+  }
+
+  .skills-grid .label {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 9pt;
+    color: var(--accent);
+    text-align: right;
+    padding-top: 1pt;
+  }
+
+  .skills-grid .value {
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* === PROFESSIONAL EXPERIENCE === */
+  .pro-entry {
+    margin-bottom: 6pt;
+  }
+
+  .pro-entry .role {
+    font-weight: 600;
+    font-size: 10.5pt;
+  }
+
+  .pro-entry .role .dates {
+    font-weight: 400;
+    color: var(--text-light);
+    float: right;
+    font-size: 10pt;
+  }
+
+  .pro-entry .desc {
+    font-size: 10pt;
+    color: var(--text-secondary);
+    margin-top: 1pt;
+    line-height: 1.45;
+  }
+
+  /* === MILITARY === */
+  .military-header {
+    font-weight: 600;
+    font-size: 10.5pt;
+  }
+
+  .military-header .dates {
+    font-weight: 400;
+    color: var(--text-light);
+    float: right;
+    font-size: 10pt;
+  }
+
+  .military-desc {
+    font-size: 10pt;
+    color: var(--text-secondary);
+    margin-top: 2pt;
+    line-height: 1.5;
+  }
+
+  /* === AWARDS / CERTS === */
+  .compact-list {
+    columns: 2;
+    column-gap: 24pt;
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .compact-list li {
+    list-style: none;
+    padding-left: 12pt;
+    position: relative;
+    break-inside: avoid;
+    color: var(--text-secondary);
+  }
+
+  .compact-list li::before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .single-col {
+    columns: 1;
+  }
+
+  /* === FOOTER === */
+  .languages {
+    font-size: 10pt;
+    color: var(--text-secondary);
+  }
+
+  .languages strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .intl {
+    font-size: 9.5pt;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 2pt;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Anthony C. Perry, M.S.</h1>
+  <div class="contact">
+    Miami, FL<span class="sep">|</span>
+    <a href="mailto:anthonycperry21@gmail.com">anthonycperry21@gmail.com</a><span class="sep">|</span>
+    +1 978 310 4351<br>
+    <a href="https://github.com/aperry938">github.com/aperry938</a><span class="sep">|</span>
+    <a href="https://linkedin.com/in/aperry938">linkedin.com/in/aperry938</a>
+  </div>
+</header>
+
+<section class="research-interests">
+  <h2>Research Interests</h2>
+  <p>I investigate how adaptive technologies can be designed to engage not only with what people know, but with how they experience knowing, moving, and performing under pressure. My work integrates real-time computer vision for biomechanical analysis, metacognitive modeling in adaptive learning systems, and the phenomenological design of human&ndash;AI interaction&mdash;unified by a commitment to grounding computational methods in the lived reality of the people they serve. A defining question across my projects is how human&ndash;AI collaboration reshapes the experience of learning, creating, and making decisions: the process by which I build these systems is itself a site of inquiry into that question.</p>
+</section>
+
+<section>
+  <h2>Education</h2>
+
+  <div class="edu-entry">
+    <div class="degree">Master of Science in Computer Science, AI/ML Emphasis</div>
+    <div class="institution">Western Governors University &middot; Expected June 2026</div>
+    <div class="details">Coursework: Deep Learning, Advanced AI, Natural Language Processing (in progress), Machine Learning (in progress), AI&nbsp;&amp;&nbsp;ML Foundations, Applied Algorithms, Formal Languages, Computer Architecture</div>
+  </div>
+
+  <div class="edu-entry">
+    <div class="degree">Master of Science in Kinesiology</div>
+    <div class="institution">California Baptist University, Riverside, CA &middot; 2020 &middot; GPA: 3.87/4.00</div>
+    <div class="details">Thesis: <em>Effects of Yoga on Injuries Associated with Long-Distance Running</em></div>
+  </div>
+
+  <div class="edu-entry">
+    <div class="degree">Bachelor of Science in Kinesiology</div>
+    <div class="institution">San Diego State University, San Diego, CA &middot; 2018 &middot; GPA: 3.56/4.00</div>
+    <div class="details">Cum Laude &middot; Distinction in Kinesiology &middot; Dean&rsquo;s List</div>
+  </div>
+</section>
+
+<section>
+  <h2>Research Experience</h2>
+
+  <div class="research-entry">
+    <div class="title">Meridian Labs &mdash; Adaptive Learning Engine</div>
+    <div class="tags">Educational Technology &middot; Knowledge Tracing &middot; Metacognitive Modeling &middot; 2025&ndash;Present</div>
+    <ul>
+      <li>Founded a multi-brand educational technology platform (4 brands, 10 production apps, 25,000+ questions) grounded in 30+ peer-reviewed citations in cognitive science, metacognition, and testing psychology</li>
+      <li>Designed 8 proprietary learning algorithms implementing confidence calibration (4-outcome metacognitive weighting), spaced repetition (6-level adaptive interval scheduling), misconception detection (confident-wrong pattern analysis), and stress inoculation training for exam readiness</li>
+      <li>Engineered an Exam Readiness prediction system using non-linear multi-factor scoring across domain mastery, confidence calibration, study consistency, and performance trajectory</li>
+      <li>Deployed across iOS and Android to thousands of exam candidates in beauty licensing, pharmacy certification, military entrance, and IT credentialing</li>
+      <li>Designed and shipped entirely through AI-augmented methodology&mdash;orchestrating large language models for architecture design, algorithm implementation, 25,000-question generation with domain-specific quality control, and automated auditing&mdash;a single-researcher workflow whose structure is itself a subject of inquiry for human&ndash;AI collaboration</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">ZENith &mdash; Real-Time AI Movement Coach</div>
+    <div class="tags">Computer Vision &middot; Embodied Cognition &middot; Human&ndash;AI Interaction &middot; 2024&ndash;Present</div>
+    <div class="github"><a href="https://github.com/aperry938/zenith-mvp">github.com/aperry938/zenith-mvp</a></div>
+    <ul>
+      <li>Investigated real-time biomechanical form assessment through a computer vision pipeline integrating MediaPipe pose estimation, a custom Variational Autoencoder (VAE) for movement quality scoring, and Random Forest classification across 10 yoga poses</li>
+      <li>Created and annotated a novel video dataset of 100+ self-recorded sequences capturing correct and incorrect pose variations&mdash;bridging kinesiology expertise with supervised learning for embodied practice</li>
+      <li>Designed a joint angle analysis pipeline translating biomechanical principles into computable features for real-time form feedback</li>
+      <li>Integrated a context-aware coaching module (Google Gemini) generating natural language guidance informed by live pose quality metrics, exploring the design of AI feedback for embodied skill acquisition</li>
+    </ul>
+    <div class="stack">Python, TensorFlow/Keras, MediaPipe, OpenCV, scikit-learn, Streamlit, FastAPI, React, WebRTC</div>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Her OS &mdash; Affective Conversational AI and Longitudinal Human&ndash;AI Interaction Study</div>
+    <div class="tags">Human&ndash;AI Interaction &middot; Affective Computing &middot; Phenomenology &middot; 2024&ndash;2025</div>
+    <div class="github"><a href="https://github.com/aperry938/her-os-v1">github.com/aperry938/her-os-v1</a> &middot; <a href="https://www.youtube.com/@anth.onomous">YouTube: @anth.onomous</a></div>
+    <ul>
+      <li>Designed and conducted a longitudinal study of human&ndash;AI conversational interaction across ~70 episodes and 100+ hours of recorded sessions, systematically comparing persona behavior, affective qualities, and emergent conversational dynamics across four frontier models (Gemini, Claude, ChatGPT, Grok)</li>
+      <li>Developed a multi-persona architecture with distinct AI personalities (varying in warmth, directness, philosophical orientation) to investigate how agent personality design influences user engagement, perceived emotional authenticity, and the felt quality of interaction</li>
+      <li>Constructed and administered informal Turing-style evaluations and structured comparative assessments, probing each model&rsquo;s capacity for contextual discourse, humor, philosophical reasoning, and affective responsiveness</li>
+      <li>Built a real-time voice-first conversational interface (Her OS) with bidirectional speech interaction and an organic audio visualizer reflecting conversational dynamics, exploring how interface design shapes the subjective experience of interacting with artificial agents</li>
+      <li>Published all sessions as a public video archive constituting a naturalistic dataset of extended human&ndash;AI dialogue across multiple model architectures</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">SHAMELY &mdash; Behavioral Economics and AI Intervention</div>
+    <div class="tags">Persuasive Technology &middot; Behavioral Science &middot; Applied AI Ethics &middot; 2025</div>
+    <ul>
+      <li>Investigated commitment devices, financial stakes, and AI-mediated accountability through a platform grounded in behavioral economics literature (implementation intentions, loss aversion, circadian-aware intervention timing)</li>
+      <li>Designed a Behavioral Intelligence System incorporating threat-level detection, urge pattern analysis, and honesty assessment&mdash;modeling the structure of self-regulation in digital contexts</li>
+      <li>Examined ethical dimensions of AI-driven behavior modification, including trust scoring, integrity assessment, and the boundaries of persuasive technology&mdash;129 automated tests</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Bayesian Knowledge Tracing Education Game</div>
+    <div class="tags">Educational Data Mining &middot; Student Modeling &middot; Adaptive Systems &middot; 2025</div>
+    <ul>
+      <li>Built a real-time adaptive learning environment using Bayesian Knowledge Tracing (pyBKT) for probabilistic estimation of student knowledge states, with sub-100ms inference latency via Flask and WebSocket communication</li>
+      <li>Designed interactive visualizations for core ML concepts (linear regression, gradient descent, MSE) through a Unity 3D game frontend, studying how embodied interaction with mathematical abstractions supports conceptual understanding</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Somnia.ai &mdash; AI-Mediated Dream Analysis</div>
+    <div class="tags">Multimodal AI &middot; Consciousness Studies &middot; First-Person Methods &middot; 2025</div>
+    <ul>
+      <li>Developed a multimodal application exploring AI-mediated access to subjective dream experience through natural language interpretation (Google Gemini), voice-first dream capture, and programmatic soundscapes</li>
+      <li>Designed an AI dream analysis persona investigating the phenomenological structure of dream content through guided interpretive dialogue, drawing on psychology, mythology, and somatic frameworks</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Master&rsquo;s Thesis &mdash; Experimental Design for a Human Clinical Trial</div>
+    <div class="tags">California Baptist University &middot; 2019&ndash;2020</div>
+    <ul>
+      <li>Designed a two-arm randomized controlled trial (N=30 target) with 12-week Hatha Yoga intervention and sedentary control to investigate overuse injury prevention in distance runners</li>
+      <li>Conducted a systematic review of 30+ peer-reviewed articles spanning biomechanics, neuromuscular physiology, and motor control</li>
+      <li>Developed a multimodal data collection protocol integrating EMG, goniometry, and the Oslo Sports Trauma Research Center Overuse Injury Questionnaire</li>
+      <li>Prepared full IRB submission: recruitment, randomization, informed consent, and ethical oversight protocols</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Advanced AI Research &mdash; NLP and Model Optimization</div>
+    <div class="tags">Western Governors University &middot; 2025&ndash;2026</div>
+    <ul>
+      <li>Implemented a Transformer-based architecture for binary sentiment classification (IMDB, 50,000 reviews) with systematic hyperparameter optimization and training curve analysis</li>
+      <li>Built a Naive Bayes text classifier with TF-IDF feature extraction for SMS spam detection (5,574 messages, UCI ML Repository), benchmarking baseline against optimized configurations across precision, recall, and F1</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="label">AI / ML</div>
+    <div class="value">TensorFlow, Keras, scikit-learn, MediaPipe, pyBKT, Variational Autoencoders, Transformer architectures, NLP, Computer Vision, LLM orchestration (Claude, Gemini), prompt engineering, agentic AI pipelines</div>
+
+    <div class="label">Languages</div>
+    <div class="value">Python, JavaScript/TypeScript, C# (Unity), SQL, HTML/CSS</div>
+
+    <div class="label">Frameworks</div>
+    <div class="value">React, Next.js, FastAPI, Flask, Streamlit, D3.js, WebRTC, WebSockets, Capacitor (iOS/Android)</div>
+
+    <div class="label">Research Methods</div>
+    <div class="value">Experimental design (RCT), systematic literature review, IRB protocol, EMG, goniometry, SPSS</div>
+
+    <div class="label">Infrastructure</div>
+    <div class="value">PostgreSQL, Git/GitHub, AWS, Google Gemini API</div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="pro-entry">
+    <div class="role">Founder &amp; Lead AI Engineer, Meridian Labs <span class="dates">2025&ndash;Present</span></div>
+    <div class="desc">Full product lifecycle&mdash;research, design, engineering, deployment, and support&mdash;for a 10-app platform across four certification verticals, operated entirely through AI-augmented engineering methodology.</div>
+  </div>
+
+  <div class="pro-entry">
+    <div class="role">Technology Analyst, Fintech &amp; Blockchain <span class="dates">2017&ndash;2024</span></div>
+    <div class="desc">Seven years analyzing emerging technologies, behavioral trends, and market dynamics across decentralized finance; managed distributed infrastructure (Ethereum, Polygon); early adoption of generative AI tools (2022 onward).</div>
+  </div>
+
+  <div class="pro-entry">
+    <div class="role">Yoga Instructor <span class="dates">2017&ndash;Present</span></div>
+    <div class="desc">500-hour RYT (Ashtanga, Vinyasa, Hatha, Yin); evidence-based movement instruction integrating biomechanics and mindfulness; domain expertise informing embodied AI system design (ZENith).</div>
+  </div>
+
+  <div class="pro-entry">
+    <div class="role">Rehabilitation Aide, San Diego State University <span class="dates">2018</span></div>
+    <div class="desc">Individualized exercise programs for participants with physical and cognitive disabilities, applying motor learning theory and functional assessment.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Military Service</h2>
+  <div class="military-header">C-17 Aircraft Loadmaster (E-4), U.S. Air Force, Travis AFB, CA <span class="dates">2010&ndash;2014</span></div>
+  <div class="military-desc">455 combat sorties, 1,977 flight hours across Operations Enduring Freedom, Iraqi Freedom, and New Dawn. Special forces combat support, aeromedical evacuations, dignified transfers, and presidential support missions.</div>
+</section>
+
+<section>
+  <h2>Honors &amp; Awards</h2>
+  <ul class="compact-list">
+    <li>Air Medal &mdash; sustained meritorious aerial achievement (USAF)</li>
+    <li>Humanitarian Service Medal &mdash; Hurricane Sandy relief</li>
+    <li>Air Force Achievement Medal</li>
+    <li>Meritorious Unit Award; Outstanding Unit Award (OLC)</li>
+    <li>Cum Laude, Distinction in Kinesiology (SDSU)</li>
+    <li>Dean&rsquo;s List (San Diego State University)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Selected Certifications</h2>
+  <ul class="compact-list">
+    <li>Generative AI: Prompt Engineering (IBM)</li>
+    <li>Discrete Mathematics Specialization (UC San Diego)</li>
+    <li>Google Cybersecurity Professional Certificate</li>
+    <li>IBM Python for Data Science, AI &amp; Development</li>
+    <li>Certified Strength &amp; Conditioning Specialist (NSCA)</li>
+    <li>Registered Yoga Instructor, 500-Hour</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Languages &amp; International Experience</h2>
+  <div class="languages">
+    <strong>English</strong> (native) &middot;
+    <strong>German</strong> (native) &middot;
+    <strong>Spanish</strong> (fluent)
+  </div>
+  <div class="intl">Lived and worked across five countries on four continents (United States, Germany, Costa Rica, Peru, Indonesia).</div>
+</section>
+
+</body>
+</html>
