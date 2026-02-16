@@ -1406,10 +1406,12 @@ body {
 }
 
 .founder-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
+    border: 2px solid rgba(0, 212, 255, 0.25);
 }
 
 .founder-credentials {
