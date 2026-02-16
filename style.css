@@ -552,6 +552,7 @@ body {
     border-left: 3px solid var(--color-accent);
     border-radius: 14px;
     padding: 24px 20px;
+    overflow: hidden;
     transition: transform 0.2s, border-color 0.3s;
 }
 
