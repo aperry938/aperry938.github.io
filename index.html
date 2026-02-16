@@ -49,13 +49,7 @@
                 <span class="brand-label brand-glowstudy">GlowStudy</span>
                 <h2>Beauty Exam Prep</h2>
                 <p class="section-subtitle">Science-backed exam prep for NIC State Board Exams. Confidence calibration, spaced repetition, and a Pass Guarantee on every Pro plan.</p>
-                <div class="iphone-mockup-wrapper">
-                    <div class="iphone-mockup">
-                        <div class="iphone-notch"></div>
-                        <img src="images/app-preview.png" alt="GlowStudy Esthetics app screenshot showing study dashboard" class="iphone-screen" loading="lazy">
-                    </div>
-                </div>
-                <div class="apps-grid apps-grid-4" style="margin-top: 36px;">
+                <div class="apps-grid apps-grid-4">
                     <div class="app-card">
                         <img src="images/esthetics-icon.png" alt="GlowStudy Esthetics icon" class="app-icon" loading="lazy">
                         <h3>Esthetics</h3>
@@ -210,6 +204,26 @@
                         <span class="proprietary-badge">Proprietary</span>
                     </div>
                     <p>Flags confident-wrong answers and elevates review priority</p>
+                    <div class="engine-viz">
+                        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-label="Misconception detection escalation">
+                            <rect x="4" y="18" width="56" height="22" rx="4" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.25)" stroke-width="1"/>
+                            <text x="32" y="33" text-anchor="middle" fill="#8b92a5" font-size="8" font-family="sans-serif">Answer</text>
+                            <line x1="64" y1="29" x2="78" y2="29" stroke="rgba(139,146,165,0.4)" stroke-width="1" marker-end="url(#arrowGray)"/>
+                            <rect x="82" y="18" width="56" height="22" rx="4" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.4)" stroke-width="1.5"/>
+                            <text x="110" y="33" text-anchor="middle" fill="#ff5050" font-size="8" font-weight="bold" font-family="sans-serif">Flagged</text>
+                            <line x1="142" y1="29" x2="156" y2="29" stroke="rgba(139,146,165,0.4)" stroke-width="1" marker-end="url(#arrowGray)"/>
+                            <rect x="160" y="14" width="36" height="30" rx="4" fill="rgba(255,80,80,0.08)" stroke="rgba(255,80,80,0.3)" stroke-width="1"/>
+                            <text x="178" y="27" text-anchor="middle" fill="#ff5050" font-size="7" font-family="sans-serif">Priority</text>
+                            <text x="178" y="39" text-anchor="middle" fill="#ff5050" font-size="11" font-weight="bold" font-family="sans-serif">&uarr;</text>
+                            <text x="32" y="62" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Confident</text>
+                            <text x="32" y="72" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">+ Wrong</text>
+                            <text x="110" y="62" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Misconception</text>
+                            <text x="110" y="72" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Detected</text>
+                            <text x="178" y="62" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Review</text>
+                            <text x="178" y="72" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Escalated</text>
+                            <defs><marker id="arrowGray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="rgba(139,146,165,0.5)" stroke-width="1"/></marker></defs>
+                        </svg>
+                    </div>
                 </div>
                 <div class="engine-card">
                     <div class="engine-card-header">
@@ -217,6 +231,22 @@
                         <span class="proprietary-badge">Proprietary</span>
                     </div>
                     <p>4-factor algorithm with non-linear scaling across domains</p>
+                    <div class="engine-viz">
+                        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-label="4-factor exam readiness gauge">
+                            <line x1="100" y1="68" x2="100" y2="8" stroke="rgba(139,146,165,0.15)" stroke-width="1"/>
+                            <line x1="30" y1="40" x2="170" y2="40" stroke="rgba(139,146,165,0.15)" stroke-width="1"/>
+                            <polygon points="100,14 164,40 100,66 36,40" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+                            <polygon points="100,22 148,40 100,58 52,40" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                            <circle cx="100" cy="22" r="3" fill="#00d4ff" opacity="0.8"/>
+                            <circle cx="148" cy="40" r="3" fill="#00d4ff" opacity="0.8"/>
+                            <circle cx="100" cy="58" r="3" fill="#00d4ff" opacity="0.8"/>
+                            <circle cx="52" cy="40" r="3" fill="#00d4ff" opacity="0.8"/>
+                            <text x="100" y="8" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Mastery</text>
+                            <text x="176" y="42" text-anchor="start" fill="#8b92a5" font-size="7" font-family="sans-serif">Confidence</text>
+                            <text x="100" y="78" text-anchor="middle" fill="#8b92a5" font-size="7" font-family="sans-serif">Consistency</text>
+                            <text x="24" y="42" text-anchor="end" fill="#8b92a5" font-size="7" font-family="sans-serif">Trajectory</text>
+                        </svg>
+                    </div>
                 </div>
                 <div class="engine-card">
                     <div class="engine-card-header">
