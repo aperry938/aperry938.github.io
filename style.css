@@ -146,85 +146,19 @@ a:hover {
     max-width: 640px;
 }
 
-/* Neural Enso SVG */
-.enso-container {
-    width: 150px;
-    height: 150px;
+/* Neural Enso Logo */
+.enso-logo {
+    display: block;
     margin: 0 auto 40px;
-}
-
-.enso-svg {
-    width: 100%;
-    height: 100%;
-}
-
-/* Enso draw-on animation via mask */
-.enso-draw-guide {
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    animation: drawEnso 2s ease-out 0.3s forwards;
-}
-
-@keyframes drawEnso {
-    to { stroke-dashoffset: 0; }
-}
-
-/* Neural network fade-in after enso draws */
-.neural-line {
+    width: 180px;
+    height: auto;
     opacity: 0;
-    animation: fadeElement 0.4s ease-out forwards;
+    transform: scale(0.92);
+    animation: revealEnso 1.2s ease-out 0.2s forwards;
 }
 
-.neural-node {
-    opacity: 0;
-    animation: fadeElement 0.3s ease-out forwards;
-}
-
-/* Stagger neural lines appearing as enso finishes */
-.neural-line:nth-of-type(1) { animation-delay: 1.6s; }
-.neural-line:nth-of-type(2) { animation-delay: 1.63s; }
-.neural-line:nth-of-type(3) { animation-delay: 1.66s; }
-.neural-line:nth-of-type(4) { animation-delay: 1.69s; }
-.neural-line:nth-of-type(5) { animation-delay: 1.72s; }
-.neural-line:nth-of-type(6) { animation-delay: 1.75s; }
-.neural-line:nth-of-type(7) { animation-delay: 1.78s; }
-.neural-line:nth-of-type(8) { animation-delay: 1.81s; }
-.neural-line:nth-of-type(9) { animation-delay: 1.84s; }
-.neural-line:nth-of-type(10) { animation-delay: 1.87s; }
-.neural-line:nth-of-type(11) { animation-delay: 1.9s; }
-.neural-line:nth-of-type(12) { animation-delay: 1.93s; }
-.neural-line:nth-of-type(13) { animation-delay: 1.96s; }
-.neural-line:nth-of-type(14) { animation-delay: 1.99s; }
-.neural-line:nth-of-type(15) { animation-delay: 2.02s; }
-.neural-line:nth-of-type(16) { animation-delay: 2.05s; }
-.neural-line:nth-of-type(17) { animation-delay: 2.08s; }
-.neural-line:nth-of-type(18) { animation-delay: 2.11s; }
-.neural-line:nth-of-type(19) { animation-delay: 2.14s; }
-.neural-line:nth-of-type(20) { animation-delay: 2.17s; }
-.neural-line:nth-of-type(21) { animation-delay: 2.2s; }
-.neural-line:nth-of-type(22) { animation-delay: 2.23s; }
-.neural-line:nth-of-type(23) { animation-delay: 2.26s; }
-.neural-line:nth-of-type(24) { animation-delay: 2.29s; }
-
-/* Stagger neural nodes */
-.neural-node:nth-of-type(1) { animation-delay: 1.7s; }
-.neural-node:nth-of-type(2) { animation-delay: 1.75s; }
-.neural-node:nth-of-type(3) { animation-delay: 1.8s; }
-.neural-node:nth-of-type(4) { animation-delay: 1.85s; }
-.neural-node:nth-of-type(5) { animation-delay: 1.9s; }
-.neural-node:nth-of-type(6) { animation-delay: 1.95s; }
-.neural-node:nth-of-type(7) { animation-delay: 2.0s; }
-.neural-node:nth-of-type(8) { animation-delay: 2.05s; }
-.neural-node:nth-of-type(9) { animation-delay: 2.1s; }
-.neural-node:nth-of-type(10) { animation-delay: 2.15s; }
-.neural-node:nth-of-type(11) { animation-delay: 2.2s; }
-.neural-node:nth-of-type(12) { animation-delay: 2.22s; }
-.neural-node:nth-of-type(13) { animation-delay: 2.25s; }
-.neural-node:nth-of-type(14) { animation-delay: 2.28s; }
-.neural-node:nth-of-type(15) { animation-delay: 2.3s; }
-
-@keyframes fadeElement {
-    to { opacity: 1; }
+@keyframes revealEnso {
+    to { opacity: 1; transform: scale(1); }
 }
 
 .hero h1 {
@@ -702,16 +636,9 @@ a:hover {
         transition-duration: 0.01ms !important;
     }
 
-    .enso-draw-guide {
-        stroke-dashoffset: 0;
-    }
-
-    .neural-node {
+    .enso-logo {
         opacity: 1;
-    }
-
-    .neural-line {
-        opacity: 0.5;
+        transform: none;
     }
 
     .fade-in {
@@ -796,9 +723,7 @@ a:hover {
         padding: 28px 20px;
     }
 
-    .enso-container {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 28px;
+    .enso-logo {
+        width: 140px;
     }
 }
