@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anthony C. Perry — Academic CV</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -294,9 +294,61 @@
     font-style: italic;
     margin-top: 2pt;
   }
+
+  /* Screen-only navigation */
+  .cv-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 249, 246, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 0;
+    margin: -0.7in -0.75in 24pt;
+    padding-left: 0.75in;
+    padding-right: 0.75in;
+    display: flex;
+    align-items: center;
+    gap: 24pt;
+    font-family: 'Space Grotesk', var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .cv-nav a {
+    color: #4b5a63;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .cv-nav a:hover {
+    color: #8BA88E;
+  }
+
+  .cv-nav .cv-nav-brand {
+    font-weight: 700;
+    color: #39464E;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  @media print {
+    .cv-nav { display: none; }
+    body { padding: 0; margin: 0; }
+  }
 </style>
 </head>
 <body>
+
+<nav class="cv-nav">
+    <a href="/" class="cv-nav-brand">A.P.</a>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="https://github.com/aperry938">GitHub</a>
+</nav>
 
 <header>
   <h1>Anthony C. Perry, M.S.</h1>

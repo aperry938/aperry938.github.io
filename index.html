@@ -3,193 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony C. Perry — AI Researcher & Engineer</title>
+    <title>Anthony C. Perry | Engineering Embodied Intelligence</title>
     <meta name="description" content="AI researcher and engineer investigating human-AI interaction, adaptive learning, and computer vision. PhD applicant in Human-Centered AI. Creator of Her OS, Meridian Labs, and ZENith.">
     <link rel="icon" type="image/png" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Anthony C. Perry">
-    <meta property="og:title" content="Anthony C. Perry — AI Researcher & Engineer">
+    <meta property="og:title" content="Anthony C. Perry | Engineering Embodied Intelligence">
     <meta property="og:description" content="Research portfolio: Her OS (human-AI interaction), ZENith (computer vision), Meridian Labs (adaptive learning). PhD applicant in Human-Centered AI.">
     <meta property="og:image" content="https://aperry938.github.io/images/founder-headshot.png">
     <meta property="og:url" content="https://aperry938.github.io/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#0a1628">
+    <meta name="theme-color" content="#FAF9F6">
     <link rel="canonical" href="https://aperry938.github.io/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-brand" aria-current="page">A. PERRY</a>
+            <a href="/" class="nav-brand" aria-current="page">A.P.</a>
             <ul class="nav-links">
                 <li><a href="#research">Research</a></li>
+                <li><a href="#origins">Origins</a></li>
                 <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="portfolio-hero">
-        <div class="portfolio-hero-bg"></div>
-        <div class="container portfolio-hero-content">
-            <span class="portfolio-label">AI Researcher &amp; Engineer</span>
-            <h1>Anthony C. Perry<span class="accent-dot">.</span></h1>
-            <p class="portfolio-tagline">Investigating the phenomenological dimensions of human-AI interaction, adaptive learning systems, and computer vision. U.S. Air Force veteran. M.S. Computer Science (AI/ML).</p>
-            <div class="portfolio-interests">
-                <span class="interest-tag">Human-Centered AI</span>
-                <span class="interest-tag">Phenomenology of AI</span>
-                <span class="interest-tag">Adaptive Learning</span>
-                <span class="interest-tag">Computer Vision</span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Neural Enso SVG -->
+            <div class="enso-container" aria-hidden="true">
+                <svg viewBox="0 0 200 200" class="enso-svg" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Enso brushstroke circle -->
+                    <path class="brush-stroke" d="M100 30 C140 30, 170 60, 170 100 C170 140, 140 170, 100 170 C60 170, 30 140, 30 100 C30 60, 55 32, 90 30" fill="none" stroke="var(--muted-sage)" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Neural nodes -->
+                    <circle class="neural-node" cx="100" cy="45" r="4" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="155" cy="100" r="4" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="100" cy="155" r="4" fill="var(--deep-slate)"/>
+                    <circle class="neural-node" cx="50" cy="100" r="3.5" fill="var(--deep-slate)"/>
+                    <!-- Connecting lines -->
+                    <line class="neural-line" x1="100" y1="45" x2="155" y2="100" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
+                    <line class="neural-line" x1="155" y1="100" x2="100" y2="155" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
+                    <line class="neural-line" x1="100" y1="155" x2="50" y2="100" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
+                    <line class="neural-line" x1="50" y1="100" x2="100" y2="45" stroke="var(--deep-slate)" stroke-width="0.8" opacity="0.3"/>
+                    <line class="neural-line" x1="100" y1="45" x2="100" y2="155" stroke="var(--deep-slate)" stroke-width="0.5" opacity="0.15"/>
+                    <line class="neural-line" x1="50" y1="100" x2="155" y2="100" stroke="var(--deep-slate)" stroke-width="0.5" opacity="0.15"/>
+                </svg>
             </div>
-            <div class="hero-buttons">
-                <a href="#research" class="hero-cta">View Research</a>
-                <a href="/cv.html" class="hero-cta-secondary">Research CV</a>
-            </div>
-            <div class="portfolio-links">
-                <a href="https://github.com/aperry938" class="portfolio-ext-link">GitHub</a>
-                <a href="https://linkedin.com/in/aperry938" class="portfolio-ext-link">LinkedIn</a>
-                <a href="https://youtube.com/@anth.onomous" class="portfolio-ext-link">YouTube</a>
-                <a href="mailto:meridianlabsapps@gmail.com" class="portfolio-ext-link">Contact</a>
+
+            <h1 class="font-technical">Anthony C. Perry, <em>M.S.</em></h1>
+            <p class="hero-tagline">ENGINEERING EMBODIED INTELLIGENCE</p>
+            <p class="hero-subtext"><em>Bridging biomechanics, cognitive science, and artificial intelligence to understand how humans learn, move, and relate to intelligent systems.</em></p>
+
+            <div class="scroll-hint" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </div>
         </div>
     </section>
 
-    <!-- Research Projects -->
-    <section class="research-section" id="research">
+    <!-- Research Pillars -->
+    <section class="pillars-section" id="research">
         <div class="container">
-            <span class="section-label">Research Portfolio</span>
-            <h2>Featured Projects</h2>
-            <p class="section-subtitle" style="text-align:center;max-width:560px;margin:0 auto 48px;">Each project explores a different dimension of how humans learn, interact with, and relate to intelligent systems.</p>
+            <div class="pillars-header">
+                <h2 class="font-technical">Research Pillars</h2>
+                <span class="pillars-label">Selected Works</span>
+            </div>
 
-            <div class="research-projects-grid">
-                <!-- Her OS -->
-                <div class="project-card project-featured">
-                    <div class="project-card-inner">
-                        <div class="project-badge">Featured</div>
-                        <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #E87C56, #D94436);">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-                        </div>
-                        <h3>Her OS</h3>
-                        <p class="project-subtitle">Human-AI Conversational Interaction</p>
-                        <p class="project-desc">Voice-first AI companion exploring phenomenological dimensions of human-AI relationships. 70+ episode longitudinal study across Gemini, Claude, ChatGPT, and Grok. Novel H.E.R.V.A.C. benchmark and Nine Circles adversarial stress-testing protocol.</p>
-                        <div class="project-tags">
-                            <span>React</span><span>Gemini API</span><span>Web Speech</span><span>Phenomenology</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://aperry938.github.io/her-os-v1/" class="project-link project-link-primary">Live Demo</a>
-                            <a href="https://github.com/aperry938/her-os-v1" class="project-link">GitHub</a>
-                            <a href="https://youtube.com/@anth.onomous" class="project-link">YouTube</a>
-                        </div>
+            <div class="pillars-grid">
+                <!-- The Mind -->
+                <div class="project-card fade-in">
+                    <span class="pillar-label">The Mind</span>
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
+                    <h3 class="font-technical">Meridian Labs</h3>
+                    <p class="project-type">Adaptive Learning Engine</p>
+                    <p class="project-desc">10 production apps across 4 brands with 25,000+ questions. 8 proprietary algorithms grounded in 30+ peer-reviewed citations in cognitive science, metacognition, and testing psychology. LLM-orchestrated architecture designed and shipped by a single engineer-researcher.</p>
+                    <a href="https://meridianlabs.us" class="project-cta">View Apps &rarr;</a>
                 </div>
 
-                <!-- Meridian Labs -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #00d4ff, #0099cc);">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3>Meridian Labs</h3>
-                        <p class="project-subtitle">Adaptive Learning Engine</p>
-                        <p class="project-desc">10 production apps across 4 brands with 25,000+ questions. 8 proprietary algorithms grounded in 30+ peer-reviewed citations in cognitive science, metacognition, and testing psychology.</p>
-                        <div class="project-tags">
-                            <span>Spaced Repetition</span><span>Confidence Calibration</span><span>10 Apps</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://meridianlabs.us" class="project-link project-link-primary">View Apps</a>
-                            <a href="https://meridianlabs.us/methodology.html" class="project-link">Methodology</a>
-                        </div>
+                <!-- The Body -->
+                <div class="project-card fade-in">
+                    <span class="pillar-label">The Body</span>
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><circle cx="12" cy="5" r="3"/><path d="M12 8v6M8 21l2-7h4l2 7M6 12h12"/></svg>
                     </div>
+                    <h3 class="font-technical">ZENith</h3>
+                    <p class="project-type">Real-Time Biomechanical Assessment</p>
+                    <p class="project-desc">Computer vision system for exercise form analysis using MediaPipe pose estimation, a Variational Autoencoder for movement quality scoring, and Random Forest classification. Real-time feedback for injury prevention grounded in kinesiology research.</p>
+                    <a href="https://github.com/aperry938/zenith-mvp" class="project-cta">Source Code &rarr;</a>
                 </div>
 
-                <!-- ZENith -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h3>ZENith</h3>
-                        <p class="project-subtitle">Real-Time Biomechanical Assessment</p>
-                        <p class="project-desc">Computer vision system for exercise form analysis using MediaPipe pose estimation, Variational Autoencoder quality scoring, and Random Forest classification. Real-time feedback for injury prevention.</p>
-                        <div class="project-tags">
-                            <span>MediaPipe</span><span>VAE</span><span>Random Forest</span><span>Python</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/aperry938/zenith-mvp" class="project-link project-link-primary">GitHub</a>
-                        </div>
+                <!-- The Emotion -->
+                <div class="project-card fade-in">
+                    <span class="pillar-label">The Emotion</span>
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
                     </div>
-                </div>
-
-                <!-- Interactive AI Map -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        </div>
-                        <h3>Interactive AI Map</h3>
-                        <p class="project-subtitle">AI/ML Knowledge Visualization</p>
-                        <p class="project-desc">D3.js force-directed graph mapping the AI/ML landscape with interactive mastery tracking. Visual exploration tool for the field's interconnected concepts and research areas.</p>
-                        <div class="project-tags">
-                            <span>D3.js</span><span>Data Visualization</span><span>Interactive</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://aperry938.github.io/Interactive-AI-Map/" class="project-link project-link-primary">Live Demo</a>
-                            <a href="https://github.com/aperry938/Interactive-AI-Map" class="project-link">GitHub</a>
-                        </div>
-                    </div>
+                    <h3 class="font-technical">Her OS</h3>
+                    <p class="project-type">Human-AI Conversational Interaction</p>
+                    <p class="project-desc">70+ episode longitudinal study across Gemini, Claude, ChatGPT, and Grok. Novel H.E.R.V.A.C. benchmark evaluating relational resonance over deception. Nine Circles adversarial stress-testing protocol probing the boundaries of AI conversational competence.</p>
+                    <a href="https://aperry938.github.io/her-os-v1/" class="project-cta">Live Demo &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brief Bio -->
-    <section class="bio-section">
+    <!-- Origins -->
+    <section class="origins-section" id="origins">
         <div class="container">
-            <span class="section-label">About</span>
-            <h2>Anthony C. Perry, M.S.</h2>
-            <p>AI engineer, researcher, and U.S. Air Force combat veteran investigating how humans learn, interact with, and relate to intelligent systems. Currently completing an M.S. in Computer Science (AI/ML) and applying to PhD programs in Human-Centered AI.</p>
-            <p>Background spans military service (455 combat sorties, Air Medal), kinesiology research (M.S., 3.87 GPA), and applied AI engineering. Founded <a href="https://meridianlabs.us">Meridian Labs</a> — 10 production apps grounded in cognitive science. Active research in human-AI conversational dynamics (Her OS) and computer vision for biomechanical assessment (ZENith).</p>
-            <div class="bio-credentials">
-                <span class="credential-pill">USAF Veteran</span>
-                <span class="credential-pill">M.S. Kinesiology</span>
-                <span class="credential-pill">M.S. Computer Science (AI/ML)</span>
-                <span class="credential-pill">PhD Applicant — Human-Centered AI</span>
+            <span class="section-label font-technical">The Non-Linear Path</span>
+            <h2 class="font-technical">Origins</h2>
+
+            <div class="origins-narrative fade-in">
+                <p>From the cargo hold of a C-17 over Afghanistan to a kinesiology lab in San Diego to the frontier of human-AI interaction &mdash; the thread connecting every chapter is the same question: <em>how do humans learn and perform under pressure?</em></p>
+
+                <blockquote class="pull-quote">
+                    455 combat sorties taught me what no classroom covers about performing when the stakes are real. Graduate research in motor learning and cognitive science gave me the language to describe it. AI engineering gave me the tools to build systems around it.
+                </blockquote>
+
+                <div class="origins-grid">
+                    <div class="origins-column">
+                        <h3 class="font-technical">Expertise</h3>
+                        <ul>
+                            <li>Human-Centered AI &amp; Phenomenology</li>
+                            <li>Adaptive Learning Systems</li>
+                            <li>Computer Vision &amp; Biomechanics</li>
+                            <li>Metacognitive Modeling</li>
+                            <li>LLM Orchestration &amp; Agentic Pipelines</li>
+                        </ul>
+                    </div>
+                    <div class="origins-column">
+                        <h3 class="font-technical">Philosophy</h3>
+                        <ul>
+                            <li>Domain expertise directing powerful tools</li>
+                            <li>Embodied cognition over pure computation</li>
+                            <li>Longitudinal observation over benchmarks</li>
+                            <li>Rigorous methodology, open inquiry</li>
+                            <li>Build things that matter to real people</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="/about.html" class="text-link">Read full biography &rarr;</a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-inner">
-            <ul class="footer-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="/cv.html">CV</a></li>
-                <li><a href="https://github.com/aperry938">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/aperry938">LinkedIn</a></li>
-                <li><a href="https://youtube.com/@anth.onomous">YouTube</a></li>
-                <li><a href="mailto:meridianlabsapps@gmail.com">Contact</a></li>
-            </ul>
-            <span class="footer-copy">&copy; 2026 Anthony C. Perry. Founder of <a href="https://meridianlabs.us" style="color:var(--color-text-secondary);text-decoration:underline;">Meridian Labs</a>.</span>
+        <div class="container">
+            <span class="footer-label font-technical">Initiate Connection</span>
+            <h2 class="font-technical footer-heading">Let's Talk Research</h2>
+            <a href="mailto:anthonycperry21@gmail.com" class="btn-primary font-technical">Send Dossier</a>
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+                <a href="https://youtube.com/@anth.onomous">YouTube</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
         </div>
     </footer>
+
     <script>
     (function() {
-        var targets = document.querySelectorAll('.project-card');
-        if (!('IntersectionObserver' in window)) { return; }
-        targets.forEach(function(el) { el.classList.add('scroll-reveal'); });
+        if (!('IntersectionObserver' in window)) return;
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    var parent = entry.target.parentElement;
-                    var siblings = Array.from(parent.children).filter(function(c) { return c.classList.contains('scroll-reveal'); });
-                    var index = siblings.indexOf(entry.target);
-                    entry.target.style.transitionDelay = (index * 0.08) + 's';
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
-        targets.forEach(function(el) { observer.observe(el); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
     })();
     </script>
 </body>

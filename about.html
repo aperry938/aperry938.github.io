@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Anthony C. Perry</title>
+    <meta name="description" content="AI engineer, researcher, and U.S. Air Force combat veteran investigating human-AI interaction, adaptive learning, and computer vision.">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="canonical" href="https://aperry938.github.io/about.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">A.P.</a>
+            <ul class="nav-links">
+                <li><a href="/#research">Research</a></li>
+                <li><a href="/#origins">Origins</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-identity">
+                <img src="images/founder-headshot.png" alt="Anthony C. Perry" class="about-headshot">
+                <h1 class="font-technical">Anthony C. Perry, <em>M.S.</em></h1>
+                <p class="about-title">AI Researcher &amp; Engineer</p>
+                <div class="credential-pills">
+                    <span class="credential-pill">USAF Veteran &middot; Air Medal</span>
+                    <span class="credential-pill">B.S. Kinesiology, SDSU &mdash; Cum Laude</span>
+                    <span class="credential-pill">M.S. Kinesiology, CBU &mdash; 3.87 GPA</span>
+                    <span class="credential-pill">M.S. Computer Science (AI/ML)</span>
+                    <span class="credential-pill">500-HR RYT</span>
+                    <span class="credential-pill">Google Cybersecurity</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography -->
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-content">
+
+                <div class="bio-block fade-in">
+                    <p class="bio-lead">AI engineer, researcher, and U.S. Air Force combat veteran investigating how humans learn, interact with, and relate to intelligent systems. Currently completing an M.S. in Computer Science (AI/ML) and applying to PhD programs in Human-Centered AI.</p>
+                </div>
+
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">Military Service</h2>
+                    <p>Anthony logged over 2,000 flight hours and 455 combat sorties as a C-17 Aircraft Loadmaster across Operations Enduring Freedom, Iraqi Freedom, and New Dawn. He directed airlift for special forces combat insertions, aeromedical evacuations, dignified transfers of fallen service members, and two presidential support missions for Barack Obama.</p>
+                    <p>His service earned the Air Medal for sustained meritorious aerial achievement and the Humanitarian Service Medal for Hurricane Sandy relief operations that reached 8.2 million people.</p>
+                </div>
+
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">Research Foundation</h2>
+                    <p>The same intensity that made Anthony a European track &amp; field qualifier and weightlifting club president eventually pulled him off the field and into the research lab. At San Diego State University &mdash; graduating Cum Laude with Distinction in Kinesiology and Dean's List honors &mdash; and California Baptist University (M.S., 3.87 GPA), he studied how the body and brain acquire skill under pressure.</p>
+                    <p>His graduate thesis, a randomized clinical trial drawing on 30+ peer-reviewed articles in biomechanics, neurophysiology, and motor learning, became the scientific foundation for every algorithm his company ships.</p>
+                </div>
+
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">Engineering &amp; Current Work</h2>
+                    <p>That research foundation now meets cutting-edge AI engineering. With nearly a decade in technology &mdash; from fintech infrastructure to a Master's in Computer Science with an AI/ML emphasis &mdash; Anthony operates at the frontier of human-AI collaboration, orchestrating advanced generative AI not as a shortcut but as a precision instrument guided by domain expertise and cognitive science.</p>
+                    <p>This methodology allows a single engineer-researcher to architect, ship, and maintain 10 production applications and 25,000+ exam questions at a standard that neither AI alone nor traditional study methods can match. Founded <a href="https://meridianlabs.us">Meridian Labs</a> &mdash; 4 brands spanning beauty licensing, pharmacy certification, military entrance, and IT credentialing.</p>
+                </div>
+
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">Personal</h2>
+                    <p>Trilingual in English, German, and Spanish. Has lived across five countries on four continents. 500-hour Registered Yoga Teacher bridging embodied practice with AI system design. Builds for professionals everywhere who deserve better than guesswork when their careers are on the line.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer-label font-technical">Initiate Connection</span>
+            <h2 class="font-technical footer-heading">Let's Talk Research</h2>
+            <a href="mailto:anthonycperry21@gmail.com" class="btn-primary font-technical">Send Dossier</a>
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+                <a href="https://youtube.com/@anth.onomous">YouTube</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        if (!('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    </script>
+</body>
+</html>
