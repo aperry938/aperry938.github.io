@@ -348,7 +348,7 @@ a:hover {
    ======================================== */
 
 .origins-section {
-    padding: 80px 0 100px;
+    padding: 80px 0 60px;
     border-top: 1px solid rgba(57, 70, 78, 0.08);
 }
 
@@ -434,7 +434,7 @@ a:hover {
    ======================================== */
 
 .footer {
-    padding: 80px 0 40px;
+    padding: 48px 0 40px;
     text-align: center;
     border-top: 1px solid rgba(57, 70, 78, 0.08);
 }
