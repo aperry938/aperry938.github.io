@@ -451,7 +451,7 @@ a:hover {
 
 .footer-heading {
     color: var(--deep-slate);
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     font-size: 1.4rem;
 }
 
@@ -478,7 +478,7 @@ a:hover {
     display: flex;
     justify-content: center;
     gap: 24px;
-    margin: 20px 0 24px;
+    margin: 28px 0 24px;
 }
 
 .footer-links a {
