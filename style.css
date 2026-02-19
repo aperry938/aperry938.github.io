@@ -267,6 +267,16 @@ a:hover {
     margin-bottom: 16px;
 }
 
+.pillar-label-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--slate-light);
+    opacity: 0.6;
+    margin-bottom: 16px;
+    margin-top: 2px;
+}
+
 .pillar-icon {
     margin-bottom: 20px;
 }
@@ -278,9 +288,11 @@ a:hover {
 
 .project-type {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     color: var(--muted-sage);
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 16px;
 }
 
@@ -317,6 +329,18 @@ a:hover {
 
 .project-cta-secondary:hover {
     color: var(--muted-sage);
+}
+
+/* ========================================
+   RESEARCH STATEMENT
+   ======================================== */
+
+.research-statement {
+    font-size: 1.05rem;
+    color: var(--slate-light);
+    line-height: 1.8;
+    max-width: 720px;
+    margin-bottom: 48px;
 }
 
 /* ========================================
@@ -582,6 +606,45 @@ a:hover {
 }
 
 .bio-block a:hover {
+    color: var(--deep-slate);
+}
+
+/* ========================================
+   BIO FULL STORY TOGGLE
+   ======================================== */
+
+.bio-full-story {
+    margin-bottom: 40px;
+}
+
+.bio-full-story summary {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-sage);
+    cursor: pointer;
+    padding: 16px 0;
+    border-top: 1px solid rgba(57, 70, 78, 0.08);
+    border-bottom: 1px solid rgba(57, 70, 78, 0.08);
+    margin-bottom: 40px;
+    list-style: none;
+    transition: color 0.3s;
+}
+
+.bio-full-story summary::-webkit-details-marker {
+    display: none;
+}
+
+.bio-full-story summary::before {
+    content: '+ ';
+}
+
+.bio-full-story[open] summary::before {
+    content: '\2212  ';
+}
+
+.bio-full-story summary:hover {
     color: var(--deep-slate);
 }
 
