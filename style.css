@@ -287,10 +287,10 @@ a:hover {
 }
 
 .zenith-ith {
-    font-size: 0.65em;
+    font-size: 0.75em;
     font-weight: inherit;
     position: relative;
-    top: -0.4em;
+    top: -0.25em;
 }
 
 .project-type {
