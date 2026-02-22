@@ -286,19 +286,11 @@ a:hover {
     margin-bottom: 4px;
 }
 
-.project-card h3 em {
-    font-family: 'Lora', Georgia, serif;
-    font-style: italic;
-    font-weight: 500;
-}
-
 .zenith-ith {
-    font-family: 'Lora', Georgia, serif;
-    font-style: italic;
+    font-size: 0.65em;
     font-weight: 400;
-    font-size: 0.8em;
-    vertical-align: super;
-    line-height: 1;
+    position: relative;
+    top: -0.4em;
 }
 
 .project-type {
