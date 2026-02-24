@@ -33,8 +33,21 @@
                 <li><a href="/cv.html">CV</a></li>
                 <li><a href="https://github.com/aperry938">GitHub</a></li>
             </ul>
+            <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+        <ul class="mobile-menu-links">
+            <li><a href="#research">Research</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/cv.html">CV</a></li>
+            <li><a href="https://github.com/aperry938">GitHub</a></li>
+        </ul>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -72,6 +85,7 @@
                     <div class="project-links">
                         <a href="/meridian-labs.html" class="project-cta">Read Case Study &rarr;</a>
                         <a href="https://meridianlabs.us" class="project-cta project-cta-secondary">View Apps</a>
+                        <a href="https://meridianlabs.us/methodology.html" class="project-cta project-cta-secondary">View Research Methodology &rarr;</a>
                     </div>
                 </div>
 
@@ -185,6 +199,41 @@
         });
     })();
     (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    /* Cross-site page transitions */
+    (function() {
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href*="meridianlabs.us"]');
+            if (!link || e.metaKey || e.ctrlKey) return;
+            e.preventDefault();
+            document.body.classList.add('page-leaving');
+            setTimeout(function() { window.location.href = link.href; }, 250);
+        });
+    })();
+    /* Mobile Hamburger Menu */
+    (function() {
+        var hamburger = document.querySelector('.nav-hamburger');
+        var mobileMenu = document.querySelector('.mobile-menu');
+        if (!hamburger || !mobileMenu) return;
+        function toggleMenu() {
+            var isOpen = document.body.classList.toggle('menu-open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            mobileMenu.setAttribute('aria-hidden', !isOpen);
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.body.classList.remove('menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+                toggleMenu();
+                hamburger.focus();
+            }
+        });
+    })();
     </script>
 </body>
 </html>
