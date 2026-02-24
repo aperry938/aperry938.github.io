@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing a Metacognitive Learning Engine — Anthony C. Perry</title>
+    <meta name="description" content="How cognitive science became production software: confidence calibration, spaced repetition, and misconception detection in a deterministic learning engine serving 55,000+ exam questions across 20 apps.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Designing a Metacognitive Learning Engine — Anthony C. Perry">
+    <meta property="og:description" content="How cognitive science became production software: confidence calibration, spaced repetition, and misconception detection in a deterministic learning engine.">
+    <meta property="og:image" content="https://aperry938.github.io/images/founder-headshot.png">
+    <meta property="og:url" content="https://aperry938.github.io/meridian-labs.html">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="canonical" href="https://aperry938.github.io/meridian-labs.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">A.P.</a>
+            <ul class="nav-links">
+                <li><a href="/#research">Research</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header container">
+        <h1 class="font-technical">Designing a Metacognitive Learning Engine</h1>
+        <p class="article-meta">
+            <span>February 2026</span>
+            <span>&middot;</span>
+            <span>10 min read</span>
+            <span class="meta-tag">Cognitive Science</span>
+            <span class="meta-tag">EdTech</span>
+            <span class="meta-tag">Adaptive Learning</span>
+        </p>
+    </header>
+
+    <!-- Article Body -->
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-content">
+
+                <div class="bio-block fade-in">
+                    <p class="bio-lead">How cognitive science became production software&mdash;and why the most interesting experiments haven&rsquo;t been run yet.</p>
+                </div>
+
+                <!-- Section 1: The Question -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Question</h2>
+                    <p>The evidence base for how humans acquire and retain knowledge is remarkably robust. Ebbinghaus established the forgetting curve in 1885. Bjork&rsquo;s work on desirable difficulties has been replicated for decades. Koriat&rsquo;s research on metacognitive monitoring&mdash;the accuracy of people&rsquo;s confidence judgments about their own knowledge&mdash;has produced a substantial literature. Yet the study tools most people use ignore nearly all of it.</p>
+                    <p>The typical exam-prep app is a flashcard deck with a progress bar. It treats all correct answers as equal, all wrong answers as equal, and confidence as irrelevant. It cannot distinguish between a learner who guessed correctly and one who knew the material. It cannot detect that a student is systematically overconfident in one domain and underconfident in another. It has no model of the learner at all.</p>
+                    <p>The question that launched Meridian Labs was deceptively simple: <em>what would a study system look like if it actually used what cognitive science knows about learning?</em></p>
+                </div>
+
+                <!-- Section 2: The Approach -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Approach</h2>
+                    <p>The first design decision was the most consequential: deterministic heuristics over machine learning. This was not a concession&mdash;it was a deliberate choice with three justifications.</p>
+                    <p>First, <em>interpretability</em>. When a learner asks &ldquo;why is the system showing me this question?&rdquo; the answer should be traceable. A spaced repetition interval driven by a transparent formula can be explained; a neural network&rsquo;s recommendation cannot, at least not to the person using it. For a system designed to build metacognitive awareness, opacity defeats the purpose.</p>
+                    <p>Second, <em>cold-start viability</em>. ML-based adaptive systems need substantial interaction data before they can personalize effectively. A learner preparing for an exam in two weeks cannot wait for the model to converge. The engine needed to make intelligent decisions from the first question.</p>
+                    <p>Third, <em>the research literature already provides the parameters</em>. Butterfield and Metcalfe (2001) demonstrated that high-confidence errors produce stronger hypercorrection effects&mdash;when you&rsquo;re certain you&rsquo;re right and discover you&rsquo;re wrong, the correction is more durable than for low-confidence errors. This finding maps directly to a scoring function. A confident-wrong response receives a &minus;5 penalty; a tentative-wrong response receives &minus;2. The asymmetry is not a design whim&mdash;it is a translation of empirical findings into arithmetic.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        The system penalizes overconfidence 3&times; more harshly than underconfidence in its spaced repetition scheduling. This is not a tuning parameter&mdash;it reflects the finding that confident errors are the most dangerous form of ignorance, precisely because the learner has no reason to revisit them.
+                    </blockquote>
+
+                    <p>The confidence matrix produces four outcomes per question: confident-correct (+3), confident-wrong (&minus;5), tentative-correct (+1), and tentative-wrong (&minus;2). This four-outcome model is the atomic unit of the entire engine. Every downstream system&mdash;mastery levels, spaced repetition intervals, exam readiness scores, misconception detection&mdash;builds on it.</p>
+                </div>
+
+                <!-- Section 3: The Architecture -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Architecture</h2>
+                    <p>The engine has four interlocking systems, each grounded in a different strand of the cognitive science literature.</p>
+
+                    <p><strong>1. Six-Level Mastery System.</strong> Rather than a binary known/unknown state, the engine tracks mastery across six levels: Novice, Beginner, Intermediate, Proficient, Advanced, and Expert. Transitions require sustained performance, not single correct answers. Demotion is asymmetric&mdash;dropping a level is easier than gaining one, reflecting the established finding that skill regression is faster than skill acquisition (Bjork &amp; Bjork, 1992). Each level maps to a spaced repetition interval: Novice items resurface within hours, Expert items after weeks.</p>
+
+                    <p><strong>2. Four-Factor Exam Readiness.</strong> A single &ldquo;percent correct&rdquo; metric is nearly useless for predicting exam performance. The engine computes readiness from four weighted factors: mastery distribution (35%), recent accuracy trend (30%), coverage breadth (15%), and confidence calibration accuracy (20%). The weights are non-linear&mdash;high mastery with poor calibration still produces a moderate readiness score, because the learner doesn&rsquo;t yet know what they don&rsquo;t know.</p>
+
+                    <p><strong>3. Misconception Detection.</strong> When a learner answers the same question wrong twice with high confidence, the engine flags a <em>misconception</em>&mdash;a stable, incorrect mental model that passive review will not correct. Misconception items receive 4&times; scheduling priority, forcing active confrontation. Resolution requires three consecutive correct answers, not just one. This is grounded in the conceptual change literature: misconceptions are resistant to instruction because they are internally coherent (Vosniadou, 1994). A single correction rarely dislodges them.</p>
+
+                    <p><strong>4. Bloom&rsquo;s Taxonomy Practice Tests.</strong> The engine generates practice exams at four cognitive levels, progressively increasing from recall to application to analysis to evaluation. This is not a difficulty slider&mdash;it is a structured progression through Bloom&rsquo;s taxonomy that mirrors how expert knowledge is actually organized. A learner who can recall a fact but cannot apply it in a novel scenario has not mastered it in any meaningful sense.</p>
+
+                    <p>These systems interact. A misconception detected during practice testing adjusts both mastery level and exam readiness. A strong confidence calibration score can partially offset lower raw accuracy in the readiness calculation, because a well-calibrated learner knows where to focus. The engine is opinionated: it embeds a theory of learning, not just a set of features.</p>
+                </div>
+
+                <!-- Section 4: What I Learned -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What I Learned</h2>
+                    <p>Building twenty production apps as a single researcher using frontier AI tools across the entire lifecycle&mdash;content generation, code architecture, testing, deployment, iteration&mdash;created an unintentional but genuine research artifact. The process itself became a case study in human-AI collaboration at a scale that is only now becoming possible.</p>
+                    <p>The honest assessment: the cognitive science grounding is real, but the validation is incomplete. The algorithms are derived from peer-reviewed findings, the architecture makes principled decisions, and the system demonstrably behaves differently from a naive flashcard app. But the controlled experiments have not been run. There is no A/B test comparing this engine against a baseline with matched content and different scheduling algorithms. There is no longitudinal study tracking exam outcomes.</p>
+                    <p>This is not an apology&mdash;it is a research agenda. The platform exists. The instrumentation is built. The question is no longer &ldquo;can cognitive science principles be translated into software?&rdquo; but &ldquo;do they produce measurably better learning outcomes when they are?&rdquo; That is the experiment waiting to be run.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        The most valuable thing I built may not be the engine itself but the experimental platform it created. Twenty apps across four certification domains, with 55,000+ questions instrumented for confidence tracking, mastery progression, and misconception detection&mdash;that is a dataset waiting for a hypothesis.
+                    </blockquote>
+
+                    <p>What surprised me most was how much the AI-augmented solo workflow revealed about the nature of the work itself. Orchestrating large language models across research, content generation, architecture, and testing forced a kind of metacognitive discipline&mdash;constantly evaluating what the AI could be trusted with and what required human judgment. The irony is not lost: building a system designed to develop metacognitive skills in learners required developing those same skills in the builder.</p>
+                </div>
+
+                <!-- References -->
+                <div class="article-references fade-in">
+                    <h2 class="font-technical">References</h2>
+                    <ol>
+                        <li>Ebbinghaus, H. (1885). <em>&Uuml;ber das Ged&auml;chtnis: Untersuchungen zur experimentellen Psychologie.</em> Leipzig: Duncker &amp; Humblot.</li>
+                        <li>Bjork, R. A., &amp; Bjork, E. L. (1992). A new theory of disuse and an old theory of stimulus fluctuation. In A. Healy et al. (Eds.), <em>From learning processes to cognitive processes: Essays in honor of William K. Estes</em> (Vol. 2, pp. 35&ndash;67). Erlbaum.</li>
+                        <li>Koriat, A. (1997). Monitoring one&rsquo;s own knowledge during study: A cue-utilization approach to judgments of learning. <em>Journal of Experimental Psychology: General, 126</em>(4), 349&ndash;370.</li>
+                        <li>Butterfield, B., &amp; Metcalfe, J. (2001). Errors committed with high confidence are hypercorrected. <em>Journal of Experimental Psychology: Learning, Memory, and Cognition, 27</em>(6), 1491&ndash;1494.</li>
+                        <li>Vosniadou, S. (1994). Capturing and modeling the process of conceptual change. <em>Learning and Instruction, 4</em>(1), 45&ndash;69.</li>
+                        <li>Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., &amp; Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. <em>Psychological Bulletin, 132</em>(3), 354&ndash;380.</li>
+                        <li>Meichenbaum, D. (1985). <em>Stress Inoculation Training.</em> Pergamon Press.</li>
+                        <li>Bloom, B. S. (Ed.). (1956). <em>Taxonomy of Educational Objectives: The Classification of Educational Goals. Handbook I: Cognitive Domain.</em> David McKay.</li>
+                    </ol>
+                </div>
+
+                <!-- Article Navigation -->
+                <nav class="article-nav fade-in">
+                    <a href="/#research">&larr; Back to Research</a>
+                    <a href="/zenith.html">Next: ZEN<sup style="font-size:0.7em">ith</sup> &rarr;</a>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="font-technical footer-heading">Get in Touch</h2>
+            <a href="#" class="btn-primary font-technical email-link">Send Email</a>
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        if (!('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    </script>
+</body>
+</html>

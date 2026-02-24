@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridging Body and Machine — Anthony C. Perry</title>
+    <meta name="description" content="A computer vision pipeline for embodied skill assessment: MediaPipe pose estimation, variational autoencoders for movement quality scoring, and the challenges of translating kinesiology expertise into computable features.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bridging Body and Machine — Anthony C. Perry">
+    <meta property="og:description" content="A computer vision pipeline for embodied skill assessment: MediaPipe, VAE quality scoring, and translating kinesiology into computable features.">
+    <meta property="og:image" content="https://aperry938.github.io/images/founder-headshot.png">
+    <meta property="og:url" content="https://aperry938.github.io/zenith.html">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="canonical" href="https://aperry938.github.io/zenith.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">A.P.</a>
+            <ul class="nav-links">
+                <li><a href="/#research">Research</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header container">
+        <h1 class="font-technical">Bridging Body and Machine</h1>
+        <p class="article-meta">
+            <span>February 2026</span>
+            <span>&middot;</span>
+            <span>8 min read</span>
+            <span class="meta-tag">Computer Vision</span>
+            <span class="meta-tag">Biomechanics</span>
+            <span class="meta-tag">Embodied AI</span>
+        </p>
+    </header>
+
+    <!-- Article Body -->
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-content">
+
+                <div class="bio-block fade-in">
+                    <p class="bio-lead">A computer vision pipeline for embodied skill assessment&mdash;and the methodological tensions that arise when the researcher is also the dataset.</p>
+                </div>
+
+                <!-- Section 1: The Question -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Question</h2>
+                    <p>Pose estimation has advanced dramatically. MediaPipe can track 33 body landmarks in real time from a single webcam feed. But landmark detection answers a narrow question: <em>where is the body?</em> It does not answer the question a kinesiology practitioner actually cares about: <em>how well is the body moving?</em></p>
+                    <p>The distinction matters. Two people can hold what appears to be the same yoga pose while exhibiting fundamentally different movement quality. One has proper joint alignment, distributed weight, and engaged stabilizing musculature. The other has compensatory patterns&mdash;a hyperextended knee masking hip inflexibility, a rotated pelvis creating the illusion of depth in a forward fold. A pose classifier sees both as &ldquo;Warrior II.&rdquo; A trained kinesiologist sees two entirely different movement profiles.</p>
+                    <p>ZEN<sup style="font-size:0.7em">ith</sup> began with a question that sits at the intersection of computer vision and embodied cognition: <em>can a computational system evaluate movement quality, not just pose identity, using the same biomechanical principles a human expert would apply?</em></p>
+                </div>
+
+                <!-- Section 2: The Approach -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Approach</h2>
+                    <p>Three design decisions shaped the project, each involving a deliberate trade-off.</p>
+                    <p><strong>Why a Variational Autoencoder for quality scoring.</strong> The standard approach to movement assessment in the CV literature is classification: train a model to recognize named poses and report confidence. But classification collapses a continuous spectrum into discrete bins. A VAE learns a latent representation of what &ldquo;good form&rdquo; looks like for each pose, then measures how far a new observation deviates from that learned distribution. The reconstruction error becomes a continuous quality score&mdash;not &ldquo;this is or isn&rsquo;t Warrior II&rdquo; but &ldquo;this is Warrior II with these specific deviations from ideal alignment.&rdquo; That distinction is precisely what a practitioner needs.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        Classification tells you what a pose is. A VAE tells you how well it&rsquo;s being performed. That shift from identity to quality is the difference between a pose library and a coaching system.
+                    </blockquote>
+
+                    <p><strong>Why a self-recorded dataset.</strong> Existing yoga pose datasets (Yoga-82, others) contain images scraped from the internet with enormous variation in angle, lighting, clothing, and&mdash;critically&mdash;form quality. They are useful for classification but unsuitable for quality assessment, because they lack ground-truth annotations for biomechanical correctness. By recording my own practice across 10 poses with deliberate variation in form quality&mdash;from textbook alignment to common compensatory patterns I have observed and experienced over years of practice&mdash;I could create a dataset where the ground truth was the embodied expertise itself. The researcher was the instrument.</p>
+                    <p><strong>Why Random Forest over deep classifiers.</strong> When the features are interpretable joint angles rather than raw pixel data, a Random Forest provides two things a deep classifier does not: feature importance rankings that map directly to anatomical structures, and decision boundaries that can be explained in biomechanical terms. If the model identifies a pose as poor form, the system can say <em>which joint angles</em> deviate and by how much&mdash;not just that the overall embedding is distant from the ideal.</p>
+                </div>
+
+                <!-- Section 3: The Architecture -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Architecture</h2>
+                    <p>The pipeline has four stages, each translating between different representational levels.</p>
+                    <p><strong>Stage 1: Pose Estimation (MediaPipe &rarr; Landmarks).</strong> MediaPipe BlazePose processes each video frame and returns 33 3D landmark coordinates. This is commodity technology&mdash;fast, accurate, well-documented. The engineering challenge is not the estimation itself but what happens next.</p>
+                    <p><strong>Stage 2: Feature Engineering (Landmarks &rarr; Joint Angles).</strong> This is where kinesiology expertise becomes computational. Raw landmark coordinates are geometrically meaningless for movement assessment. The system computes joint angles that a biomechanist would actually measure: knee flexion, hip abduction, shoulder elevation, spinal lateral flexion, ankle dorsiflexion. Each pose has a specific set of critical angles derived from the anatomical literature and clinical assessment protocols. A Warrior II evaluation emphasizes front knee flexion angle (target: 90&deg;), rear leg extension, hip abduction symmetry, and shoulder-line horizontality. A Tree Pose evaluation emphasizes standing-leg knee extension, hip external rotation of the lifted leg, and center-of-mass alignment over the base of support.</p>
+                    <p>This stage is the core intellectual contribution. The features are not learned&mdash;they are <em>designed</em>, drawing on domain knowledge that no amount of training data can replace. A model trained on pixel data might learn that bent knees correlate with certain poses; it cannot learn that 85&deg; of knee flexion in Warrior II indicates a specific compensatory pattern for tight hip flexors without explicit biomechanical modeling.</p>
+                    <p><strong>Stage 3: Quality Scoring (Joint Angles &rarr; VAE Latent Space).</strong> The Variational Autoencoder is trained on joint angle vectors from high-quality form examples. For each pose, it learns a latent distribution representing the space of &ldquo;correct&rdquo; execution. A new input is encoded into this space, and its distance from the learned distribution center provides a continuous quality score. High reconstruction error indicates deviation from ideal form; the pattern of error localizes which aspects of the pose are problematic.</p>
+                    <p><strong>Stage 4: Classification &amp; Feedback (Random Forest + Gemini).</strong> The Random Forest classifies pose identity from the joint angle features, while the VAE quality score and specific angle deviations feed into a Gemini-powered coaching module that generates natural-language feedback. The system can say: &ldquo;Your Warrior II front knee is at 72&deg;&mdash;try to deepen to 90&deg;. Your hip abduction looks good. Watch your rear foot&mdash;it&rsquo;s rotating inward, which often compensates for tight hip flexors.&rdquo;</p>
+                </div>
+
+                <!-- Section 4: What I Learned -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What I Learned</h2>
+                    <p>The most interesting tension in this project was methodological: using the self as both researcher and dataset. In quantitative computer science, this would typically be considered a limitation&mdash;N=1, no inter-rater reliability, potential bias in ground-truth labeling. But in the phenomenological and kinesiology traditions, the trained practitioner&rsquo;s body <em>is</em> a calibrated instrument. Years of deliberate practice create proprioceptive awareness that constitutes genuine expertise. The question is how to bridge that first-person knowledge into a third-person computational framework without losing what makes it valuable.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        The dataset was not a concession to limited resources. It was a methodological choice: embodied expertise as ground truth, the researcher&rsquo;s trained proprioception as the labeling function. The tension between this approach and conventional data collection norms is itself a research question worth investigating.
+                    </blockquote>
+
+                    <p>What the VAE latent space revealed was unexpected. Poses that I would group by difficulty did not cluster the same way in the learned representation. Instead, the latent space organized primarily by <em>mechanical chain</em>&mdash;poses that load similar joint systems clustered together regardless of their subjective difficulty. Tree Pose and Eagle Pose appeared near each other (both are single-leg balance with hip external rotation), while Warrior I and Warrior II were more distant than expected (the hip orientation difference creates fundamentally different kinetic chains). The model had discovered something about the biomechanics that my conscious categorization had missed.</p>
+                    <p>The honest limitation: the system evaluates form in the sagittal and frontal planes well but struggles with rotational movements. MediaPipe&rsquo;s depth estimation from a single camera is insufficient for assessing spinal rotation or subtle pelvic tilts. A multi-camera setup or depth sensor would address this, but it would also move the system away from the accessibility that makes it potentially useful&mdash;anyone with a webcam. That trade-off between measurement fidelity and deployment simplicity is the central engineering tension, and it remains unresolved.</p>
+                </div>
+
+                <!-- References -->
+                <div class="article-references fade-in">
+                    <h2 class="font-technical">References</h2>
+                    <ol>
+                        <li>Lugaresi, C., Tang, J., Nash, H., McClanahan, C., Uboweja, E., Hays, M., ... &amp; Grundmann, M. (2019). MediaPipe: A framework for building perception pipelines. <em>arXiv preprint arXiv:1906.08172.</em></li>
+                        <li>Kingma, D. P., &amp; Welling, M. (2014). Auto-encoding variational Bayes. <em>Proceedings of the 2nd International Conference on Learning Representations (ICLR).</em></li>
+                        <li>Neumann, D. A. (2010). <em>Kinesiology of the Musculoskeletal System: Foundations for Rehabilitation</em> (2nd ed.). Mosby/Elsevier.</li>
+                        <li>Varela, F. J., &amp; Shear, J. (1999). First-person methodologies: What, why, how? <em>Journal of Consciousness Studies, 6</em>(2&ndash;3), 1&ndash;14.</li>
+                        <li>Breiman, L. (2001). Random forests. <em>Machine Learning, 45</em>(1), 5&ndash;32.</li>
+                        <li>Chen, Y., Tian, Y., &amp; He, M. (2020). Monocular human pose estimation: A survey of deep learning-based methods. <em>Computer Vision and Image Understanding, 192</em>, 102897.</li>
+                    </ol>
+                </div>
+
+                <!-- Article Navigation -->
+                <nav class="article-nav fade-in">
+                    <a href="/meridian-labs.html">&larr; Meridian Labs</a>
+                    <a href="/her-os.html">Next: &ldquo;Her&rdquo; OS &rarr;</a>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="font-technical footer-heading">Get in Touch</h2>
+            <a href="#" class="btn-primary font-technical email-link">Send Email</a>
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        if (!('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    </script>
+</body>
+</html>

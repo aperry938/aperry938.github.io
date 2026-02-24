@@ -724,6 +724,101 @@ a:hover {
 }
 
 /* ========================================
+   CASE STUDY ARTICLES
+   ======================================== */
+
+.article-header {
+    padding: 140px 0 40px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.article-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.article-meta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--slate-light);
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.article-meta .meta-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-sage);
+    background: var(--sage-dim);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.article-references {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(57, 70, 78, 0.08);
+}
+
+.article-references h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(57, 70, 78, 0.08);
+}
+
+.article-references ol {
+    list-style: none;
+    counter-reset: ref-counter;
+    padding: 0;
+}
+
+.article-references li {
+    counter-increment: ref-counter;
+    font-size: 14px;
+    color: var(--slate-light);
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 32px;
+    text-indent: -32px;
+}
+
+.article-references li::before {
+    content: "[" counter(ref-counter) "] ";
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--muted-sage);
+}
+
+.article-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(57, 70, 78, 0.08);
+}
+
+.article-nav a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted-sage);
+    transition: color 0.3s;
+}
+
+.article-nav a:hover {
+    color: var(--deep-slate);
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
@@ -759,6 +854,16 @@ a:hover {
     .footer-links {
         flex-wrap: wrap;
         gap: 16px;
+    }
+
+    .article-header {
+        padding: 100px 0 32px;
+    }
+
+    .article-nav {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
     }
 }
 
