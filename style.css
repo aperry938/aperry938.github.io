@@ -366,7 +366,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 
 .pillars-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
 }
 
@@ -806,6 +806,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 /* Stagger cards */
 .pillars-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
 .pillars-grid .fade-in:nth-child(3) { transition-delay: 0.2s; }
+.pillars-grid .fade-in:nth-child(4) { transition-delay: 0.3s; }
 
 /* ========================================
    SCROLLBAR
