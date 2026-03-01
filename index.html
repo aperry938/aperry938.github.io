@@ -72,10 +72,17 @@
                 <span class="pillars-label">Selected Works</span>
             </div>
 
+            <div class="pillars-grid-wrapper scroll-start">
+                <button class="pillars-scroll-arrow pillars-scroll-arrow-left" aria-label="Scroll left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="pillars-scroll-arrow pillars-scroll-arrow-right" aria-label="Scroll right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
             <div class="pillars-grid">
                 <!-- Adaptive Learning Systems -->
                 <div class="project-card fade-in">
-                    <span class="pillar-label pillar-label-sub">The Mind</span>
+                    <span class="pillar-label pillar-label-sub">Mind</span>
                     <div class="pillar-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
@@ -92,7 +99,7 @@
 
                 <!-- Embodied Computer Vision -->
                 <div class="project-card fade-in">
-                    <span class="pillar-label pillar-label-sub">The Body</span>
+                    <span class="pillar-label pillar-label-sub">Body</span>
                     <div class="pillar-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><circle cx="12" cy="5" r="3"/><path d="M12 8v6M8 21l2-7h4l2 7M6 12h12"/></svg>
                     </div>
@@ -108,7 +115,7 @@
 
                 <!-- Conversational AI & Phenomenology -->
                 <div class="project-card fade-in">
-                    <span class="pillar-label pillar-label-sub">The Soul</span>
+                    <span class="pillar-label pillar-label-sub">Connection</span>
                     <div class="pillar-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
                     </div>
@@ -124,7 +131,7 @@
 
                 <!-- Sleep & Dream Wellness -->
                 <div class="project-card fade-in">
-                    <span class="pillar-label pillar-label-sub">The Dream</span>
+                    <span class="pillar-label pillar-label-sub">Rest</span>
                     <div class="pillar-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted-sage)" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"/><circle cx="19" cy="5" r="1"/><circle cx="17" cy="9" r="0.5"/></svg>
                     </div>
@@ -136,6 +143,7 @@
                         <a href="https://aperry938.github.io/somnia-ai/" class="project-cta project-cta-secondary">Live Demo</a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -215,6 +223,32 @@
         });
     })();
     (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    /* Pillars horizontal scroll arrows */
+    (function() {
+        function updateScrollFade(grid) {
+            var wrapper = grid.parentElement;
+            if (!wrapper || !wrapper.classList.contains('pillars-grid-wrapper')) return;
+            var atStart = grid.scrollLeft <= 4;
+            var atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+            wrapper.classList.toggle('scroll-start', atStart);
+            wrapper.classList.toggle('scroll-end', atEnd);
+        }
+        document.querySelectorAll('.pillars-grid').forEach(function(grid) {
+            updateScrollFade(grid);
+            grid.addEventListener('scroll', function() { updateScrollFade(grid); }, { passive: true });
+            window.addEventListener('resize', function() { updateScrollFade(grid); });
+        });
+        document.querySelectorAll('.pillars-scroll-arrow').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var wrapper = this.parentElement;
+                var grid = wrapper.querySelector('.pillars-grid');
+                if (!grid) return;
+                var scrollAmount = 314;
+                var direction = this.classList.contains('pillars-scroll-arrow-left') ? -1 : 1;
+                grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            });
+        });
+    })();
     /* Cross-site page transitions */
     (function() {
         document.addEventListener('click', function(e) {
