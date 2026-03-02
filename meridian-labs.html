@@ -26,7 +26,7 @@
         <div class="nav-inner">
             <a href="/" class="nav-brand">A.P.</a>
             <ul class="nav-links">
-                <li><a href="/#research">Research</a></li>
+                <li><a href="/research.html">Research</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/cv.html">CV</a></li>
                 <li><a href="https://github.com/aperry938">GitHub</a></li>
@@ -40,7 +40,7 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
         <ul class="mobile-menu-links">
-            <li><a href="/#research">Research</a></li>
+            <li><a href="/research.html">Research</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/cv.html">CV</a></li>
             <li><a href="https://github.com/aperry938">GitHub</a></li>
@@ -86,7 +86,7 @@
                     <p>Third, <em>the research literature already provides the parameters</em>. Butterfield and Metcalfe (2001) demonstrated that high-confidence errors produce stronger hypercorrection effects&mdash;when you&rsquo;re certain you&rsquo;re right and discover you&rsquo;re wrong, the correction is more durable than for low-confidence errors. This finding maps directly to a scoring function. A confident-wrong response receives a &minus;5 penalty; a tentative-wrong response receives &minus;2. The asymmetry is not a design whim&mdash;it is a translation of empirical findings into arithmetic.</p>
 
                     <blockquote class="pull-quote fade-in">
-                        The system penalizes overconfidence 3&times; more harshly than underconfidence in its spaced repetition scheduling. This is not a tuning parameter&mdash;it reflects the finding that confident errors are the most dangerous form of ignorance, precisely because the learner has no reason to revisit them.
+                        The system penalizes confident errors 2.5&times; more harshly than tentative errors in its spaced repetition scheduling. This is not a tuning parameter&mdash;it reflects the finding that confident errors are the most dangerous form of ignorance, precisely because the learner has no reason to revisit them.
                     </blockquote>
 
                     <p>The confidence matrix produces four outcomes per question: confident-correct (+3), confident-wrong (&minus;5), tentative-correct (+1), and tentative-wrong (&minus;2). This four-outcome model is the atomic unit of the entire engine. Every downstream system&mdash;mastery levels, spaced repetition intervals, exam readiness scores, misconception detection&mdash;builds on it.</p>
