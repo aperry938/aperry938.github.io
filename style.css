@@ -1283,6 +1283,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 /* Supervisor Note */
 .supervisor-note {
     max-width: 720px;
+    margin: 0 auto;
 }
 
 .supervisor-note p {
