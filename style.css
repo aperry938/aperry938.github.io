@@ -1323,6 +1323,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 
 .supervisor-links {
     display: flex;
+    justify-content: center;
     gap: 12px;
     margin-top: 24px;
     margin-bottom: 20px;
@@ -1352,6 +1353,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
     color: var(--slate-light);
+    text-align: center;
 }
 
 .academic-ids a {
@@ -1371,7 +1373,7 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 
     .supervisor-links {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
