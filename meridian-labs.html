@@ -66,13 +66,13 @@
             <div class="bio-content">
 
                 <div class="bio-block fade-in">
-                    <p class="bio-lead">How cognitive science became production software&mdash;and why the most interesting experiments haven&rsquo;t been run yet.</p>
+                    <p class="bio-lead">How cognitive science became production software, and why the most interesting experiments haven&rsquo;t been run yet.</p>
                 </div>
 
                 <!-- Section 1: The Question -->
                 <div class="bio-block fade-in">
                     <h2 class="font-technical">The Question</h2>
-                    <p>The evidence base for how humans acquire and retain knowledge is remarkably robust. Ebbinghaus established the forgetting curve in 1885. Bjork&rsquo;s work on desirable difficulties has been replicated for decades. Koriat&rsquo;s research on metacognitive monitoring&mdash;the accuracy of people&rsquo;s confidence judgments about their own knowledge&mdash;has produced a substantial literature. Yet the study tools most people use ignore nearly all of it.</p>
+                    <p>The evidence base for how humans acquire and retain knowledge is remarkably robust. Ebbinghaus established the forgetting curve in 1885. Bjork&rsquo;s work on desirable difficulties has been replicated for decades. Koriat&rsquo;s research on metacognitive monitoring (the accuracy of people&rsquo;s confidence judgments about their own knowledge) has produced a substantial literature. Yet the study tools most people use ignore nearly all of it.</p>
                     <p>The typical exam-prep app is a flashcard deck with a progress bar. It treats all correct answers as equal, all wrong answers as equal, and confidence as irrelevant. It cannot distinguish between a learner who guessed correctly and one who knew the material. It cannot detect that a student is systematically overconfident in one domain and underconfident in another. It has no model of the learner at all.</p>
                     <p>The question that launched Meridian Labs was deceptively simple: <em>what would a study system look like if it actually used what cognitive science knows about learning?</em></p>
                 </div>
@@ -86,10 +86,10 @@
                     <p>Third, <em>the research literature already provides the parameters</em>. Butterfield and Metcalfe (2001) demonstrated that high-confidence errors produce stronger hypercorrection effects&mdash;when you&rsquo;re certain you&rsquo;re right and discover you&rsquo;re wrong, the correction is more durable than for low-confidence errors. This finding maps directly to a scoring function. A confident-wrong response receives a &minus;5 penalty; a tentative-wrong response receives &minus;2. The asymmetry is not a design whim&mdash;it is a translation of empirical findings into arithmetic.</p>
 
                     <blockquote class="pull-quote fade-in">
-                        The system penalizes confident errors 2.5&times; more harshly than tentative errors in its spaced repetition scheduling. This is not a tuning parameter&mdash;it reflects the finding that confident errors are the most dangerous form of ignorance, precisely because the learner has no reason to revisit them.
+                        The system penalizes confident errors 2.5&times; more harshly than tentative errors in its spaced repetition scheduling. This is not a tuning parameter. It reflects the finding that confident errors are the most dangerous form of ignorance, precisely because the learner has no reason to revisit them.
                     </blockquote>
 
-                    <p>The confidence matrix produces four outcomes per question: confident-correct (+3), confident-wrong (&minus;5), tentative-correct (+1), and tentative-wrong (&minus;2). This four-outcome model is the atomic unit of the entire engine. Every downstream system&mdash;mastery levels, spaced repetition intervals, exam readiness scores, misconception detection&mdash;builds on it.</p>
+                    <p>The confidence matrix produces four outcomes per question: confident-correct (+3), confident-wrong (&minus;5), tentative-correct (+1), and tentative-wrong (&minus;2). This four-outcome model is the atomic unit of the entire engine. Every downstream system (mastery levels, spaced repetition intervals, exam readiness scores, misconception detection) builds on it.</p>
                 </div>
 
                 <!-- Section 3: The Architecture -->
@@ -97,13 +97,13 @@
                     <h2 class="font-technical">The Architecture</h2>
                     <p>The engine has four interlocking systems, each grounded in a different strand of the cognitive science literature.</p>
 
-                    <p><strong>1. Six-Level Mastery System.</strong> Rather than a binary known/unknown state, the engine tracks mastery across six levels: Novice, Beginner, Intermediate, Proficient, Advanced, and Expert. Transitions require sustained performance, not single correct answers. Demotion is asymmetric&mdash;dropping a level is easier than gaining one, reflecting the established finding that skill regression is faster than skill acquisition (Bjork &amp; Bjork, 1992). Each level maps to a spaced repetition interval: Novice items resurface within hours, Expert items after weeks.</p>
+                    <p><strong>1. Six-Level Mastery System.</strong> Rather than a binary known/unknown state, the engine tracks mastery across six levels: Novice, Beginner, Intermediate, Proficient, Advanced, and Expert. Transitions require sustained performance, not single correct answers. Demotion is asymmetric: dropping a level is easier than gaining one, reflecting the established finding that skill regression is faster than skill acquisition (Bjork &amp; Bjork, 1992). Each level maps to a spaced repetition interval: Novice items resurface within hours, Expert items after weeks.</p>
 
-                    <p><strong>2. Four-Factor Exam Readiness.</strong> A single &ldquo;percent correct&rdquo; metric is nearly useless for predicting exam performance. The engine computes readiness from four weighted factors: mastery distribution (35%), recent accuracy trend (30%), coverage breadth (15%), and confidence calibration accuracy (20%). The weights are non-linear&mdash;high mastery with poor calibration still produces a moderate readiness score, because the learner doesn&rsquo;t yet know what they don&rsquo;t know.</p>
+                    <p><strong>2. Four-Factor Exam Readiness.</strong> A single &ldquo;percent correct&rdquo; metric is nearly useless for predicting exam performance. The engine computes readiness from four weighted factors: mastery distribution (35%), recent accuracy trend (30%), coverage breadth (15%), and confidence calibration accuracy (20%). The weights are non-linear; high mastery with poor calibration still produces a moderate readiness score, because the learner doesn&rsquo;t yet know what they don&rsquo;t know.</p>
 
-                    <p><strong>3. Misconception Detection.</strong> When a learner answers the same question wrong twice with high confidence, the engine flags a <em>misconception</em>&mdash;a stable, incorrect mental model that passive review will not correct. Misconception items receive 4&times; scheduling priority, forcing active confrontation. Resolution requires three consecutive correct answers, not just one. This is grounded in the conceptual change literature: misconceptions are resistant to instruction because they are internally coherent (Vosniadou, 1994). A single correction rarely dislodges them.</p>
+                    <p><strong>3. Misconception Detection.</strong> When a learner answers the same question wrong twice with high confidence, the engine flags a <em>misconception</em>, a stable, incorrect mental model that passive review will not correct. Misconception items receive 4&times; scheduling priority, forcing active confrontation. Resolution requires three consecutive correct answers, not just one. This is grounded in the conceptual change literature: misconceptions are resistant to instruction because they are internally coherent (Vosniadou, 1994). A single correction rarely dislodges them.</p>
 
-                    <p><strong>4. Bloom&rsquo;s Taxonomy Practice Tests.</strong> The engine generates practice exams at four cognitive levels, progressively increasing from recall to application to analysis to evaluation. This is not a difficulty slider&mdash;it is a structured progression through Bloom&rsquo;s taxonomy that mirrors how expert knowledge is actually organized. A learner who can recall a fact but cannot apply it in a novel scenario has not mastered it in any meaningful sense.</p>
+                    <p><strong>4. Bloom&rsquo;s Taxonomy Practice Tests.</strong> The engine generates practice exams at four cognitive levels, progressively increasing from recall to application to analysis to evaluation. This is not a difficulty slider; it is a structured progression through Bloom&rsquo;s taxonomy that mirrors how expert knowledge is actually organized. A learner who can recall a fact but cannot apply it in a novel scenario has not mastered it in any meaningful sense.</p>
 
                     <p>These systems interact. A misconception detected during practice testing adjusts both mastery level and exam readiness. A strong confidence calibration score can partially offset lower raw accuracy in the readiness calculation, because a well-calibrated learner knows where to focus. The engine embeds a theory of learning, not just a set of features.</p>
                 </div>
@@ -111,15 +111,15 @@
                 <!-- Section 4: What I Learned -->
                 <div class="bio-block fade-in">
                     <h2 class="font-technical">What I Learned</h2>
-                    <p>Building twenty production apps using frontier AI tools across the full development lifecycle&mdash;content generation, code architecture, testing, deployment, iteration&mdash;produced an unintentional research artifact. The process itself became a case study in human-AI collaboration at a scale that is only recently feasible.</p>
+                    <p>Building twenty production apps using frontier AI tools across the full development lifecycle (content generation, code architecture, testing, deployment, iteration) produced an unintentional research artifact. The process itself became a case study in human-AI collaboration at a scale that is only recently feasible.</p>
                     <p>The cognitive science grounding is real, but the validation is incomplete. The algorithms are derived from peer-reviewed findings, the architecture makes principled decisions, and the system demonstrably behaves differently from a naive flashcard app. But the controlled experiments have not been run. There is no A/B test comparing this engine against a baseline with matched content and different scheduling algorithms. There is no longitudinal study tracking exam outcomes.</p>
                     <p>The platform exists. The instrumentation is built. The question is no longer &ldquo;can cognitive science principles be translated into software?&rdquo; but &ldquo;do they produce measurably better learning outcomes when they are?&rdquo; That experiment remains to be run.</p>
 
                     <blockquote class="pull-quote fade-in">
-                        The most valuable output may not be the engine itself but the experimental platform it created. Twenty apps across four certification domains, with 55,000+ questions instrumented for confidence tracking, mastery progression, and misconception detection&mdash;a dataset waiting for a hypothesis.
+                        The most valuable output may not be the engine itself but the experimental platform it created. Twenty apps across four certification domains, with 55,000+ questions instrumented for confidence tracking, mastery progression, and misconception detection. A dataset waiting for a hypothesis.
                     </blockquote>
 
-                    <p>Orchestrating large language models across research, content generation, architecture, and testing required a kind of metacognitive discipline&mdash;constantly evaluating what the AI could handle reliably and what required human judgment. Building a system designed to develop metacognitive skills in learners demanded developing those same skills in the builder.</p>
+                    <p>Orchestrating large language models across research, content generation, architecture, and testing required a kind of metacognitive discipline, constantly evaluating what the AI could handle reliably and what required human judgment. Building a system designed to develop metacognitive skills in learners demanded developing those same skills in the builder.</p>
                 </div>
 
                 <!-- Paper -->
