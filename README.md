@@ -1,6 +1,6 @@
-# Meridian Labs — Developer Website
+# Anthony C. Perry — Portfolio
 
-The public-facing website for Meridian Labs, serving as the developer hub, privacy policy, terms of service, and support portal for all Meridian Labs applications.
+Personal portfolio website featuring research projects, publications, and CV.
 
 **Live:** [aperry938.github.io](https://aperry938.github.io)
 
@@ -8,18 +8,12 @@ The public-facing website for Meridian Labs, serving as the developer hub, priva
 
 | Page | Purpose |
 |------|---------|
-| `index.html` | Developer landing page |
-| `privacy.html` | Privacy policy for all apps |
-| `terms.html` | Terms of service and pass guarantee policy |
-| `support.html` | User support and contact |
-| `methodology.html` | Learning methodology overview |
-
-## Brands Supported
-
-- **GlowStudy** — Beauty & cosmetology exam prep
-- **VitalPrep** — Healthcare certification prep
-- **AcePrep** — Professional exam prep
-- **TechPrep** — IT certification prep
+| `index.html` | Portfolio landing page |
+| `about.html` | About / bio |
+| `research.html` | Research projects |
+| `cv.html` | Curriculum vitae |
+| `her-os.html` | Her OS project page |
+| `zenith.html` | ZENith project page |
 
 ## Hosting
 
