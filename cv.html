@@ -263,6 +263,27 @@
     line-height: 1.5;
   }
 
+  section ul.military-bullets {
+    margin: 4pt 0 0 16pt;
+    list-style: none;
+  }
+
+  section ul.military-bullets li {
+    font-size: 10pt;
+    line-height: 1.5;
+    margin-bottom: 2pt;
+    position: relative;
+    padding-left: 10pt;
+    color: var(--text);
+  }
+
+  section ul.military-bullets li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: var(--text-light);
+  }
+
   /* === AWARDS / CERTS === */
   .compact-list {
     columns: 2;
@@ -431,6 +452,7 @@
   <div class="research-entry">
     <div class="title">Meridian Labs &mdash; Adaptive Learning Engine</div>
     <div class="tags">Educational Technology &middot; Knowledge Tracing &middot; Metacognitive Modeling &middot; 2025&ndash;Present</div>
+    <div class="github"><a href="https://meridianlabs.us">meridianlabs.us</a></div>
     <ul>
       <li>Designed an adaptive educational technology platform (20 production applications across four professional domains, 55,000+ items) grounded in 33 peer-reviewed citations in cognitive science, metacognition, and testing psychology</li>
       <li>Designed 6 learning algorithms implementing confidence calibration (4-outcome metacognitive weighting), spaced repetition (6-level adaptive interval scheduling), misconception detection (confident-wrong pattern analysis), and stress inoculation training for exam readiness</li>
@@ -521,8 +543,14 @@
 
 <section>
   <h2>Military Service</h2>
-  <div class="military-header">C-17 Aircraft Loadmaster (E-4), U.S. Air Force, Travis AFB, CA <span class="dates">2010&ndash;2014</span></div>
-  <div class="military-desc">455 sorties, 1,977 flight hours across Operations Enduring Freedom, Iraqi Freedom, and New Dawn. Aircrew responsible for cargo integrity of C-17 Globemaster III. Honorable Discharge.</div>
+  <div class="military-header">C-17 Aircraft Loadmaster, 21st Airlift Squadron, U.S. Air Force, Travis AFB, CA <span class="dates">2010&ndash;2014</span></div>
+  <div class="military-desc">Senior Airman (E-4) &middot; 60th Air Mobility Wing &middot; Honorable Discharge</div>
+  <ul class="military-bullets">
+    <li>Completed 455 airlift sorties and 1,977 flight hours in the C-17 Globemaster III across Operations Enduring Freedom, Iraqi Freedom, and New Dawn, with approximately 75% of flight time in active combat theater</li>
+    <li>Transported 9,400 passengers and 13.5 million pounds of cargo across aeromedical evacuation, presidential support, and humanitarian relief missions worldwide</li>
+    <li>Executed humanitarian airlift operations during Hurricane Sandy disaster response (2012), supporting relief efforts for the Eastern Seaboard</li>
+    <li>Designated subject matter expert on C-17 cargo compartment hydraulics, electrical, and avionics systems; completed SERE combat survival, water survival, and emergency parachute training</li>
+  </ul>
 </section>
 
 <section>
