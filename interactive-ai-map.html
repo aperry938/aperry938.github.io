@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Knowledge Graphs for AI/ML Education — Anthony C. Perry</title>
+    <meta name="description" content="A knowledge-graph-driven adaptive learning platform integrating Bayesian Knowledge Tracing, spaced repetition, and 7 interactive explorations across 42 AI/ML concepts.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Adaptive Knowledge Graphs for AI/ML Education — Anthony C. Perry">
+    <meta property="og:description" content="A knowledge-graph-driven adaptive learning platform integrating Bayesian Knowledge Tracing, spaced repetition, and interactive explorations.">
+    <meta property="og:image" content="https://aperry938.github.io/images/founder-headshot.png">
+    <meta property="og:url" content="https://aperry938.github.io/interactive-ai-map.html">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="canonical" href="https://aperry938.github.io/interactive-ai-map.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">A.P.</a>
+            <ul class="nav-links">
+                <li><a href="/research.html">Research</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
+            </ul>
+            <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+        <ul class="mobile-menu-links">
+            <li><a href="/research.html">Research</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/cv.html">CV</a></li>
+            <li><a href="https://github.com/aperry938">GitHub</a></li>
+        </ul>
+    </div>
+
+    <!-- Article Header -->
+    <header class="article-header container">
+        <h1 class="font-technical">Adaptive Knowledge Graphs for AI/ML Education</h1>
+        <p class="article-meta">
+            <span>March 2026</span>
+            <span>&middot;</span>
+            <span>8 min read</span>
+            <span class="meta-tag">Interactive Visualization</span>
+            <span class="meta-tag">BKT</span>
+            <span class="meta-tag">Knowledge Graphs</span>
+            <span class="meta-tag">EdTech</span>
+        </p>
+    </header>
+
+    <!-- Article Body -->
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-content">
+
+                <div class="bio-block fade-in">
+                    <p class="bio-lead">Bayesian Knowledge Tracing, knowledge graph navigation, and interactive explorations &mdash; integrated into a single adaptive platform where the learning algorithm is not a black box but a visible companion.</p>
+                </div>
+
+                <!-- The Question -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Question</h2>
+                    <p>The landscape of AI/ML education is oddly fragmented. On one side, static textbooks and MOOCs deliver comprehensive coverage but require passive consumption. On the other, tools like TensorFlow Playground and the Georgia Tech Polo Club&rsquo;s explainers offer brilliant interactive visualizations &mdash; but for a single concept at a time, with no learning path, no mastery tracking, and no memory of the learner.</p>
+                    <p>A gap sits between these poles. No existing platform combines adaptive mastery tracking with interactive explorations and structured curriculum navigation in one coherent system. The question: can we build a tool where the visualization, the assessment, and the adaptive algorithm work together &mdash; and where the algorithm itself is transparent to the learner?</p>
+                </div>
+
+                <!-- The Approach -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Approach</h2>
+                    <p>The platform centers on a force-directed knowledge graph as the primary navigation interface. 42 AI/ML concepts are organized across five tiers, from data preprocessing and linear regression through transformers, diffusion models, and constitutional AI. Prerequisite relationships form a directed acyclic graph: new concepts unlock only when their dependencies are mastered [1].</p>
+                    <p>Mastery is estimated per-concept using Bayesian Knowledge Tracing [2], a probabilistic model that updates the probability of knowledge after each quiz attempt. The implementation extends standard BKT in three ways: difficulty-conditioned slip and guess parameters, a hint penalty that blends correct and incorrect posteriors, and tier-aware parameter scaling where advanced concepts have lower initial priors and slower learning rates.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        Most adaptive learning systems treat their algorithms as invisible infrastructure. Here, the learner sees everything: their BKT parameters, their forgetting curve, and the reason each concept was recommended.
+                    </blockquote>
+
+                    <p>This transparency follows the Open Learner Model (OLM) approach [3, 4]. Research consistently shows that exposing the adaptive model to learners promotes metacognitive processes: self-awareness of knowledge gaps, self-monitoring during study, and self-regulation of learning strategies. Low-prior-knowledge learners benefit most &mdash; exactly the target audience for an AI/ML education platform.</p>
+                </div>
+
+                <!-- The Architecture -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Architecture</h2>
+                    <p>Five layers compose the system:</p>
+                    <p><strong>Data layer.</strong> A flat curriculum map of 42 concept nodes, each with prerequisites, cross-connections, Bloom&rsquo;s taxonomy level, multi-format quizzes (multiple-choice, fill-in-blank, ordering), code examples, and mathematical notation. The prerequisite graph encodes knowledge space structure [1].</p>
+                    <p><strong>Adaptive engine.</strong> Four algorithms operate in concert: BKT mastery tracking [2] with Ebbinghaus-inspired forgetting curves, spaced repetition scheduling with mastery-scaled intervals, a BFS-based recommender that traverses the prerequisite graph to surface the learning frontier, and adaptive difficulty selection. A novel knowledge transfer function boosts connected concepts when a node crosses the mastery threshold.</p>
+                    <p><strong>Interaction layer.</strong> Seven interactive explorations render real computations on HTML Canvas: gradient descent with 3D cost surfaces, a neural network builder with live training, an attention mechanism visualizer with multi-head support, a K-means clustering simulation with Voronoi regions, decision boundary comparison across classifiers, data preprocessing pipelines, and a reinforcement learning gridworld with Q-learning.</p>
+                    <p><strong>Learner state.</strong> All state persists locally via React Context and localStorage. A typed telemetry system captures nine event types (quiz attempts, concept opens, exploration completions, sessions) for potential research instrumentation. No server, no accounts, no data leaves the browser.</p>
+                    <p><strong>Presentation.</strong> React 19, TypeScript, D3.js for force simulation, Framer Motion for transitions, KaTeX for mathematical rendering. The interface uses a dark glassmorphic design language with monochrome cream mastery indicators.</p>
+                </div>
+
+                <!-- What Emerged -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What Emerged</h2>
+                    <p>Three properties emerged from the integration that would not exist in any single component alone.</p>
+                    <p><strong>The knowledge graph changes shape as you learn.</strong> A fog-of-war progressive reveal system hides concepts whose prerequisites have not been touched. As the learner masters foundational nodes, the graph physically expands &mdash; new nodes animate into existence, edges materialize, and the force simulation settles into a new equilibrium. The curriculum is not a fixed syllabus but a living structure that responds to demonstrated knowledge.</p>
+                    <p><strong>Mastering one concept primes its neighbors.</strong> When BKT probability crosses the 0.85 threshold, connected concepts that have not yet been attempted receive a transfer boost (8%, capped at 40%). This models the empirical observation that learning gradient descent provides prior knowledge about backpropagation. Standard BKT treats concepts as independent; the transfer function encodes the graph structure into the mastery model.</p>
+                    <p><strong>The learning algorithm explains itself.</strong> Every concept detail panel includes a &ldquo;Mastery Model&rdquo; section showing the four BKT parameters for that concept&rsquo;s tier, a mastery trajectory chart reconstructed from attempt history, a forgetting curve with the learner&rsquo;s current position marked, and a natural-language explanation of why the current difficulty level was recommended. The recommender similarly explains its reasoning: &ldquo;All prerequisites mastered (Linear Regression, Loss Functions). Ready to learn.&rdquo;</p>
+                </div>
+
+                <!-- What I Learned -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What I Learned</h2>
+                    <p>Building this platform clarified where the boundaries of existing tools actually lie. TensorFlow Playground is a brilliant neural network sandbox &mdash; but it has no idea who is using it. CNN Explainer and Transformer Explainer from Georgia Tech run real inference in-browser &mdash; but they are standalone demonstrations, not learning instruments. Seeing Theory from Brown University is visually exceptional &mdash; but it has no assessment, no adaptive path, no memory. Distill.pub set the standard for interactive research communication &mdash; but it is now dormant and was never an adaptive system.</p>
+                    <p>The gap is not in any individual dimension but in their integration. The interactive exploration needs to know what the learner has mastered. The mastery tracker needs to inform which concepts to explore next. The knowledge graph needs to reflect the current state of both. And the learner needs to see all of this happening &mdash; not as a dashboard afterthought, but as a core part of the interface.</p>
+                    <p>Whether this integration actually improves learning outcomes is an empirical question that requires controlled evaluation. The platform includes client-side telemetry instrumentation and a JSON data export function designed to support exactly that study.</p>
+                </div>
+
+                <!-- References -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">References</h2>
+                    <div class="article-references">
+                        <p>[1] Doignon, J.-P., &amp; Falmagne, J.-C. (1999). <em>Knowledge Spaces</em>. Springer.</p>
+                        <p>[2] Corbett, A. T., &amp; Anderson, J. R. (1994). Knowledge tracing: Modeling the acquisition of procedural knowledge. <em>User Modeling and User-Adapted Interaction</em>, 4(4), 253&ndash;278.</p>
+                        <p>[3] Bull, S., &amp; Kay, J. (2016). SMILI: A framework for interfaces to learning data in open learner models. <em>International Journal of Artificial Intelligence in Education</em>, 26, 293&ndash;331.</p>
+                        <p>[4] Hooshyar, D., et al. (2020). Open learner models as instruments for self-regulated learning. <em>British Journal of Educational Technology</em>, 51(1), 59&ndash;77.</p>
+                        <p>[5] Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. <em>Cognitive Science</em>, 12(2), 257&ndash;285.</p>
+                        <p>[6] Victor, B. (2011). Explorable Explanations. <em>worrydream.com/ExplorableExplanations</em>.</p>
+                        <p>[7] Ebbinghaus, H. (1885). <em>Memory: A contribution to experimental psychology</em>. Teachers College, Columbia University.</p>
+                    </div>
+                </div>
+
+                <!-- Article Navigation -->
+                <nav class="article-nav fade-in">
+                    <a href="/her-os.html">&larr; her</a>
+                    <a href="/#research">Back to Research &rarr;</a>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        if (!('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    /* Mobile Hamburger Menu */
+    (function() {
+        var hamburger = document.querySelector('.nav-hamburger');
+        var mobileMenu = document.querySelector('.mobile-menu');
+        if (!hamburger || !mobileMenu) return;
+        hamburger.addEventListener('click', function() {
+            var open = mobileMenu.classList.toggle('menu-open');
+            hamburger.classList.toggle('is-active', open);
+            hamburger.setAttribute('aria-expanded', open);
+            mobileMenu.setAttribute('aria-hidden', !open);
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('menu-open');
+                hamburger.classList.remove('is-active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>
