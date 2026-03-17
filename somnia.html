@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System &mdash; Anthony C. Perry</title>
+    <meta name="description" content="A sleep and dream wellness system with hardcoded crisis detection immune to prompt injection, programmatic psychoacoustic synthesis via Web Audio API, RAG-enhanced dream analysis, and zero server-side storage.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System &mdash; Anthony C. Perry">
+    <meta property="og:description" content="Hardcoded crisis detection, programmatic audio synthesis, and privacy-first dream analysis: architectural decisions in a sleep wellness system.">
+    <meta property="og:image" content="https://aperry938.github.io/images/founder-headshot.png">
+    <meta property="og:url" content="https://aperry938.github.io/somnia.html">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="canonical" href="https://aperry938.github.io/somnia.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">A.P.</a>
+            <ul class="nav-links">
+                <li><a href="/research.html">Research</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="https://github.com/aperry938">GitHub</a></li>
+            </ul>
+            <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+        <ul class="mobile-menu-links">
+            <li><a href="/research.html">Research</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/cv.html">CV</a></li>
+            <li><a href="https://github.com/aperry938">GitHub</a></li>
+        </ul>
+    </div>
+
+    <!-- Article Header -->
+    <header class="article-header container">
+        <h1 class="font-technical">Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System</h1>
+        <p class="article-meta">
+            <span>March 2026</span>
+            <span>&middot;</span>
+            <span>9 min read</span>
+            <span class="meta-tag">Wellness Technology</span>
+            <span class="meta-tag">Audio Synthesis</span>
+            <span class="meta-tag">AI Safety</span>
+            <span class="meta-tag">Privacy</span>
+        </p>
+    </header>
+
+    <!-- Article Body -->
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-content">
+
+                <div class="bio-block fade-in">
+                    <p class="bio-lead">A sleep and dream wellness application that generates its entire audio environment programmatically, screens for crisis signals before any AI model sees the text, and stores nothing on any server. The architectural constraint that made all three possible: treating privacy, safety, and synthesis as structural requirements rather than features to be added later.</p>
+                </div>
+
+                <!-- Section 1: The Question -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Question</h2>
+                    <p>Sleep wellness apps occupy a peculiar position: they handle some of the most intimate data a person generates&mdash;sleep patterns, dream content, emotional states at the edge of consciousness&mdash;while operating under the same surveillance-capitalism incentives as every other consumer app. The Mozilla Foundation&rsquo;s privacy audit of Calm, Headspace, and similar apps documented extensive data collection and third-party sharing [1]. A dream journal entry about a recurring nightmare becomes training data, then an advertising signal. The user&rsquo;s vulnerability is the product.</p>
+                    <p>Adding AI dream analysis compounds the problem. Large language models can interpret dream symbolism with reasonable coherence. But dream journals also contain crisis signals: descriptions of self-harm, expressions of hopelessness, references to suicidal ideation that surface in the liminal state between sleep and waking. The standard approach to crisis detection in AI systems is a two-stage pipeline: keyword matching followed by ML classification. This architecture has a dependency that most teams treat as acceptable: the safety layer depends on the same model infrastructure it is supposed to protect against. If the model hallucinates, drifts, or is prompt-injected, the safety layer fails with it.</p>
+                    <p>A separate problem sits underneath: sleep apps rely on pre-recorded audio files for soundscapes and sleep aids. This means bandwidth dependencies, storage overhead, and zero adaptability. A brown noise track is a file; it cannot respond to the user&rsquo;s breathing rate or adapt its spectral profile. The question Somnia.ai set out to answer: can a wellness system handle crisis-sensitive content, AI-powered analysis, and therapeutic audio while storing nothing on a server, depending on no external files, and keeping its safety layer immune to the AI it deploys?</p>
+                </div>
+
+                <!-- Section 2: The Approach -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">The Approach</h2>
+                    <p>The architecture is organized around three constraints that were treated as non-negotiable from the first commit. Each constraint produced a specific technical approach.</p>
+
+                    <p><strong>Hardcoded crisis detection.</strong> The safety layer operates before any AI model processes the text. Twenty-eight crisis phrases are matched against the input using exact string matching with context negation&mdash;a phrase like &ldquo;I want to kill myself&rdquo; triggers, but &ldquo;I want to kill myself laughing&rdquo; does not, because &ldquo;laughing&rdquo; appears in the negation list. This approach is intentionally primitive by ML standards. It cannot detect indirect ideation, metaphorical distress, or novel expressions of crisis. What it can do is guarantee a floor: explicit crisis language will always be caught, regardless of model availability, prompt injection attacks, API failures, or inference drift. The layer is immune to every failure mode that affects the AI it precedes, because it shares no infrastructure with that AI. This is the central architectural insight: safety layers for AI systems must be architecturally independent of the AI they protect.</p>
+
+                    <p><strong>Programmatic audio synthesis.</strong> All eleven soundscapes in Somnia.ai are generated in real time through the Web Audio API. No audio files are downloaded, streamed, or stored. Brown noise is synthesized using a leaky integrator applied to white noise generated via Box-Muller transform for Gaussian-distributed samples. Pink noise uses the Paul Kellett algorithm [2], a computationally efficient approximation that maintains the correct 1/f spectral slope. The 40Hz gamma entrainment signal exploits the missing fundamental psychoacoustic effect: on phone speakers that cannot physically reproduce 40Hz, the system generates harmonics at 200Hz and 240Hz whose difference frequency the auditory cortex reconstructs as a perceived 40Hz tone. Coherence breathing entrainment modulates filter cutoff and gain at 0.1Hz (six breaths per minute), the frequency associated with heart rate variability optimization. An FM-synthesis progressive alarm generates a bird chorus that evolves from a single voice to a dense dawn chorus over sixty seconds, each voice synthesized from frequency modulation rather than samples. The result: 948 lines of DSP code that replace what would otherwise be hundreds of megabytes of audio assets.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        The 40Hz gamma signal cannot exist as a file on a phone speaker. The speaker physically cannot reproduce 40Hz. So the system synthesizes harmonics at 200Hz and 240Hz, and the auditory cortex reconstructs the fundamental that was never actually present. The psychoacoustic effect works precisely because the sound is generated programmatically.
+                    </blockquote>
+
+                    <p><strong>Privacy-first with RAG.</strong> Zero server-side storage means all dream journal entries, sleep data, mood logs, and analysis results live in the browser&rsquo;s localStorage. But AI dream analysis requires context: a recurring symbol means nothing in isolation. The RAG pipeline generates 768-dimensional embeddings for each journal entry on-device, stores them locally, and retrieves relevant past entries via cosine similarity before constructing the analysis prompt. Individual dream analysis uses Gemini 2.5 Flash for speed; synthesis across multiple entries uses Gemini 2.5 Pro for depth. Failed API calls queue locally and retry on reconnect, maintaining offline functionality. The user&rsquo;s dream journal never leaves the device except as an ephemeral API call&mdash;the API provider receives only the current entry plus retrieved context, never the full journal.</p>
+                </div>
+
+                <!-- Section 3: What Emerged -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What Emerged</h2>
+                    <p><strong>The crisis detection insight generalized.</strong> The hardcoded safety layer was designed for a narrow purpose: catch explicit crisis language before it reaches Gemini. But the architectural principle it embodies&mdash;safety mechanisms must be independent of the systems they monitor&mdash;has broader implications. In the current landscape of AI safety, most guardrails are implemented as additional prompting, fine-tuning constraints, or ML classifiers that share the same inference pipeline as the primary model. When the model fails, the guardrails fail with it. Somnia&rsquo;s approach is crude but structurally sound: the safety floor has zero shared failure modes with the AI ceiling. This is the argument being formalized for the AIES 2026 paper.</p>
+
+                    <p><strong>The 40Hz gamma evidence strengthened.</strong> The initial implementation of gamma entrainment was partly speculative. The MIT Tsai Lab had published promising results, but the evidence base was thin. Between the initial design and this writing, multiple randomized controlled trials have been published. Martorell et al. demonstrated that 40Hz audiovisual stimulation triggers measurable glymphatic clearance via VIP peptide release [3]. Chan et al. showed cognitive benefits in human participants with mild cognitive impairment after sustained 40Hz stimulation [4]. The intervention is transitioning from speculative to evidence-based, and the missing fundamental approach allows it to work on commodity hardware without specialized transducers.</p>
+
+                    <p><strong>Dream text breaks standard RAG.</strong> Dreams are not documents. They are fragmentary, non-linear, emotionally loaded, and often internally contradictory. Standard RAG retrieval optimized for factual documents performs poorly on dream text because semantic similarity in dreams operates differently: a dream about flying and a dream about drowning may be more thematically related (both encode anxiety about control) than a dream about flying and a dream about airports (which share surface vocabulary but not psychological content). The current cosine similarity approach retrieves on surface semantics, and the 103 insight cards across seven analytical tabs partially compensate by offering structured analytical frames. But the deeper question&mdash;how to build retrieval systems for emotionally structured rather than factually structured text&mdash;remains open.</p>
+                </div>
+
+                <!-- Section 4: What I Learned -->
+                <div class="bio-block fade-in">
+                    <h2 class="font-technical">What I Learned</h2>
+                    <p><strong>The privacy cost is real.</strong> Zero server-side storage is a genuine architectural commitment, not a marketing claim. It means no cross-device sync by default, no backup recovery if the user clears browser storage, no aggregate analysis across users for research purposes. Every wellness app that collects server-side data can offer features that Somnia structurally cannot. The question is whether the privacy guarantee is worth the capability loss. For dream journals specifically, the answer may be yes: contextual integrity theory argues that privacy violations are determined not by the information itself but by whether its flow matches the norms of the context in which it was generated [5]. Dream content generated in the intimate context of sleep has strong contextual norms against corporate surveillance. An ephemeral AI interaction that processes the content transiently may be the only appropriate information flow.</p>
+
+                    <p><strong>A safety floor, not a ceiling.</strong> The hardcoded crisis detection layer catches explicit language and misses everything else. Indirect ideation, metaphorical distress, and culturally specific expressions of crisis are invisible to twenty-eight pattern-matched phrases. The layer is not a crisis detection system in any clinical sense. It is a safety floor: a guarantee that the most explicit signals will never be missed, regardless of what happens to the AI above it. The gap between this floor and clinically adequate crisis detection is the space where ML classifiers, clinical consultation, and human oversight operate. The argument is not that hardcoded detection is sufficient, but that it should be the foundation that other layers build upon.</p>
+
+                    <blockquote class="pull-quote fade-in">
+                        The hardcoded layer is not a crisis detection system. It is a guarantee. Twenty-eight phrases, context negation, zero dependencies. Everything above it can fail, and this floor still holds. That structural independence is the point.
+                    </blockquote>
+
+                    <p><strong>Three papers, three tensions.</strong> Somnia.ai is designed as a research instrument as much as a product. Three papers are planned from different facets of the system: the RAG-enhanced dream analysis pipeline (targeting IMWUT), the safety-by-design crisis detection architecture (targeting AIES 2026), and the privacy-preserving wellness architecture (targeting PervasiveHealth). Each examines a different tension in the system: between AI capability and retrieval quality, between safety guarantees and detection coverage, between privacy constraints and feature capability. Whether these tensions can be resolved or only managed is the open question that connects all three.</p>
+                </div>
+
+                <!-- Paper -->
+                <div class="article-references fade-in">
+                    <h2 class="font-technical">Paper</h2>
+                    <p>Perry, A. C. (2026). Defense in Depth: Hardcoded Safety Architecture for AI Mental Health Systems. <em>In preparation for AIES 2026 (ACM Conference on AI, Ethics, and Society).</em></p>
+                </div>
+
+                <!-- References -->
+                <div class="article-references fade-in">
+                    <h2 class="font-technical">References</h2>
+                    <ol>
+                        <li>Mozilla Foundation. (2024). Calm vs. Headspace: Which is best for your privacy &amp; security? <em>*Privacy Not Included.</em></li>
+                        <li>Kellett, P. (1999). A filter to generate pink (1/f) noise. <em>First-order IIR filter approximation.</em></li>
+                        <li>Martorell, A. J., Paulson, A. L., Suk, H.-J., Abdurrob, F., Drummond, G. T., Guan, W., &hellip; &amp; Tsai, L.-H. (2019). Multi-sensory gamma stimulation ameliorates Alzheimer&rsquo;s-associated pathology and improves cognition. <em>Cell, 177</em>(2), 256&ndash;271.</li>
+                        <li>Chan, D., Suk, H.-J., Jackson, B. L., Milman, N. P., Stark, D., Klerman, E. B., &hellip; &amp; Bhatt, S. (2022). Gamma frequency sensory stimulation in mild probable Alzheimer&rsquo;s dementia patients. <em>PLoS ONE, 17</em>(12), e0278412.</li>
+                        <li>Nissenbaum, H. (2004). Privacy as contextual integrity. <em>Washington Law Review, 79</em>(1), 119&ndash;157.</li>
+                        <li>Lewis, P. A., &amp; Durrant, S. J. (2011). Overlapping memory replay during sleep builds cognitive schemata. <em>Trends in Cognitive Sciences, 15</em>(8), 343&ndash;351.</li>
+                        <li>Smith, J. O. (2007). <em>Physical Audio Signal Processing.</em> W3K Publishing.</li>
+                    </ol>
+                </div>
+
+                <!-- Article Navigation -->
+                <nav class="article-nav fade-in">
+                    <a href="/her-os.html">&larr; her</a>
+                    <a href="/interactive-ai-map.html">Next: Interactive AI Map &rarr;</a>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="font-technical footer-heading">Get in Touch</h2>
+            <a href="#" class="btn-primary font-technical email-link">Send Email</a>
+            <div class="footer-links">
+                <a href="https://github.com/aperry938">GitHub</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+                <a href="https://orcid.org/0009-0000-2598-1296">ORCID</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        if (!('IntersectionObserver' in window)) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    /* Mobile Hamburger Menu */
+    (function() {
+        var hamburger = document.querySelector('.nav-hamburger');
+        var mobileMenu = document.querySelector('.mobile-menu');
+        if (!hamburger || !mobileMenu) return;
+        function toggleMenu() {
+            var isOpen = document.body.classList.toggle('menu-open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            mobileMenu.setAttribute('aria-hidden', !isOpen);
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.body.classList.remove('menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+                toggleMenu();
+                hamburger.focus();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
