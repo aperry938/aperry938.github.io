@@ -6,6 +6,20 @@
 <title>Anthony C. Perry — Academic CV</title>
 <link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Academic CV of Anthony C. Perry — human-AI interaction, AI safety, and adaptive learning systems.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anthony C. Perry — Academic CV">
+<meta property="og:description" content="Academic CV of Anthony C. Perry — human-AI interaction, AI safety, and adaptive learning systems.">
+<meta property="og:image" content="https://aperry938.github.io/images/founder-headshot-640.png">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Portrait of Anthony C. Perry">
+<meta property="og:url" content="https://aperry938.github.io/cv.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#FAF9F6">
+<link rel="canonical" href="https://aperry938.github.io/cv.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
@@ -359,7 +373,7 @@
   }
 
   .cv-nav a:hover {
-    color: #8BA88E;
+    color: #587559;
   }
 
   .cv-nav .cv-nav-brand {
@@ -369,13 +383,32 @@
     margin-right: auto;
   }
 
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Space Grotesk', var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+
+  .skip-link:focus { left: 12px; top: 12px; }
+
   @media print {
     .cv-nav { display: none; }
+    .skip-link { display: none; }
     body { padding: 0; margin: 0; }
   }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="cv-nav">
     <a href="/" class="cv-nav-brand">A.P.</a>
@@ -384,6 +417,8 @@
     <a href="/about.html">About</a>
     <a href="https://github.com/aperry938">GitHub</a>
 </nav>
+
+<main id="main">
 
 <header>
   <h1>Anthony C. Perry, M.S.</h1>
@@ -605,6 +640,8 @@
   <h2>References</h2>
   <div class="languages">Available upon request.</div>
 </section>
+
+</main>
 
 <script>(function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();</script>
 </body>
