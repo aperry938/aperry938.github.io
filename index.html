@@ -84,38 +84,7 @@
     </section>
 
     <!-- Selected Research -->
-    <section class="selected-research" aria-label="Selected research">
-        <div class="container">
-            <div class="selected-research-header">
-                <h2 class="font-technical">Selected Research</h2>
-                <a href="/research.html" class="text-link">All publications &rarr;</a>
-            </div>
-            <ol class="selected-research-list">
-                <li class="selected-research-item">
-                    <a class="selected-research-title" href="/research.html#pub-safety-agency">The Safety&ndash;Agency Inversion: Longitudinal Multi-Method Evidence from Frontier Voice AI Companions</a>
-                    <span class="selected-research-status">Preprint &middot; Zenodo doi:10.5281/zenodo.19144583 (with the open Her Dataset)</span>
-                </li>
-                <li class="selected-research-item">
-                    <a class="selected-research-title" href="/research.html#pub-sycophancy">The Epistemic Harm of AI Sycophancy: When Agreement Undermines Justified Belief</a>
-                    <span class="selected-research-status">Preprint v3 &middot; doi:10.5281/zenodo.19057032 &middot; Commentary prepared for AI and Ethics</span>
-                </li>
-                <li class="selected-research-item">
-                    <a class="selected-research-title" href="/research.html#pub-survey">Judgment-Free but Not Risk-Free: How Perceived Emotional Safety with AI Companions Relates to Human Self-Disclosure and Help-Seeking</a>
-                    <span class="selected-research-status">Pre-registered survey (N=55) &middot; targeting OzCHI 2026</span>
-                </li>
-                <li class="selected-research-item">
-                    <a class="selected-research-title" href="/research.html#pub-adaptive">Confidence-Calibrated Adaptive Learning: An Integrated Adaptive Engine for Professional Exam Preparation</a>
-                    <span class="selected-research-status">Preprint &middot; doi:10.5281/zenodo.18820462</span>
-                </li>
-                <li class="selected-research-item">
-                    <a class="selected-research-title" href="/research.html#pub-crossdomain">Cross-Domain Analysis of a Confidence-Calibrated Adaptive Learning Engine</a>
-                    <span class="selected-research-status">Preprint &middot; doi:10.5281/zenodo.19024683</span>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- Research Pillars -->
+        <!-- Research Pillars -->
     <section class="pillars-section" id="research">
         <div class="container">
             <div class="pillars-header">
@@ -123,6 +92,13 @@
                 <span class="pillars-label">Selected Works</span>
             </div>
 
+            <div class="pillars-grid-wrapper scroll-start">
+                <button class="pillars-scroll-arrow pillars-scroll-arrow-left" aria-label="Scroll left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="pillars-scroll-arrow pillars-scroll-arrow-right" aria-label="Scroll right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
             <div class="pillars-grid">
                 <!-- Conversational AI & Human-AI Interaction -->
                 <div class="project-card fade-in">
@@ -224,6 +200,7 @@
                 </div>
 
             </div>
+            </div>
         </div>
     </section>
 
@@ -304,6 +281,32 @@
         });
     })();
     (function(){var u='anthonycperry21',d='gmail.com',e=u+'@'+d;document.querySelectorAll('.email-link').forEach(function(a){a.href='mai'+'lto:'+e;if(a.classList.contains('cv-email'))a.textContent=e;});})();
+    /* Pillars horizontal scroll arrows */
+    (function() {
+        function updateScrollFade(grid) {
+            var wrapper = grid.parentElement;
+            if (!wrapper || !wrapper.classList.contains('pillars-grid-wrapper')) return;
+            var atStart = grid.scrollLeft <= 4;
+            var atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+            wrapper.classList.toggle('scroll-start', atStart);
+            wrapper.classList.toggle('scroll-end', atEnd);
+        }
+        document.querySelectorAll('.pillars-grid').forEach(function(grid) {
+            updateScrollFade(grid);
+            grid.addEventListener('scroll', function() { updateScrollFade(grid); }, { passive: true });
+            window.addEventListener('resize', function() { updateScrollFade(grid); });
+        });
+        document.querySelectorAll('.pillars-scroll-arrow').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var wrapper = this.parentElement;
+                var grid = wrapper.querySelector('.pillars-grid');
+                if (!grid) return;
+                var scrollAmount = 314;
+                var direction = this.classList.contains('pillars-scroll-arrow-left') ? -1 : 1;
+                grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            });
+        });
+    })();
     /* Cross-site page transitions */
     (function() {
         document.addEventListener('click', function(e) {
