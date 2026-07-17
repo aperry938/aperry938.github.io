@@ -302,17 +302,71 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
 
 /* Neural Enso Logo */
 .enso-logo {
+    position: relative;
     display: block;
     margin: 0 auto 40px;
     width: 320px;
+}
+
+.enso-logo img {
+    display: block;
+    width: 100%;
     height: auto;
-    opacity: 0;
-    transform: scale(0.92);
-    animation: revealEnso 1.2s ease-out 0.2s forwards;
+}
+
+.enso-network {
+    position: absolute;
+    inset: 0;
+}
+
+@property --enso-sweep {
+    syntax: '<angle>';
+    initial-value: 360deg;
+    inherits: false;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .enso-logo {
+        opacity: 0;
+        animation: revealEnso 0.5s ease-out 0.15s forwards;
+    }
+
+    /* the brush draws itself — a soft-edged sweep from the gap, once around */
+    @supports (mask: conic-gradient(#000 0deg, transparent 0deg)) {
+        .enso-brush {
+            --enso-sweep: 0deg;
+            -webkit-mask: conic-gradient(from 52deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
+            mask: conic-gradient(from 52deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
+            animation: ensoDraw 1.7s cubic-bezier(0.6, 0.05, 0.3, 1) 0.35s both;
+        }
+    }
+
+    /* the network lands as the stroke completes, then breathes */
+    .enso-network {
+        opacity: 0;
+        transform: scale(0.88) rotate(-3deg);
+        transform-origin: 62% 30%;
+        animation:
+            netLand 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.75s forwards,
+            netBreathe 7s ease-in-out 4s infinite;
+    }
 }
 
 @keyframes revealEnso {
-    to { opacity: 1; transform: scale(1); }
+    to { opacity: 1; }
+}
+
+@keyframes ensoDraw {
+    to { --enso-sweep: 360deg; }
+}
+
+@keyframes netLand {
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes netBreathe {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.72; }
 }
 
 .hero h1 {
