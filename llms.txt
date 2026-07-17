@@ -1,0 +1,17 @@
+# Anthony C. Perry
+
+> Independent researcher and engineer working in human-AI interaction, AI safety, and adaptive learning systems. M.S. Computer Science (AI/ML), M.S. Kinesiology. USAF veteran (C-17 loadmaster). Founder of Meridian Labs (meridianlabs.us) — 28 exam-prep apps built on a confidence-calibrated adaptive learning engine. Seeking PhD positions beginning 2027.
+
+## Pages
+
+- [Research](https://aperry938.github.io/research.html): DOI-registered preprints on adaptive learning, AI sycophancy, and voice-AI companions; current projects; note for potential PhD supervisors
+- [About](https://aperry938.github.io/about.html): Biography — Air Force, kinesiology, computational transition
+- [CV](https://aperry938.github.io/cv.html): Full academic CV (with downloadable PDF)
+- [Meridian Labs case study](https://aperry938.github.io/meridian-labs.html): The adaptive learning engine — 28 apps, 75,000+ items, 33 peer-reviewed citations
+
+## Preprints
+
+- [The Safety–Agency Inversion](https://doi.org/10.5281/zenodo.19144583): Longitudinal multi-method study of frontier voice AI companions
+- [The Epistemic Harm of AI Sycophancy](https://doi.org/10.5281/zenodo.19057032): When agreement undermines justified belief
+- [Confidence-Calibrated Adaptive Learning](https://doi.org/10.5281/zenodo.18820462): The integrated adaptive engine
+- [Cross-Domain Analysis](https://doi.org/10.5281/zenodo.19024683): The engine's behavior across exam domains
