@@ -335,8 +335,8 @@ body.menu-open .mobile-menu-links li:nth-child(4) { transition-delay: 0.2s; }
     @supports (mask: conic-gradient(#000 0deg, transparent 0deg)) {
         .enso-brush {
             --enso-sweep: 0deg;
-            -webkit-mask: conic-gradient(from 52deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
-            mask: conic-gradient(from 52deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
+            -webkit-mask: conic-gradient(from 96deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
+            mask: conic-gradient(from 96deg at 50% 51%, #000 var(--enso-sweep), transparent calc(var(--enso-sweep) + 26deg));
             animation: ensoDraw 1.7s cubic-bezier(0.6, 0.05, 0.3, 1) 0.35s both;
         }
     }
