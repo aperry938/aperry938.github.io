@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System &mdash; Anthony C. Perry</title>
-    <meta name="description" content="A sleep and dream wellness system with hardcoded crisis detection immune to prompt injection, programmatic psychoacoustic synthesis via Web Audio API, RAG-enhanced dream analysis, and zero server-side storage.">
+    <title>Somnia · Anthony C. Perry</title>
+    <meta name="description" content="A sleep and dream journal with AI analysis through a server proxy, a keyword screen for crisis language, generated audio, and pattern tracking.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System &mdash; Anthony C. Perry">
-    <meta property="og:description" content="Hardcoded crisis detection, programmatic audio synthesis, and privacy-first dream analysis: architectural decisions in a sleep wellness system.">
+    <meta property="og:title" content="Somnia · Anthony C. Perry">
+    <meta property="og:description" content="A sleep and dream journal with AI analysis through a server proxy, a keyword screen for crisis language, generated audio, and pattern tracking.">
     <meta property="og:image" content="https://aperry938.github.io/images/og-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -34,7 +34,6 @@
                 <li><a href="/research.html">Research</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/cv.html">CV</a></li>
-                <li><a href="https://github.com/aperry938">GitHub</a></li>
             </ul>
             <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -48,7 +47,6 @@
             <li><a href="/research.html">Research</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/cv.html">CV</a></li>
-            <li><a href="https://github.com/aperry938">GitHub</a></li>
         </ul>
     </div>
 
@@ -57,15 +55,7 @@
     <!-- Article Header -->
     <header class="article-header container">
         <h1 class="font-technical">Synthesizing Rest: Safety, Privacy, and Programmatic Audio in a Sleep Wellness System</h1>
-        <p class="article-meta">
-            <span>June 2025</span>
-            <span>&middot;</span>
-            <span>9 min read</span>
-            <span class="meta-tag">Wellness Technology</span>
-            <span class="meta-tag">Audio Synthesis</span>
-            <span class="meta-tag">AI Safety</span>
-            <span class="meta-tag">Privacy</span>
-        </p>
+        <p class="article-meta"><span>June 2025</span></p>
     </header>
 
     <!-- Article Body -->
@@ -98,7 +88,7 @@
                         The 40Hz gamma signal cannot exist as a file on a phone speaker. The speaker physically cannot reproduce 40Hz. So the system synthesizes harmonics at 200Hz and 240Hz, and the auditory cortex reconstructs the fundamental that was never actually present. The psychoacoustic effect works precisely because the sound is generated programmatically.
                     </blockquote>
 
-                    <p><strong>Privacy-first with RAG.</strong> Zero server-side storage means all dream journal entries, sleep data, mood logs, and analysis results live in the browser&rsquo;s localStorage. But AI dream analysis requires context: a recurring symbol means nothing in isolation. The RAG pipeline generates 768-dimensional embeddings for each journal entry on-device, stores them locally, and retrieves relevant past entries via cosine similarity before constructing the analysis prompt. Individual dream analysis uses Gemini 2.5 Flash for speed; synthesis across multiple entries uses Gemini 2.5 Pro for depth. Failed API calls queue locally and retry on reconnect, maintaining offline functionality. The user&rsquo;s dream journal never leaves the device except as an ephemeral API call; the API provider receives only the current entry plus retrieved context, never the full journal.</p>
+                    <p><strong>Privacy-first with RAG.</strong> Journal entries, sleep data, mood logs and analysis results live in the browser&rsquo;s localStorage, with optional sync to a server account. But AI dream analysis requires context: a recurring symbol means nothing in isolation. The RAG pipeline generates 768-dimensional embeddings for each journal entry through the analysis proxy, stores them locally, and retrieves relevant past entries via cosine similarity before constructing the analysis prompt. Individual dream analysis uses Gemini 2.5 Flash for speed; synthesis across multiple entries uses Gemini 2.5 Pro for depth. Failed API calls queue locally and retry on reconnect, maintaining offline functionality. The user&rsquo;s dream journal never leaves the device except as an ephemeral API call; the API provider receives only the current entry plus retrieved context, never the full journal.</p>
                 </div>
 
                 <!-- Section 3: What Emerged -->
@@ -114,7 +104,7 @@
                 <!-- Section 4: What I Learned -->
                 <div class="bio-block fade-in">
                     <h2 class="font-technical">What I Learned</h2>
-                    <p><strong>The privacy cost is real.</strong> Zero server-side storage is a genuine architectural commitment, not a marketing claim. It means no cross-device sync by default, no backup recovery if the user clears browser storage, no aggregate analysis across users for research purposes. Every wellness app that collects server-side data can offer features that Somnia structurally cannot. The question is whether the privacy guarantee is worth the capability loss. For dream journals specifically, the answer may be yes: contextual integrity theory argues that privacy violations are determined not by the information itself but by whether its flow matches the norms of the context in which it was generated [5]. Dream content generated in the intimate context of sleep has strong contextual norms against corporate surveillance. An ephemeral AI interaction that processes the content transiently may be the only appropriate information flow.</p>
+                    <p><strong>The privacy cost is real.</strong> Local-first storage is the default: no cross-device sync unless the user turns it on, no backup if the user clears browser storage without syncing, and no aggregate analysis across users. Every wellness app that collects server-side data can offer features that Somnia structurally cannot. The question is whether the privacy guarantee is worth the capability loss. For dream journals specifically, the answer may be yes: contextual integrity theory argues that privacy violations are determined not by the information itself but by whether its flow matches the norms of the context in which it was generated [5]. Dream content generated in the intimate context of sleep has strong contextual norms against corporate surveillance. An ephemeral AI interaction that processes the content transiently may be the only appropriate information flow.</p>
 
                     <p><strong>A safety floor, not a ceiling.</strong> The hardcoded crisis detection layer catches explicit language and misses everything else. Indirect ideation, metaphorical distress, and culturally specific expressions of crisis are invisible to twenty-eight pattern-matched phrases. The layer is not a crisis detection system in any clinical sense. It is a safety floor: a guarantee that the most explicit signals will never be missed, regardless of what happens to the AI above it. The gap between this floor and clinically adequate crisis detection is the space where ML classifiers, clinical consultation, and human oversight operate. The argument is not that hardcoded detection is sufficient, but that it should be the foundation that other layers build upon.</p>
 
@@ -142,8 +132,8 @@
 
                 <!-- Article Navigation -->
                 <nav class="article-nav fade-in">
-                    <a href="/zenith.html">&larr; ZEN<sup class="zenith-ith">ith</sup></a>
-                    <a href="/#research">Back to Research &rarr;</a>
+                    <a href="/zenith.html">ZEN<sup class="zenith-ith">ith</sup></a>
+                    <a href="/#research">Back to Research</a>
                 </nav>
 
             </div>
@@ -157,10 +147,11 @@
         <div class="container">
             <h2 class="font-technical footer-heading">Get in Touch</h2>
             <a href="#" class="btn-primary font-technical email-link">Send Email</a>
+            <p class="footer-location">Wellington, New Zealand</p>
             <div class="footer-links">
-                <a href="https://github.com/aperry938">GitHub</a>
-                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
                 <a href="https://orcid.org/0009-0000-2598-1296">ORCID</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+                <a href="https://github.com/aperry938">GitHub</a>
             </div>
             <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
         </div>

@@ -406,6 +406,7 @@
     .skip-link { display: none; }
     body { padding: 0; margin: 0; }
   }
+  .research-entry .title .dates { float: right; font-weight: 400; color: var(--text-light); font-size: 0.95em; }
 </style>
 <script type="application/ld+json">
     {
@@ -413,7 +414,7 @@
       "@type": "Person",
       "name": "Anthony C. Perry",
       "url": "https://aperry938.github.io/",
-      "jobTitle": "Independent Researcher",
+      "jobTitle": "App developer",
       "description": "Researcher and engineer working in human-AI interaction, AI safety, and adaptive learning systems. Founder of Meridian Labs.",
       "alumniOf": [
         {"@type": "CollegeOrUniversity", "name": "Western Governors University"},
@@ -457,34 +458,19 @@
 
 <section class="research-interests">
   <h2>Research Interests</h2>
-  <p>Human&ndash;AI Interaction &middot; AI Safety &middot; Trust Calibration &middot; Affective Computing &middot; Adaptive Learning Systems &middot; Metacognitive Modeling</p>
+  <p>Human&ndash;AI Interaction &middot; AI Safety &middot; Adaptive Learning Systems &middot; Human Subjects Research</p>
 </section>
 
 <section>
-  <h2>Publications</h2>
+  <h2>Preprints and manuscripts</h2>
   <div class="research-entry">
-    <div class="title">Perry, A. C. (2026). The Safety&ndash;Agency Inversion: Longitudinal Multi-Method Evidence from Frontier Voice AI Companions.</div>
-    <div class="tags">Preprint, Zenodo (includes the open Her Dataset) &middot; Preprint: <a href="https://doi.org/10.5281/zenodo.19144583" style="color:var(--accent);text-decoration:none;">doi:10.5281/zenodo.19144583</a></div>
+    <div class="title">Perry, A. C. (2026). Judgment-Free but Not Risk-Free: How Perceived Emotional Safety with AI Companions Relates to Human Self-Disclosure and Help-Seeking.</div>
+    <div class="tags">Pre-registered study, N = 55 &middot; OSF: <a href="https://osf.io/5xzjs" style="color:var(--accent);text-decoration:none;">osf.io/5xzjs</a></div>
   </div>
 
   <div class="research-entry">
     <div class="title">Perry, A. C. (2026). The Epistemic Harm of AI Sycophancy: When Agreement Undermines Justified Belief.</div>
-    <div class="tags">Preprint: <a href="https://doi.org/10.5281/zenodo.19057032" style="color:var(--accent);text-decoration:none;">doi:10.5281/zenodo.19057032</a></div>
-  </div>
-
-  <div class="research-entry">
-    <div class="title">Perry, A. C. (2026). Pre-registered survey study in human-AI interaction.</div>
-    <div class="tags">Under double-anonymous review &middot; details withheld during review</div>
-  </div>
-
-  <div class="research-entry">
-    <div class="title">Perry, A. C. (2026). Confidence-Calibrated Adaptive Learning: An Integrated Adaptive Engine for Professional Exam Preparation.</div>
-    <div class="tags">Preprint, Zenodo &middot; Preprint: <a href="https://doi.org/10.5281/zenodo.18820462" style="color:var(--accent);text-decoration:none;">doi:10.5281/zenodo.18820462</a></div>
-  </div>
-
-  <div class="research-entry">
-    <div class="title">Perry, A. C. (2026). Cross-Domain Analysis of a Confidence-Calibrated Adaptive Learning Engine.</div>
-    <div class="tags">Preprint, Zenodo &middot; Preprint: <a href="https://doi.org/10.5281/zenodo.19024683" style="color:var(--accent);text-decoration:none;">doi:10.5281/zenodo.19024683</a></div>
+    <div class="tags">Preprint: <a href="https://doi.org/10.5281/zenodo.19057032" style="color:var(--accent);text-decoration:none;">doi:10.5281/zenodo.19057032</a> &middot; a revised version is under review at <em>AI and Ethics</em></div>
   </div>
 
 </section>
@@ -512,57 +498,46 @@
 </section>
 
 <section>
-  <h2>Research Experience</h2>
+  <h2>Research and Projects</h2>
+  <div class="research-entry">
+    <div class="title">Pre-registered study of AI use and self-disclosure <span class="dates">2026</span></div>
+    <ul>
+      <li>Designed, pre-registered (OSF osf.io/5xzjs) and ran a study (N = 55) comparing AI users and non-users on validated measures (Self-Disclosure Index, PRCA-12) plus two original psychometric scales with acceptable reliability</li>
+      <li>AI users were far more willing to self-disclose to a new acquaintance (d = 1.08), and 57% said they had sought professional help for something first raised with AI</li>
+    </ul>
+  </div>
 
   <div class="research-entry">
-    <div class="title">Meridian Labs &mdash; Adaptive Learning Engine</div>
-    <div class="tags">Educational Technology &middot; Knowledge Tracing &middot; Metacognitive Modeling &middot; 2025&ndash;Present</div>
+    <div class="title">her, a single-participant study of voice AI <span class="dates">2025</span></div>
+    <div class="github"><a href="https://doi.org/10.5281/zenodo.19144583" style="color:var(--accent);text-decoration:none;">Preprint and data: doi:10.5281/zenodo.19144583</a></div>
+    <ul>
+      <li>Recorded 68 voice sessions (83 hours) with GPT-4o, Gemini, Grok and Claude between September and December 2025, using structured games, debates and stress tests, and scored them on rubrics I designed</li>
+      <li>One participant, one rater and unvalidated scales, so the results can only suggest patterns; the preprint and the coded session data are released on Zenodo</li>
+    </ul>
+  </div>
+
+  <div class="research-entry">
+    <div class="title">Meridian Labs, adaptive learning platform <span class="dates">2025&ndash;present</span></div>
+    <div class="github"><a href="https://doi.org/10.5281/zenodo.18820462" style="color:var(--accent);text-decoration:none;">Engine preprint: doi:10.5281/zenodo.18820462</a></div>
     <div class="github"><a href="https://meridianlabs.us">meridianlabs.us</a></div>
     <ul>
-      <li>Built an adaptive educational technology platform (28 production applications across four professional domains, 75,000+ items) grounded in 33 peer-reviewed citations in cognitive science, metacognition, and testing psychology</li>
-      <li>Implemented 6 learning algorithms for confidence calibration (4-outcome metacognitive weighting), spaced repetition (6-level adaptive interval scheduling), misconception detection (confident-wrong pattern analysis), and stress inoculation training for exam readiness</li>
-      <li>Engineered an Exam Readiness prediction system using non-linear multi-factor scoring across domain mastery, confidence calibration, study consistency, and performance trajectory</li>
-      <li>Deployed across four certification domains (healthcare, cosmetology, information technology, and general professional certification) on iOS and Android, enabling cross-domain comparison of adaptive algorithm behavior</li>
-      <li>Architected and shipped entirely through AI-augmented methodology: frontier LLM orchestration across architecture design, algorithm implementation, 75,000-item content generation, and domain-specific quality auditing</li>
+      <li>Built and run an exam-preparation platform of 28 apps on iOS and Android across four certification fields, 75,000+ practice questions</li>
+      <li>Designed the adaptive engine, which weights each answer by the learner&rsquo;s stated confidence to set review intervals and surface confident errors, with spaced repetition, misconception detection and timed exam practice; described in a preprint</li>
+      <li>Built and maintain the whole platform alone, with heavy use of large language models for code and content generation</li>
     </ul>
   </div>
 
   <div class="research-entry">
-    <div class="title">ZENith &mdash; Real-Time AI Movement Coach</div>
-    <div class="tags">Computer Vision &middot; Human Performance &middot; Human&ndash;AI Interaction &middot; 2025&ndash;Present</div>
+    <div class="title">ZENith, real-time yoga-form feedback <span class="dates">2025</span></div>
     <div class="github"><a href="https://github.com/aperry938/zenith-mvp">github.com/aperry938/zenith-mvp</a></div>
     <ul>
-      <li>Investigated real-time biomechanical form assessment through a computer vision pipeline integrating MediaPipe pose estimation, a custom Variational Autoencoder (VAE) for movement quality scoring (&rho;=0.958 correlation with expert biomechanical ratings), and Random Forest classification across 10 yoga poses</li>
-      <li>Created and annotated a novel video dataset of 100 self-recorded sequences capturing correct and incorrect pose variations across 10 yoga poses, used for both VAE training and Random Forest classification</li>
-      <li>Developed a joint angle analysis pipeline translating biomechanical principles into computable features for real-time form feedback</li>
-      <li>Integrated a context-aware coaching module (Google Gemini) generating natural language guidance informed by live pose quality metrics, exploring the design of AI feedback for embodied skill acquisition</li>
+      <li>Built a webcam yoga-form checker on MediaPipe pose estimation with 30 hand-designed joint-angle features, which classify 10 poses as accurately as 132 raw landmarks</li>
+      <li>Trained a variational autoencoder on correct form to separate good from poor form in a 100-video self-recorded dataset (98 used after quality screening); no external raters yet</li>
     </ul>
   </div>
 
   <div class="research-entry">
-    <div class="title">&ldquo;Her&rdquo; &mdash; Longitudinal Human&ndash;AI Interaction Study and Relational AI Interface</div>
-    <div class="tags">Human&ndash;AI Interaction &middot; Affective Computing &middot; Autoethnographic Methods &middot; 2025&ndash;Present</div>
-    <div class="github"><a href="https://github.com/aperry938/her-os-v1">github.com/aperry938/her-os-v1</a></div>
-    <ul>
-      <li>Conducted a 4-month longitudinal study (68 sessions, 83+ hours) of voice-first human&ndash;AI interaction across four frontier models (GPT-4o, Gemini, Grok, Claude), identifying a <em>safety&ndash;agency inversion</em>: models with stronger safety alignment consistently exhibited lower relational agency, with non-overlapping score ranges between the most and least aligned models</li>
-      <li>Developed the HERVAC framework, a proposed 6-dimension scoring instrument (Human-likeness, Emotional Attunement, Recall &amp; Continuity, Voice Performance, Agency &amp; Integrity, Co-evolution) with five convergent behavioral measures across three methodologically independent evidence streams corroborating the same model ordering</li>
-      <li>Designed the Nine Circles adversarial protocol&mdash;six targeted stress tests (sycophancy traps, silence crucibles, persona stability challenges) probing specific relational capabilities under pressure, revealing debate concession rates ranging from 52% (GPT-4o) to 0% (Grok)</li>
-      <li>Compiled the Her Dataset (68 sessions, structured interaction data across four models) and all assessment instruments for open release alongside the paper</li>
-    </ul>
-  </div>
-
-  <div class="research-entry">
-    <div class="title">Pre-Registered Survey Study &mdash; Human-AI Interaction</div>
-    <div class="tags">Human-AI Interaction &middot; Survey Design &middot; Psychometrics &middot; 2026</div>
-    <ul>
-      <li>Designed, pre-registered, and conducted an ethics-certified human-subjects survey study on AI-mediated communication, including two original psychometric scales with acceptable reliability</li>
-      <li>Manuscript under double-anonymous peer review; methodology, findings, and pre-registration withheld here until the review concludes</li>
-    </ul>
-  </div>
-
-  <div class="research-entry">
-    <div class="title">Master&rsquo;s Thesis Proposal &mdash; Effects of Yoga on Injuries Associated with Long-Distance Running</div>
-    <div class="tags">California Baptist University &middot; 2018&ndash;2019</div>
+    <div class="title">Master&rsquo;s thesis proposal on yoga and overuse injury in distance runners <span class="dates">2018</span></div>
     <div class="github"><a href="/pdfs/perry-cbu-research-proposal-2019.pdf" target="_blank" rel="noopener noreferrer">View Thesis Proposal (PDF)</a></div>
     <ul>
       <li>Proposed a two-arm randomized controlled trial (N=50; 25 experimental, 25 control) with 12-week Hatha Yoga intervention to investigate overuse injury prevention in distance runners aged 22&ndash;35 with marathon experience</li>
@@ -573,26 +548,19 @@
     </ul>
   </div>
 
-
 </section>
 
 <section>
   <h2>Technical Skills</h2>
   <div class="skills-grid">
-    <div class="label">AI / LLM Systems</div>
-    <div class="value">TensorFlow, Keras, scikit-learn, LLM orchestration (Claude, Gemini, GPT, Grok), multi-model pipeline design, prompt engineering for production systems, retrieval-augmented generation (RAG), adversarial evaluation design</div>
+    <div class="label">Research methods</div>
+    <div class="value">Pre-registration (OSF), online survey design and recruitment (Prolific), scale development and reliability, Welch&rsquo;s t-tests, ANCOVA, correlation and regression, Steiger&rsquo;s test, reflexive thematic analysis; randomized controlled trial design (proposal)</div>
 
-    <div class="label">Research Methods</div>
-    <div class="value">Experimental design (RCT), mixed-design ANOVA, ANCOVA, Welch&rsquo;s t-tests, a priori power analysis, sensitivity analysis, intent-to-treat analysis, longitudinal study design, cross-sectional survey design, psychometric scale development, OSF pre-registration, autoethnographic methods, multi-method triangulation, reflexive thematic analysis, instrument development (HERVAC, Emotional Safety, Help-Seeking Behavior), cross-domain comparative analysis, online recruitment (Prolific), ACM ethics self-certification, IRB protocol, SPSS</div>
+    <div class="label">Tools</div>
+    <div class="value">Python (pandas, SciPy, statsmodels, matplotlib), LaTeX, Git</div>
 
-    <div class="label">Applied ML &amp; CV</div>
-    <div class="value">MediaPipe pose estimation, Variational Autoencoders, Random Forest classification, Bayesian Knowledge Tracing, computer vision for human movement, psychoacoustic DSP (Web Audio API), biomechanical feature engineering</div>
-
-    <div class="label">Systems &amp; Deployment</div>
-    <div class="value">React, TypeScript, Capacitor 8 (iOS/Android), Supabase, Git/GitHub, AWS, Cloudflare Pages, R (tidyverse, psych, effsize), LaTeX, Figma</div>
-
-    <div class="label">Physiological Assessment</div>
-    <div class="value">Surface EMG (electrode placement, signal acquisition), goniometry and ROM assessment, graded exercise testing (VO2max, metabolic cart), 12-lead ECG monitoring, spirometry, body composition (skinfold calipers, BIA, hydrostatic weighing), sphygmomanometry, force plate analysis, Functional Movement Screen (FMS), clinical exercise programming for special populations</div>
+    <div class="label">Engineering</div>
+    <div class="value">TypeScript and React apps for iOS and Android (Capacitor), MediaPipe pose estimation, large-language-model APIs</div>
   </div>
 </section>
 
@@ -600,14 +568,25 @@
   <h2>Professional Experience</h2>
 
   <div class="pro-entry">
-    <div class="role">Founder &amp; Engineer, Meridian Labs <span class="dates">2025&ndash;Present</span></div>
-    <div class="desc">Research, design, engineering, deployment, and support for a 28-app adaptive learning platform across four certification verticals, built and operated as a solo researcher.</div>
+    <div class="role">Founder, Meridian Labs <span class="dates">2025&ndash;present</span></div>
+    <div class="desc">Exam-preparation apps for professional certifications on iOS and Android (28 apps), built on the confidence-weighted engine described in a preprint, with heavy use of large language models for code and content.</div>
   </div>
 
   <div class="pro-entry">
-    <div class="role">Technology Industry <span class="dates">2017&ndash;2025</span></div>
-    <div class="desc">Emerging technology analysis, infrastructure administration, and project management across decentralized systems and blockchain platforms. Distributed network operations, cross-functional coordination, and early adoption of generative AI tools for research and analysis workflows.</div>
+    <div class="role">Project lead, community project on the Solana blockchain, self-employed <span class="dates">2024&ndash;present</span></div>
+    <div class="desc">Founded and ran the project: partnerships, recruitment, exchange listings, compliance, marketing and community.</div>
   </div>
+
+  <div class="pro-entry">
+    <div class="role">Node administrator, StrongBlock <span class="dates">2021&ndash;2022</span></div>
+    <div class="desc">Ran and maintained Ethereum and Polygon network nodes.</div>
+  </div>
+
+  <div class="pro-entry">
+    <div class="role">Independent analyst, self-employed <span class="dates">2017&ndash;2024</span></div>
+    <div class="desc">Research on emerging blockchain technologies (decentralised finance, DAOs, cross-border payments) and the behaviour of their users, informing investment decisions in digital assets.</div>
+  </div>
+
 </section>
 
 <section>
@@ -618,7 +597,6 @@
     <li>Completed 455 airlift sorties and 1,977 flight hours in the C-17 Globemaster III across Operations Enduring Freedom, Iraqi Freedom, and New Dawn, with the majority of missions supporting active combat theater operations</li>
     <li>Transported 9,400 passengers and 13.5 million pounds of cargo across aeromedical evacuation, presidential support, and humanitarian relief missions worldwide</li>
     <li>Executed humanitarian airlift operations during Hurricane Sandy disaster response (2012), supporting relief efforts for the Eastern Seaboard</li>
-    <li>Designated subject matter expert on C-17 cargo compartment hydraulics, electrical, and avionics systems; completed SERE combat survival, water survival, and emergency parachute training</li>
   </ul>
 </section>
 

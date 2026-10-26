@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridging Body and Machine — Anthony C. Perry</title>
-    <meta name="description" content="30 biomechanical features for real-time movement quality assessment: 4.4x dimensionality reduction, validated quality scoring (rho=0.958), and a 100-video annotated research dataset.">
+    <title>ZENith · Anthony C. Perry</title>
+    <meta name="description" content="Real-time yoga-form feedback from a webcam: MediaPipe pose estimation, 30 joint-angle features, and a variational autoencoder trained on correct form.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Bridging Body and Machine — Anthony C. Perry">
-    <meta property="og:description" content="30 biomechanical features achieve 4.4x dimensionality reduction with validated quality scoring and a 100-video annotated research dataset.">
+    <meta property="og:title" content="ZENith · Anthony C. Perry">
+    <meta property="og:description" content="Real-time yoga-form feedback from a webcam: MediaPipe pose estimation, 30 joint-angle features, and a variational autoencoder trained on correct form.">
     <meta property="og:image" content="https://aperry938.github.io/images/og-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -34,7 +34,6 @@
                 <li><a href="/research.html">Research</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/cv.html">CV</a></li>
-                <li><a href="https://github.com/aperry938">GitHub</a></li>
             </ul>
             <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -48,7 +47,6 @@
             <li><a href="/research.html">Research</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/cv.html">CV</a></li>
-            <li><a href="https://github.com/aperry938">GitHub</a></li>
         </ul>
     </div>
 
@@ -57,14 +55,7 @@
     <!-- Article Header -->
     <header class="article-header container">
         <h1 class="font-technical">Bridging Body and Machine</h1>
-        <p class="article-meta">
-            <span>November 2025</span>
-            <span>&middot;</span>
-            <span>8 min read</span>
-            <span class="meta-tag">Computer Vision</span>
-            <span class="meta-tag">Biomechanics</span>
-            <span class="meta-tag">Embodied AI</span>
-        </p>
+        <p class="article-meta"><span>November 2025</span></p>
     </header>
 
     <!-- Article Body -->
@@ -73,7 +64,7 @@
             <div class="bio-content">
 
                 <div class="bio-block fade-in">
-                    <p class="bio-lead">A movement quality assessment system combining 30 biomechanical features, a validated scoring pipeline (&rho;=0.958), and a 100-video annotated dataset, applying kinesiology principles to real-time pose analysis.</p>
+                    <p class="bio-lead">A movement quality assessment system combining 30 biomechanical features, a scoring pipeline, and a 100-video annotated dataset, applying kinesiology principles to real-time pose analysis.</p>
                 </div>
 
                 <!-- Section 1: The Question -->
@@ -104,8 +95,8 @@
                 <div class="bio-block fade-in">
                     <h2 class="font-technical">The Architecture</h2>
                     <p>The pipeline has four stages, each translating between different representational levels.</p>
-                    <p><strong>Stage 1: Pose Estimation (MediaPipe &rarr; 33 Landmarks).</strong> MediaPipe BlazePose processes each video frame and returns 33 3D landmark coordinates. This provides the spatial foundation for downstream analysis.</p>
-                    <p><strong>Stage 2: Biomechanical Feature Extraction (33 Landmarks &rarr; 30 Features).</strong> Raw landmark coordinates lack the anatomical context needed for movement assessment. The feature extraction layer computes the 30 biomechanical features described above, with pose-specific weighting. A Warrior II evaluation emphasizes front knee flexion angle (target: 90&deg;), rear leg extension, hip abduction symmetry, and shoulder-line horizontality. A Tree Pose evaluation emphasizes standing-leg knee extension, hip external rotation of the lifted leg, and center-of-mass alignment over the base of support.</p>
+                    <p><strong>Stage 1: Pose Estimation (MediaPipe  33 Landmarks).</strong> MediaPipe BlazePose processes each video frame and returns 33 3D landmark coordinates. This provides the spatial foundation for downstream analysis.</p>
+                    <p><strong>Stage 2: Biomechanical Feature Extraction (33 Landmarks  30 Features).</strong> Raw landmark coordinates lack the anatomical context needed for movement assessment. The feature extraction layer computes the 30 biomechanical features described above, with pose-specific weighting. A Warrior II evaluation emphasizes front knee flexion angle (target: 90&deg;), rear leg extension, hip abduction symmetry, and shoulder-line horizontality. A Tree Pose evaluation emphasizes standing-leg knee extension, hip external rotation of the lifted leg, and center-of-mass alignment over the base of support.</p>
                     <p><strong>Stage 3: Quality Scoring (Pose Profiles + VAE).</strong> Quality is assessed through two complementary mechanisms. Pose-specific profiles compare the 30 features against calibrated ideal ranges, generating per-feature deviation scores. Simultaneously, a Variational Autoencoder trained on correct-form biomechanical features learns a latent distribution representing the space of &ldquo;correct&rdquo; execution. Reconstruction error provides a continuous quality score; the pattern of error localizes which aspects of the pose are problematic.</p>
                     <p><strong>Stage 4: Classification &amp; Coaching (Random Forest + Gemini).</strong> The Random Forest classifies pose identity from the 30 biomechanical features, while quality scores and specific angle deviations feed into a Gemini-powered coaching module that generates natural-language feedback. The system can say: &ldquo;Your Warrior II front knee is at 72&deg;. Try to deepen to 90&deg;. Your hip abduction looks good. Watch your rear foot; it&rsquo;s rotating inward, which often compensates for tight hip flexors.&rdquo;</p>
                 </div>
@@ -115,15 +106,15 @@
                     <h2 class="font-technical">The Evidence</h2>
                     <p>Four evaluation studies validate different aspects of the pipeline.</p>
                     <p><strong>Ablation study.</strong> Stratified 5-fold cross-validation across 4,587 frames and 10 pose classes compared four feature conditions (RAW landmarks, BIO features, RAW+BIO, BIO+TEMPORAL) with two classifiers (Random Forest, MLP). The 30 biomechanical features achieved equivalent classification accuracy to 132 raw landmarks (a <strong>4.4&times; dimensionality reduction</strong>) while preserving the interpretability needed for quality feedback.</p>
-                    <p><strong>Quality validation.</strong> The composite quality score was evaluated against expert biomechanical ratings across the annotated dataset. Spearman rank correlation: <strong>&rho;=0.958</strong> (p&nbsp;&lt;&nbsp;10<sup>-53</sup>), indicating strong agreement between the system&rsquo;s assessments and practitioner ratings.</p>
-                    <p><strong>VAE discrimination.</strong> The Bio-VAE (30&rarr;8 latent dimensions), trained only on correct-form examples, produced a <strong>9.84&times; reconstruction error ratio</strong> between correct and incorrect form, demonstrating reliable quality discrimination without requiring labeled negative examples.</p>
+                    <p><strong>Quality validation.</strong> The composite score was checked against the author&rsquo;s own ratings, which were derived by binning the same score, so the agreement (&rho;&nbsp;=&nbsp;0.958) shows internal consistency rather than independent validation. Ratings from other practitioners are the next step.</p>
+                    <p><strong>VAE discrimination.</strong> The Bio-VAE (308 latent dimensions), trained only on correct-form examples, produced a <strong>9.84&times; reconstruction error ratio</strong> between correct and incorrect form, demonstrating reliable quality discrimination without requiring labeled negative examples.</p>
                     <p><strong>Latency benchmarks.</strong> The full biomechanical pipeline executes in 0.29ms per frame, <strong>less than 1% of the 30fps frame budget</strong>, indicating that the feature extraction layer does not introduce meaningful latency overhead.</p>
                 </div>
 
                 <!-- Section 5: What I Learned -->
                 <div class="bio-block fade-in">
                     <h2 class="font-technical">What I Learned</h2>
-                    <p>The central methodological tension in this project is the use of the researcher as both practitioner and dataset subject. In quantitative computer science, this is typically considered a limitation (N=1, no inter-rater reliability, potential bias in ground-truth labeling). In the phenomenological and kinesiology traditions, however, the trained practitioner&rsquo;s body serves as a calibrated instrument. The semi-automated annotation protocol was designed to bridge these perspectives: the system proposes assessments, the practitioner corrects them, and the quality validation (&rho;=0.958) provides empirical evidence that the pipeline produces clinically meaningful output.</p>
+                    <p>The central methodological tension in this project is the use of the researcher as both practitioner and dataset subject. In quantitative computer science, this is typically considered a limitation (N=1, no inter-rater reliability, potential bias in ground-truth labeling). In the phenomenological and kinesiology traditions, however, the trained practitioner&rsquo;s body serves as a calibrated instrument. The semi-automated annotation protocol was designed to bridge these perspectives: the system proposes assessments, the practitioner corrects them, and ratings from independent practitioners are needed before the pipeline can be said to produce clinically meaningful output.</p>
 
                     <blockquote class="pull-quote fade-in">
                         The semi-automated annotation protocol treats embodied expertise as ground truth, with the practitioner&rsquo;s trained proprioception as the labeling function, while maintaining systematic oversight through structured review.
@@ -150,8 +141,8 @@
 
                 <!-- Article Navigation -->
                 <nav class="article-nav fade-in">
-                    <a href="/interactive-ai-map.html">&larr; Interactive AI Map</a>
-                    <a href="/somnia.html">Next: Somnia.ai &rarr;</a>
+                    <a href="/interactive-ai-map.html">Interactive AI Map</a>
+                    <a href="/somnia.html">Next: Somnia.ai</a>
                 </nav>
 
             </div>
@@ -165,10 +156,11 @@
         <div class="container">
             <h2 class="font-technical footer-heading">Get in Touch</h2>
             <a href="#" class="btn-primary font-technical email-link">Send Email</a>
+            <p class="footer-location">Wellington, New Zealand</p>
             <div class="footer-links">
-                <a href="https://github.com/aperry938">GitHub</a>
-                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
                 <a href="https://orcid.org/0009-0000-2598-1296">ORCID</a>
+                <a href="https://linkedin.com/in/aperry938">LinkedIn</a>
+                <a href="https://github.com/aperry938">GitHub</a>
             </div>
             <p class="footer-copy">&copy; 2026 Anthony C. Perry</p>
         </div>
